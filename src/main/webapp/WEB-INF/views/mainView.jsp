@@ -37,12 +37,16 @@
             <p class="mt-5"><strong class="text-uppercase">간편한 검색</strong><span> - 찾고자 하는 물건 혹은 원하는 물건을 검색해보세요.</span></p>
           </div>
         </div>
+        <form action="lost" method="GET">
         <div class="row no-gutters">
           <div class="col-md-4 col-sm-12 tf-hh-col">
-            <input class="mt-1 form-control" type="email" placeholder="*물건명을 입력하세요">
+            <input class="mt-1 form-control" type="text" name="lostName" placeholder="*물건명을 입력하세요">
           </div>
-          <div class="col-md-3 col-sm-12"><a class="tf-header-heading-btn a btn btn-primary btn-block mt-1" href="/mine/lost">검색</a></div>
+          <div class="col-md-3 col-sm-12"><!-- <a class="tf-header-heading-btn a btn btn-primary btn-block mt-1" href="/mine/lost">검색</a> -->
+                  <button class="tf-header-heading-btn a btn btn-primary btn-block mt-1" type="submit">검색</button>
+           </div>
         </div>
+        </form>
       </div>
     </header>
     <div class="page-content">

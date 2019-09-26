@@ -8,9 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LostController {
 	@RequestMapping(value = "/lost", method = RequestMethod.GET)
-	protected ModelAndView get() {
+	protected ModelAndView get(String lostName) {
 		ModelAndView mav = new ModelAndView();
 		String viewName = "lostView";
+		if(lostName != null) {
+			mav.addObject(lostName);
+		}
 		mav.setViewName(viewName);
 		return mav;
 	}
