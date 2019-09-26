@@ -35,3 +35,5 @@
 3. 푸시
 
    $ git push origin 브랜치명
+   
+4. 홍홍
