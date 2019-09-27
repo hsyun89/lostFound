@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>찾기리스트</h1>
-<c:out value="${param.lostName}"/>
+<%-- <h1>찾기리스트</h1>
+<c:out value="${param.lostName}"/> --%>
 <%
 	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
 	if(list != null) {
@@ -27,10 +27,10 @@
 	for(LostVO vo : list) {
 %>
 	<tr>
-	<td><%= vo.getAtcid()%></td>
-	<td class='<%=vo.getAtcid()%>'><a href='/mine/lost?action=read&atcid=<%=vo.getAtcid()%>'><%=vo.getFdprdtnm()%></a></td>
-	<td><%= vo.getDepplace() %></td>
-	<td><%= vo.getFdymd() %></td>
+	<td><%= vo.getUnique_id()%></td>
+	<td class='<%=vo.getUnique_id()%>'><a href='/mine/lost?action=read&atcid=<%=vo.getUnique_id()%>'><%=vo.getProduct_name()%></a></td>
+	<td><%= vo.getKeep_place() %></td>
+	<td><%= vo.getFind_date() %></td>
 	</tr>
 <%
 	}
@@ -44,15 +44,17 @@
 %>
 	<h2>분실물 상세조회</h2>
 	<form method="post" action="/mine/lost">
-		<input type="hidden" name="actid" value="<%=listOne.getAtcid()%>">
-		<input value="<%=listOne.getFdfilepathimg()%>">
-		<input value="습득물명<%=listOne.getFdprdtnm() %>">
-		<input type="text" value="관리번호<%=listOne.getAtcid()%>">
-		<input type="text" value="습득일자<%=listOne.getFdymd()%>">
-		<input type="text" value="물품분류<%=listOne.getPrdtclnm()%>">
-		<input type="text" value="보관장소<%=listOne.getDepplace()%>">
+
+		<input type="hidden" name="actid" value="<%=listOne.getUnique_id()%>">
+		<input value="<%=listOne.getImage_address()%>">
+		<input value="습득물명<%=listOne.getProduct_name() %>">
+		<input type="text" value="관리번호<%=listOne.getUnique_id()%>">
+		<input type="text" value="습득일자<%=listOne.getFind_date()%>">
+		<input type="text" value="물품분류<%=listOne.getCategory()%>">
+		<input type="text" value="보관장소<%=listOne.getKeep_place()%>">
 		<hr>
-		<input type="text" value="<%=listOne.getFdsbjt()%>">
+		<input type="text" value="<%=listOne.getContent()%>">
+
 		<a href="/mine/lost"><input type="button" value="확인"></a>
 	</form>
 <%
