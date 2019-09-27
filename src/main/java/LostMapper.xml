@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LostMapper">
+ 	<select id="selectLost"  resultType="vo.LostVO">
+ 		select addr, atcid, fdsbjt, depplace, fdprdtnm, to_char(fdymd, 'yyyy-mm-dd') fdymd, prdtclnm, lon, lat from lost
+ 	</select>
+ 	
+ 	<select id="selectLostOne" parameterType="string"  resultType="vo.LostVO">
+ 		select addr, atcid, fdsbjt, depplace, fdprdtnm, to_char(fdymd, 'yyyy-mm-dd') fdymd, prdtclnm, lon, lat from lost where atcid = #{atcid}
+ 	</select>
+ 	
+	<select id="searchLost"  parameterType="string" resultType="vo.LostVO">
+		select addr, atcid, fdsbjt, depplace, fdprdtnm, to_char(fdymd, 'yyyy-mm-dd') fdymd, prdtclnm, lon, lat from lost where fdsbjt like '%'||#{key}||'%'
+    </select>
+</mapper>
