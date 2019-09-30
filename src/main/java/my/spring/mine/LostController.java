@@ -13,15 +13,15 @@ public class LostController {
 	@Autowired
 	LostDAO dao;
 	@RequestMapping(value = "/lost", method = RequestMethod.GET)
-	protected ModelAndView get(String lostName) {
-		ModelAndView mav = new ModelAndView();
-		String viewName = "lostView";
-		if(lostName != null) {
-			mav.addObject(lostName);
-		}
-		mav.setViewName(viewName);
-		return mav;
-	}
+//	protected ModelAndView get(String lostName) {
+//		ModelAndView mav = new ModelAndView();
+//		String viewName = "lostView";
+//		if(lostName != null) {
+//			mav.addObject(lostName);
+//		}
+//		mav.setViewName(viewName);
+//		return mav;
+//	}
 	protected ModelAndView select(String atcid, String action, String keyword) {
 		ModelAndView mav = new ModelAndView();
 		if(atcid==null && action==null) {
