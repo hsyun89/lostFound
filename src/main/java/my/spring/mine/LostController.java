@@ -29,7 +29,7 @@ public class LostController {
 		}else if(action.equals("read")) {
 			mav.addObject("listOne", dao.listOne(atcid));
 		}else if(action.equals("search")) {
-			mav.addObject("list", dao.search(keyword));
+			mav.addObject("searchList", dao.search(keyword));
 		}
 		mav.setViewName("lostView");
 		return mav;
