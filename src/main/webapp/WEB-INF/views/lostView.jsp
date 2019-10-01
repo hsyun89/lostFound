@@ -17,8 +17,10 @@
 </head>
 <body>
 <c:out value="${param.lostName}"/>
+
 <%-- <h1>찾기리스트</h1>
 <c:out value="${param.lostName}"/> --%>
+
 <%
 	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
 	LostVO listOne = (LostVO)request.getAttribute("listOne");
@@ -73,6 +75,7 @@
 		<a href="/mine/lost"><input type="button" value="확인"></a>
 	</form>
 	<div id="mapid" style="width: 600px; height: 400px;"></div>
+
 <script>
 	var lat = "<%=listOne.getLat()%>";
 	var lon = "<%=listOne.getLon()%>";
@@ -94,7 +97,11 @@
 	});
 	var content = "<b>"+name+"</b><hr>찾아줘"
 		L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
+
+ 
+	
 </script>
+
 <% 
 	}
 	if(searchList != null){
@@ -120,21 +127,13 @@
 	}
 %>
 	</table>
-		<input type="hidden" name="actid" value="<%=listOne.getUnique_id()%>">
-		<input value="<%=listOne.getImage_address()%>">
-		<input value="습득물명<%=listOne.getProduct_name() %>">
-		<input type="text" value="관리번호<%=listOne.getUnique_id()%>">
-		<input type="text" value="습득일자<%=listOne.getFind_date()%>">
-		<input type="text" value="물품분류<%=listOne.getCategory()%>">
-		<input type="text" value="보관장소<%=listOne.getKeep_place()%>">
-		<hr>
-		<input type="text" value="<%=listOne.getContent()%>">
 
-		<a href="/mine/lost"><input type="button" value="확인"></a>
-	</form>
-	
+
 <%
 	}
 %>
 </body>
+
+
+
 </html>

@@ -34,6 +34,9 @@ public class LostMyBatisDAO implements LostDAO{
 		String statement = "LostMapper.searchLost";
 		list = session.selectList(statement, keyword);
 		session.close();
+		System.out.println(list.get(0).getProduct_name());
+		System.out.println(list.get(0).getFind_date());
 		return list;
+		
 	}
 }
