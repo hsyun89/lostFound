@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleLeapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text.javascript">
+
+</script>
 <!-- map -->
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -16,9 +20,15 @@
    crossorigin=""></script>
 </head>
 <body>
-<c:out value="${param.lostName}"/>
 <%-- <h1>찾기리스트</h1>
 <c:out value="${param.lostName}"/> --%>
+	<select name="contentnum" id="contentnum">
+		<option></option>
+	</select>
+	<table>
+	
+	</table>
+
 <%
 	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
 	LostVO listOne = (LostVO)request.getAttribute("listOne");
@@ -120,19 +130,6 @@
 	}
 %>
 	</table>
-		<input type="hidden" name="actid" value="<%=listOne.getUnique_id()%>">
-		<input value="<%=listOne.getImage_address()%>">
-		<input value="습득물명<%=listOne.getProduct_name() %>">
-		<input type="text" value="관리번호<%=listOne.getUnique_id()%>">
-		<input type="text" value="습득일자<%=listOne.getFind_date()%>">
-		<input type="text" value="물품분류<%=listOne.getCategory()%>">
-		<input type="text" value="보관장소<%=listOne.getKeep_place()%>">
-		<hr>
-		<input type="text" value="<%=listOne.getContent()%>">
-
-		<a href="/mine/lost"><input type="button" value="확인"></a>
-	</form>
-	
 <%
 	}
 %>
