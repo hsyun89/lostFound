@@ -10,6 +10,8 @@
 </head>
 <body>
 <c:out value="${param.lostName}"/>
+<%-- <h1>찾기리스트</h1>
+<c:out value="${param.lostName}"/> --%>
 <%
 	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
 	LostVO listOne = (LostVO)request.getAttribute("listOne");

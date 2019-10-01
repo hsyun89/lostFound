@@ -11,7 +11,7 @@ public class LostVO {
 	private String Category;
 	private Double lon;
 	private Double lat;
-	
+
 	public String getAddr() {
 		return Addr;
 	}
