@@ -4,14 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
  	<select id="selectLost"  resultType="vo.LostVO">
- 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, Find_date, Category, lon, lat from lost
+ 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, Find_date, Category, lon, lat from lost limit 0, 10
  	</select>
  	
  	<select id="selectLostOne" parameterType="string"  resultType="vo.LostVO">
- 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d'), Category, lon, lat from lost where Unique_id = #{Unique_id}
+ 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Unique_id = #{Unique_id}
  	</select>
  	
 	<select id="searchLost"  parameterType="string" resultType="vo.LostVO">
-		select Addr,Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') , lon, lat from lost where Product_name like '%'||#{key}||'%'
+		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Product_name like concat('%',#{key},'%')
     </select>
 </mapper>

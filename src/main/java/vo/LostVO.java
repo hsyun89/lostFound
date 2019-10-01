@@ -11,6 +11,7 @@ public class LostVO {
 	private String Category;
 	private Double lon;
 	private Double lat;
+
 	public String getAddr() {
 		return Addr;
 	}
@@ -77,4 +78,5 @@ public class LostVO {
 				+ Keep_place + ", Image_address=" + Image_address + ", Product_name=" + Product_name + ", Find_date="
 				+ Find_date + ", Category=" + Category + ", lon=" + lon + ", lat=" + lat + "]";
 	}
+
 }
