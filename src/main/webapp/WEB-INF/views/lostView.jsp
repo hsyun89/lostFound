@@ -18,6 +18,9 @@
 <body>
 <c:out value="${param.lostName}"/>
 
+<%-- <h1>찾기리스트</h1>
+<c:out value="${param.lostName}"/> --%>
+
 <%
 	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
 	LostVO listOne = (LostVO)request.getAttribute("listOne");
@@ -40,7 +43,7 @@
 	<td class='<%=vo.getUnique_id()%>'><a href='/mine/lost?action=read&atcid=<%=vo.getUnique_id()%>'><%=vo.getProduct_name()%></a></td>
 	<td><%= vo.getKeep_place() %></td>
 	<td><%= vo.getFind_date() %></td>
-	</tr>
+	</tr> 
 <%
 	}
 %>
@@ -71,8 +74,8 @@
 		</div>	
 		<a href="/mine/lost"><input type="button" value="확인"></a>
 	</form>
+	<div id="mapid" style="width: 600px; height: 400px;"></div>
 
-		<div id="mapid" style="width: 600px; height: 400px;"></div>
 <script>
 	var lat = "<%=listOne.getLat()%>";
 	var lon = "<%=listOne.getLon()%>";
@@ -94,6 +97,7 @@
 	});
 	var content = "<b>"+name+"</b><hr>찾아줘"
 		L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
+
  
 	
 </script>
@@ -123,7 +127,6 @@
 	}
 %>
 	</table>
-		
 
 
 <%

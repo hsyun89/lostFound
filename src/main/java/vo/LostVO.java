@@ -78,5 +78,4 @@ public class LostVO {
 				+ Keep_place + ", Image_address=" + Image_address + ", Product_name=" + Product_name + ", Find_date="
 				+ Find_date + ", Category=" + Category + ", lon=" + lon + ", lat=" + lat + "]";
 	}
-
 }
