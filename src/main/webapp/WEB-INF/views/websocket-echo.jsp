@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.js"></script><!-- sokcs cdn방식-->
         <meta charset="UTF-8">
         <!-- jQuery CDN-->
         <script
@@ -10,7 +11,7 @@
           integrity="sha256-TXsBwvYEO87oOjPQ9ifcb7wn3IrrW91dhj6EMEtRLvM="
           crossorigin="anonymous"></script>
         <!-- Web socket CDN -->
-        <script src="http://cdn.sockjs.org/sockjs-0.3.4.js"></script>
+<!--         <script src="http://cdn.sockjs.org/sockjs-0.3.4.js"></script> -->
         
 </head>
 <body>
@@ -32,7 +33,7 @@
                });
         });
         // 웹소켓을 지정한 url로 연결한다.
-        let sock = new SockJS("<c:url value="/echo"/>");
+        let sock = new SockJS("<c:url value="/replyEcho"/>");
         sock.onmessage = onMessage;
         sock.onclose = onClose;
         // 메시지 전송
