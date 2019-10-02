@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="PageMapper">
- 	<select id="lostList"  resultType="vo.LostVO">
+<mapper namespace="dao.Mapper">
+ 	<select id="lostlist"  resultType="vo.LostVO">
  		select * from lost limit #{pagenum}, #{contentnum}
  	</select>
- 	<select id="lostCount" resultType="int">
+ 	<select id="lostcount" resultType="int">
  		select count(*) from lost
  	</select>
 </mapper>

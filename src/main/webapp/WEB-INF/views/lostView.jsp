@@ -21,34 +21,14 @@
 <body>
 <%-- <h1>찾기리스트</h1>
 <c:out value="${param.lostName}"/> --%>
+<!-- 페이징 스크립트 -->
 <script>
 	function page(idx){
 		var pagenum = idx;
 		var contentnum = $("#contentnum option:selected").val();
-		location.herf = "${pageContext.request.contextPath}/lost?=pagenum=1&contentnum=10"
+		location.herf = "${pageContext.request.contextPath}/lost?=pagenum="+pagenum+"&contentnum="+contentnum";
 	}
 </script>
-	<select name="contentnum" id="contentnum">
-		<option></option>
-	</select>
-	<table>
-		<thead>
-		
-		</thead>
-		<tbody>
-			<c:forEach var="k"  items="${lost}">
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2">
-					<c:if lost="${page.prev}">
-						<a style="text-decoration: none;" href="javascript:page(${page.getStartPage()-1 });">&laquo</a>
-					</c:if>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
 <%
 	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
 	LostVO listOne = (LostVO)request.getAttribute("listOne");
@@ -72,6 +52,21 @@
 	<td><%= vo.getKeep_place() %></td>
 	<td><%= vo.getFind_date() %></td>
 	</tr> 
+		<tfoot>
+			<tr>
+				<td colspan="2">
+					<c:if test="${page.prev}">
+						<a style="text-decoration: none;" href="javascript:page(${page.getStartPage()-1});">&laquo;</a>
+					</c:if>
+					<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
+						<a style="text-decoration:none;" href="javascript:page(${idx});">${idx}</a>
+					</c:forEach>
+					<c:if test="${page.next}">
+						<a style="text-decoration:none;" href="javascript:page(${page.getStartPage()+1})">&laquo;</a>
+					</c:if>
+				</td>
+			</tr>
+		</tfoot>
 <%
 	}
 %>

@@ -184,8 +184,6 @@
 			<artifactId>Rserve</artifactId>
 			<version>0.6-8.1</version>
 		</dependency>
-
-
 	</dependencies>
 	<build>
 		<plugins>
