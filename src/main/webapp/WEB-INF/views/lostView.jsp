@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleLeapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text.javascript">
-
 </script>
 <!-- map -->
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -22,11 +21,32 @@
 <body>
 <%-- <h1>찾기리스트</h1>
 <c:out value="${param.lostName}"/> --%>
+<script>
+	function page(idx){
+		var pagenum = idx;
+		var contentnum = $("#contentnum option:selected").val();
+		location.herf = "${pageContext.request.contextPath}/lost?=pagenum=1&contentnum=10"
+	}
+</script>
 	<select name="contentnum" id="contentnum">
 		<option></option>
 	</select>
 	<table>
-	
+		<thead>
+		
+		</thead>
+		<tbody>
+			<c:forEach var="k"  items="${lost}">
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+					<c:if lost="${page.prev}">
+						<a style="text-decoration: none;" href="javascript:page(${page.getStartPage()-1 });">&laquo</a>
+					</c:if>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 
 <%
