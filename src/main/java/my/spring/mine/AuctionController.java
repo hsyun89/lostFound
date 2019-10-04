@@ -10,7 +10,7 @@ public class AuctionController {
 	@RequestMapping(value = "/auction", method = RequestMethod.GET)
 	protected ModelAndView get() {
 		ModelAndView mav = new ModelAndView();
-		String viewName = "websocket-echo";
+		String viewName = "auctionView";
 		mav.setViewName(viewName);
 		return mav;
 	}

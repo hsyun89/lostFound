@@ -28,7 +28,7 @@
 		<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-	<context:component-scan base-package="handler" />
+<!-- 	<context:component-scan base-package="handler" /> -->
 	<context:component-scan base-package="service" />
 	<context:component-scan base-package="dao" />
 	<context:component-scan base-package="vo" />
@@ -50,21 +50,14 @@
 	<beans:constructor-arg index="0"  ref="sqlSessionFactory" ></beans:constructor-arg>
 </beans:bean>
 
-	<!-- 웹소켓 사용 -->
-<!--     <websocket:handlers>
-        <websocket:mapping path="/echo" handler="myHandler"/>
-    </websocket:handlers> -->
- 	<!-- 웹 소켓 핸들러  -->
-<!--     <beans:bean id="myHandler" class="handler.EchoHandler"/> -->
-    
-    <beans:bean id="replyEchochoHandler" class="handler.EchoHandler" />
+<beans:bean id="replyEchochoHandler" class="my.spring.mine.handler.EchoHandler" />
 <websocket:handlers>
- <websocket:mapping handler="replyEchochoHandler" path="/replyEcho/info" />
+ <websocket:mapping handler="replyEchochoHandler" path="/replyEcho" />
  <websocket:handshake-interceptors>
       <beans:bean
           class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
  </websocket:handshake-interceptors>
 </websocket:handlers>
-    
+
 	
 </beans:beans>

@@ -1,0 +1,46 @@
+package my.spring.mine.handler;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+public class EchoHandler extends TextWebSocketHandler {
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    // 웹소켓 서버측에 텍스트 메시지가 접수되면 호출되는 메소드
+    @Override
+    public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
+        String payloadMessage = (String) message.getPayload();
+        System.out.println("서버에 도착한 메시지:"+payloadMessage);
+        Date date = new Date(); //로컬데이터타임 셋을 사용해보자
+//        session.sendMessage(new TextMessage("이름\t"+dateFormat.format(date)+"\t입찰가 : "+payloadMessage));
+        session.sendMessage(new TextMessage("{\"name\":\"test\", \"date\":\""+dateFormat.format(date)+"\",\"price\":\""+payloadMessage+"\"}"));
+    }
+ 
+    // 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        super.afterConnectionEstablished(session);
+        System.out.println("클라이언트 접속됨");
+    }
+ 
+    // 클라이언트가 접속을 종료하면 호출되는 메소드
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        super.afterConnectionClosed(session, status);
+        System.out.println("클라이언트 접속해제");
+    }
+ 
+    // 메시지 전송시나 접속해제시 오류가 발생할 때 호출되는 메소드
+    @Override
+    public void handleTransportError(WebSocketSession session,
+            Throwable exception) throws Exception {
+        super.handleTransportError(session, exception);
+        System.out.println("전송오류 발생");
+    }
+}
