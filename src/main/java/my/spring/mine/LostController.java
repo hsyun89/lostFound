@@ -31,6 +31,7 @@ public class LostController {
 	public String listPageSearch(@ModelAttribute("pageMaker") PageMaker pageMaker, Model model) throws Exception{
 		//전체 페이지 개수 구한후 하단 페이징 처리 하기
 		pageMaker.setTotalCount(dao.listPageCount(pageMaker));
+		System.out.println(pageMaker.getTotalCount());
 		//페이지 메이커 attribute 로 저장  
 		model.addAttribute("pageMaker", pageMaker);	
 		model.addAttribute("list", dao.listPageSearch(pageMaker));

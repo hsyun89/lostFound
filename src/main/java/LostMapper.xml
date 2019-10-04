@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
  	<select id="selectLost"  resultType="vo.LostVO">
- 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, Find_date, Category, lon, lat from lost order by Find_date desc limit #{pageStart}, #{perPageNum}
+ 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, Find_date, Category, lon, lat from lost order by Find_date desc
  	</select>
  	<select id="selectLostOne" parameterType="string"  resultType="vo.LostVO">
  		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Unique_id = #{Unique_id}
