@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.LostVO;
+import vo.PageMaker;
 @Repository
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
@@ -35,5 +36,17 @@ public class LostMyBatisDAO implements LostDAO{
 		list = session.selectList(statement, keyword);
 		session.close();
 		return list;
+	}
+	@Override
+	public List<LostVO> listPageSearch(PageMaker pmas) throws Exception{
+		SqlSession session = sqlSessionFactory.openSession();
+		String statement = "LostMapper.listPageSearch";
+		return session.selectList(statement, pmas);
+	}
+	@Override
+	public int listPageCount(PageMaker pageMaker) throws Exception {
+		SqlSession session = sqlSessionFactory.openSession();
+		String statement = "LostMapper.listPageCount";
+		return session.selectOne(statement, pageMaker);
 	}
 }

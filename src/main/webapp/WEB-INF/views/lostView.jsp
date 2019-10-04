@@ -11,6 +11,14 @@
 	src="https://ajax.googleLeapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text.javascript">
 </script>
+<!-- paging -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
 <!-- map -->
 <link rel="stylesheet"
 	href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -32,24 +40,58 @@
 	<h2>분실물 찾기</h2>
 	<table>
 		<tr>
-			<td>관리번호</td>
-			<td>습득물명</td>
-			<td>보관장소</td>
-			<td>습득일자</td>
+			<th>관리번호</th>
+			<th>습득물명</th>
+			<th>보관장소</th>
+			<th>습득일자</th>
 		</tr>
 		<%
 			for (LostVO vo : listAll) {
 		%>
 		<tr>
-			<td><%=vo.getUnique_id()%></td>
-			<td class='<%=vo.getUnique_id()%>'><a
-				href='/mine/lost?action=read&atcid=<%=vo.getUnique_id()%>'><%=vo.getProduct_name()%></a></td>
-			<td><%=vo.getKeep_place()%></td>
-			<td><%=vo.getFind_date()%></td>
+			<th><%=vo.getUnique_id()%></th>
+			<th class='<%=vo.getUnique_id()%>'><a
+				href='/mine/lost?action=read&atcid=<%=vo.getUnique_id()%>'><%=vo.getProduct_name()%></a></th>
+			<th><%=vo.getKeep_place()%></th>
+			<th><%=vo.getFind_date()%></th>
 		</tr>
 		<%
 			}
 		%>
+		<jsp:include page="lostView.jsp" flush="true">
+    	<jsp:param name="firstPageNo" value="${pageMaker.}" />
+   		<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
+  	 	<jsp:param name="startPageNo" value="${paging.startPageNo}" />
+    	<jsp:param name="pageNo" value="${paging.pageNo}" />
+    	<jsp:param name="endPageNo" value="${paging.endPageNo}" />
+    	<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
+    	<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+		</jsp:include>
+		<tfoot>
+			<tr>
+				<td colspan="8" class="text-center">
+					<!-- jsp 로 출력 할경우  -->
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li><a
+								href="lost${pageMaker.makeQuery(pageMaker.startPage -1)}">&laquo;</a></li>
+						</c:if>
+
+						<c:forEach begin="${pageMaker.startPage }"
+							end="${pageMaker.endPage}" var="idx">
+							<li
+								<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
+								<a href="lost${pageMaker.makeQuery(idx)}">${idx}</a>
+							</li>
+						</c:forEach>
+						<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+							<li><a
+								href="lost${pageMaker.makeQuery(pageMaker.endPage +1)}">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 	<%
 		}
@@ -132,12 +174,39 @@
 			<td><%=vo.getKeep_place()%></td>
 			<td><%=vo.getFind_date()%></td>
 		</tr>
+		<tfoot>
+			<!-- 검색 처리 추가시 -->
+			<tr>
+				<td colspan="8" class="text-center">
+					<!-- jsp 로 출력 할경우  -->
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li><a
+								href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
+						</c:if>
+
+						<c:forEach begin="${pageMaker.startPage }"
+							end="${pageMaker.endPage}" var="idx">
+							<li
+								<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
+								<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
+							</li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+							<li><a
+								href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</td>
+			</tr>
+		</tfoot>
 		<%
-	}
-%>
+			}
+		%>
 	</table>
 	<%
-	}
-%>
+		}
+	%>
 </body>
 </html>
