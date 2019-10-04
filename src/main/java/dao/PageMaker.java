@@ -1,98 +1,115 @@
 package dao;
 
 public class PageMaker {
-	private int totalcount;  //ÀüÃ¼ °Ô½Ã¹° °³¼ö
-	private int pagenum;  //ÇöÀç ÆäÀÌÁö ¹øÈ£
-	private int contentnum=10;  //ÇÑ ÆäÀÌÁö¿¡ ¸î °³ Ç¥½ÃÇÒÁö
-	private int startpage=1;  //ÇöÀç ÆäÀÌÁö ºí·ÏÀÇ ½ÃÀÛ ÆäÀÌÁö
-	private int endpage=10;  //ÇöÀç ÆäÀÌÁö ºí·ÏÀÇ ³¡ ÆäÀÌÁö
-	private boolean prev=false;  //ÀÌÀü ÆäÀÌÁö·Î °¡´Â È­»ìÇ¥
-	private boolean next;  //´ÙÀ½ ÆäÀÌÁö·Î °¡´Â È­»ìÇ¥
-	private int currentblock;  //ÇöÀç ÆäÀÌÁö ºí·Ï
-	private int lastblock;  //¸¶Áö¸· ÆäÀÌÁö ºí·Ï
-	
-	public void prevnext(int pagenum) {
-		if (pagenum>0 && pagenum<11) {  //Ã¹¹øÂ° ÆäÀÌÁö ºí·Ï ¾È¿¡ ÀÖÀ¸¸é ÀÌÀü ÆäÀÌÁö´Â º¸ÀÌÁö ¾ÊÀ½
-			setprev(false);
-			setnext(true);
-		}else if(getlastblock() == getcurrentblock()) {
-			setprev(true);
-			setnext(false);
-		}else {
-			setprev(true);
-			setnext(true);
-		}
+    //mysql ë“¤ì–´ê°ˆ ê°’ì€ page ê°€ ì•„ë‹ˆë¼ pageStart, perPageNum ì´ë‹¤.
+    //limit #{pageStart}, #{perPageNum}
+    private int page;
+    private int perPageNum;
+    private int pageStart;
+    //í•˜ë‹¨ í˜ì´ì§•  << 1 2 3 4 5 6 7 8 9 10 >>
+    private int totalCount; //ì „ì²´ ê°œìˆ˜
+    private int startPage; // ì‹œì‘ í˜ì´ì§€
+    private int endPage;   // ëí˜ì´ì§€
+    private boolean prev;  // ì´ì „ ì—¬ë¶€ 
+    private boolean next;  // ë‹¤ìŒ ì—¬ë¶€
+    private int displayPageNum=10;
+     
+    public PageMaker() {
+        this.page=1;          //ì´ˆê¸° í˜ì´ì§€ëŠ” 1 
+        this.perPageNum=10;  //limit 10 ê°œì”© ë³´ì—¬ì¤€ë‹¤.
+    }
+    public void setPage(int page) {
+        //í˜ì´ì§€ ë²ˆí˜¸ê°€ 0ì´ê±°ë‚˜ 0ë³´ë‹¤ ì‘ìœ¼ë©´ 1í˜ì´ì§€ë¡œ í•œë‹¤.
+        //
+        if(page <=0){
+            this.page=1;
+            return;
+        }
+        this.page = page;
+    }
+    // MyBatis SQL ì˜ Mapper ì—ì„œ ì¸ì‹í•´ì„œ ê°€ì ¸ê°€ëŠ” íŒŒë¼ë¯¸í„° ê°’ ë©”ì†Œë“œ #{perPageNum}
+    public void setPerPageNum(int perPageNum) {
+        //ëª‡ê°œ ì”© ë³´ì—¬ì¤„ê²ƒì¸ê°€ ì´ë‹¤. ìµœëŒ€ 100ê°œì”© ë³´ì—¬ ì¤„ê²ƒìœ¼ë¡œ ì„¤ì •í•œë‹¤.
+        //ë§Œì•½ 0ë³´ë‹¤ ì‘ê±°ë‚˜ 100 ë³´ë‹¤ í¬ë©´ 10ìœ¼ë¡œ ì´ˆê¸°í™” ì‹œí‚¨ë‹¤.
+        if(perPageNum <=0 || perPageNum >100){
+            this.perPageNum=10;
+            return;
+        }
+        this.perPageNum = perPageNum;
+    }
+    // MyBatis SQL ì˜ Mapper ì—ì„œ ì¸ì‹í•´ì„œ ê°€ì ¸ê°€ëŠ” íŒŒë¼ë¯¸í„° ê°’ ë©”ì†Œë“œ #{pageStart}
+    public int getPageStart() {
+        //ì‹¤ì§ˆì ìœ¼ë¡œ Mybatis ì—ì„œ  íŒŒë¼ë¯¸í„°ë¡œ ì¸ì‹í•´ì„œ  ê°€ì ¸ì˜¤ëŠ” ê²ƒì€ get ì´ë‹¤.
+        // ë”°ë¼ì„œ getPageStart ì—ì„œ ê°’ì„ ì„¤ì •í•œë‹¤.
+        //ì‹œì‘ ë°ì´í„° ë²ˆí˜¸ = (í˜ì´ì§€ ë²ˆí˜¸ -1 ) * í˜ì´ì§€ë‹¹ ë³´ì—¬ì§€ëŠ” ê°œìˆ˜
+        this.pageStart=(this.page -1)*perPageNum;
+        return this.pageStart;
+    }
+    //ì „ì²´ í˜ì´ì§€ ì„¤ì •ê³¼ ë™ì‹œì— í•˜ë‹¨ì— ë¿Œë ¤ì§ˆ í˜ì´ì§€ ê³„ì‚°í•˜ê¸° 
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+        calcData();
+    }
+    private void calcData(){
+        //í˜„ì¬ í˜ì´ì§€ ë²ˆí˜¸ / í•˜ë‹¨ í˜ì´ì§€ë²ˆí˜¸ ìˆ˜
+        endPage=(int)(Math.ceil(page / (double)displayPageNum)*displayPageNum);
+         
+        startPage=(endPage - displayPageNum) +1;
+         
+        int tempEndPage=(int)(Math.ceil(totalCount/(double)perPageNum));
+         
+        if(endPage >tempEndPage){
+            endPage=tempEndPage;
+        }
+        prev =startPage ==1 ? false :true;
+        next =endPage *perPageNum >=totalCount ? false :true;
+    }
+	public int getStartPage() {
+		return startPage;
 	}
-	public int calcpage(int totalcount, int contentnum) { //ÀüÃ¼ ÆäÀÌÁö ¼ö °è»ê
-		int totalpage = totalcount / contentnum;
-		if(totalcount%contentnum>0) {
-			totalpage++;
-		}
-		return totalpage;
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
 	}
-	public int gettotalcount() {
-		return totalcount;
+	public int getEndPage() {
+		return endPage;
 	}
-	public void settotalcount(int totalcount) {
-		this.totalcount = totalcount;
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
 	}
-	public int getpagenum() {
-		return pagenum;
-	}
-	public void setpagenum(int pagenum) {
-		this.pagenum = pagenum;
-	}
-	public int getcontentnum() {
-		return contentnum;
-	}
-	public void setcontentnum(int contentnum) {
-		this.contentnum = contentnum;
-	}
-	public int getstartpage() {
-		return startpage;
-	}
-	public void setstartpage(int currentblock) {  //½ÃÀÛÆäÀÌÁö °è»ê
-		this.startpage = (currentblock*10)+1;
-	}
-	public int getendpage() {
-		return endpage;
-	}
-	public void setendpage(int getlastblock, int getcurrentblock) {  //³¡ ÆäÀÌÁö °è»ê
-		if(getlastblock == getcurrentblock) {
-			this.endpage = calcpage(gettotalcount(), getcontentnum());
-		}else {
-			this.endpage = getstartpage()+9;
-		}
-	}
-	public boolean isprev() {
+	public boolean isPrev() {
 		return prev;
 	}
-	public void setprev(boolean prev) {
+	public void setPrev(boolean prev) {
 		this.prev = prev;
 	}
-	public boolean isnext() {
+	public boolean isNext() {
 		return next;
 	}
-	public void setnext(boolean next) {
+	public void setNext(boolean next) {
 		this.next = next;
 	}
-	public int getcurrentblock() {
-		return currentblock;
+	public int getDisplayPageNum() {
+		return displayPageNum;
 	}
-	public void setcurrentblock(int pagenum) {
-		// ÆäÀÌÁö ¹øÈ£¸¦ ÅëÇØ °è»ê
-		this.currentblock = pagenum/10;
-		if(pagenum%10>0) {
-			this.currentblock++;
-		}
+	public void setDisplayPageNum(int displayPageNum) {
+		this.displayPageNum = displayPageNum;
 	}
-	public int getlastblock() {
-		return lastblock;
+	public int getPage() {
+		return page;
 	}
-	public void setlastblock(int totalcount) {
-		this.lastblock = totalcount / (10*this.contentnum);
-		if(totalcount %(10*this.contentnum)>0) {
-			this.lastblock++;
-		}
+	public int getPerPageNum() {
+		return perPageNum;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setPageStart(int pageStart) {
+		this.pageStart = pageStart;
+	}
+	@Override
+	public String toString() {
+		return "PageMaker [page=" + page + ", perPageNum=" + perPageNum + ", pageStart=" + pageStart + ", totalCount="
+				+ totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
+				+ ", displayPageNum=" + displayPageNum + "]";
 	}
 }

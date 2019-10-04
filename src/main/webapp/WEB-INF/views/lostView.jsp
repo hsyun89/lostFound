@@ -30,10 +30,10 @@
 	}
 </script>
 <%
-	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
+	ArrayList<LostVO> listAll = (ArrayList<LostVO>)request.getAttribute("listAll");
 	LostVO listOne = (LostVO)request.getAttribute("listOne");
 	ArrayList<LostVO> searchList = (ArrayList<LostVO>)request.getAttribute("searchList");
-	if(list != null) {
+	if(listAll != null) {
 %>
 	<h2>분실물 찾기</h2>
 	<table>
@@ -44,7 +44,7 @@
 	<td>습득일자</td>
 	</tr>
 <% 
-	for(LostVO vo : list) {
+	for(LostVO vo : listAll) {
 %>
 	<tr>
 	<td><%= vo.getUnique_id()%></td>
@@ -53,20 +53,25 @@
 	<td><%= vo.getFind_date() %></td>
 	</tr> 
 		<tfoot>
-			<tr>
-				<td colspan="2">
-					<c:if test="${page.prev}">
-						<a style="text-decoration: none;" href="javascript:page(${page.getStartPage()-1});">&laquo;</a>
-					</c:if>
-					<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
-						<a style="text-decoration:none;" href="javascript:page(${idx});">${idx}</a>
-					</c:forEach>
-					<c:if test="${page.next}">
-						<a style="text-decoration:none;" href="javascript:page(${page.getStartPage()+1})">&laquo;</a>
-					</c:if>
-				</td>
-			</tr>
-		</tfoot>
+                    <tr>
+                      <td colspan="8" class="text-center">
+                          <ul class="pagination">
+                             <c:if test="${pageMaker.prev}">
+                                <li><a href="lost?page=${pageMaker.startPage -1}">&laquo;</a></li>
+                             </c:if>
+                             <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="idx">
+                                 <li
+                                   <c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />
+                                  >
+                                   <a href="lost?page=${idx}">${idx}</a></li>
+                             </c:forEach> 
+                             <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+                                <li><a href="lost?page=${pageMaker.endPage +1}">&raquo;</a></li>
+                             </c:if>
+                          </ul>
+                      </td>
+                    </tr>
+                </tfoot>
 <%
 	}
 %>

@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.LostDAO;
+import dao.PageMaker;
 
 @Controller
 public class LostController {
 	@Autowired
 	LostDAO dao;
 	@RequestMapping(value = "/lost", method = RequestMethod.GET)
-	protected ModelAndView select(String atcid, String action, String keyword) {
+	protected ModelAndView select(String atcid, String action, String keyword, PageMaker pageMaker) {
 		ModelAndView mav = new ModelAndView();
 		if(atcid==null && action==null) {
-			mav.addObject("list", dao.listAll());
+			mav.addObject("listAll", dao.listAll(pageMaker));
 		}else if(action.equals("read")) {
 			mav.addObject("listOne", dao.listOne(atcid));
 		}else if(action.equals("search")) {
