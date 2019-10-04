@@ -12,11 +12,11 @@ import vo.LostVO;
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
-	public List<LostVO> listAll(PageMaker pageMaker){
+	public List<LostVO> listAll(){
 		List<LostVO> list=null;
 		SqlSession session = sqlSessionFactory.openSession();	
 		String statement = "LostMapper.selectLost";
-		list = session.selectList(statement, pageMaker);
+		list = session.selectList(statement);
 	    session.close();
 		return list;
 	}

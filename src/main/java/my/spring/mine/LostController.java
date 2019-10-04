@@ -17,7 +17,7 @@ public class LostController {
 	protected ModelAndView select(String atcid, String action, String keyword, PageMaker pageMaker) {
 		ModelAndView mav = new ModelAndView();
 		if(atcid==null && action==null) {
-			mav.addObject("listAll", dao.listAll(pageMaker));
+			mav.addObject("listAll", dao.listAll());
 		}else if(action.equals("read")) {
 			mav.addObject("listOne", dao.listOne(atcid));
 		}else if(action.equals("search")) {
