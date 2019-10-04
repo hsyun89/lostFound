@@ -1,5 +1,7 @@
 package my.spring.mine;
 
+import java.awt.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +27,13 @@ public class LostController {
 	protected ModelAndView select(String atcid, String action, String keyword) {
 		ModelAndView mav = new ModelAndView();
 		if(atcid==null && action==null) {
-			mav.addObject("list", dao.listAll());
+			mav.addObject("alllist", dao.listAll());
 		}else if(action.equals("read")) {
 			mav.addObject("listOne", dao.listOne(atcid));
 		}else if(action.equals("search")) {
 			mav.addObject("searchList", dao.search(keyword));
 		}
-		mav.setViewName("lostView");
+		mav.setViewName("lost");
 		return mav;
 	}
 }
