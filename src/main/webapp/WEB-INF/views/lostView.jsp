@@ -1,4 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+ 
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+ 
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+           <div class="table-responsive">
+            <table class="table">
+            <caption class="text-center"><h3>회원 리스트</h3></caption>
+                <tr>
+                    <th>관리번호</th>
+                    <th>습득물명</th>
+                    <th>보관장소</th>
+                    <th>습득일자</th>
+                </tr>
+                <c:forEach items="${list}" var="lost">
+                    <tr>
+                        <th>${lost.unique_id}</th>
+                        <th>${lost.product_name}</th>
+                        <th>${lost.keep_place}</th>
+                        <th>${lost.find_date}</th>
+                    </tr>
+                </c:forEach>
+                <tfoot>
+                    <tr>
+                      <td colspan="8" class="text-center">
+                           
+                          <ul class="pagination">
+                             <c:if test="${pageMaker.prev}">
+                                <li><a href="lost?page=${pageMaker.startPage -1}">&laquo;</a></li>
+                             </c:if>
+                           
+                             <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                                 <li
+                                   <c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />
+                                  >
+                                   <a href="lost?page=${idx}">${idx}</a></li>
+                             </c:forEach> 
+                              
+                             <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+                                <li><a href="lost?page=${pageMaker.endPage +1}">&raquo;</a></li>
+                             </c:if>
+                           
+                          </ul>
+                      </td>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="vo.LostVO, java.util.ArrayList"%>
@@ -29,8 +101,8 @@
 	crossorigin=""></script>
 </head>
 <body>
-	<%-- <h1>찾기리스트</h1>
-<c:out value="${param.lostName}"/> --%>
+	<h1>찾기리스트</h1>
+<c:out value="${param.lostName}"/>
 	<%
 		ArrayList<LostVO> listAll = (ArrayList<LostVO>) request.getAttribute("listAll");
 		LostVO listOne = (LostVO) request.getAttribute("listOne");
@@ -136,7 +208,7 @@
 	
 	var myIcon = L.icon({
 		//주석 해제 시 분실물 이미지
-		<%--  iconUrl : <%listOne.getImage_address%> --%>
+		 iconUrl : <%listOne.getImage_address%>
 	    iconUrl: 'https://1.bp.blogspot.com/-QvA1rI-reAY/XZLkojqs41I/AAAAAAAAAMs/x2cvjNgmwNoWWHZX3kjycTs9yyfpkcXEgCLcBGAsYHQ/s1600/%25EA%25B3%25A0%25EB%25B8%2594%25EB%25A6%25B0.png',
 	    iconSize: [50, 50]
 	});
@@ -200,4 +272,4 @@
 		}
 	%>
 </body>
-</html>
+</html> --%>
