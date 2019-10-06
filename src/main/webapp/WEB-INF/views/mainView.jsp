@@ -40,8 +40,7 @@
         <form method="get" action="/mine/lost">
         <div class="row no-gutters">
           <div class="col-md-4 col-sm-12 tf-hh-col">
-          	<input type="hidden" name="action" value="search">
-            <input class="mt-1 form-control" type="search" name="keyword" placeholder="*물건명을 입력하세요">
+            <input class="mt-1 form-control" type="search" name="keyword" value="${pageMaker.keyword}" placeholder="*물건명을 입력하세요">
           </div>
           <div class="col-md-3 col-sm-12"><!-- <a class="tf-header-heading-btn a btn btn-primary btn-block mt-1" href="/mine/lost">검색</a> -->
                   <button class="tf-header-heading-btn a btn btn-primary btn-block mt-1" type="submit">검색</button>

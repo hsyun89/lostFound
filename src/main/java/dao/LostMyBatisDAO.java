@@ -8,39 +8,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.LostVO;
-import vo.PageMaker;
+import vo.PageMakerAndSearch;
 @Repository
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
 	@Override
-	public List<LostVO> readListLost(PageMaker pageMaker) throws Exception{
+	public List<LostVO> listPageSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();
-		String statement = "LostMapper.readListLost";
+		String statement = "LostMapper.listPageSearch";
 		return session.selectList(statement, pageMaker);
 	}
 	@Override
-	public int listPageCount(PageMaker pageMaker) throws Exception{
+	public int listPageCount(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();	
 		String statement = "LostMapper.listPageCount";
 	    return session.selectOne(statement, pageMaker);
 	}
-//	public List<LostVO> listAll(){
-//		List<LostVO> list=null;
-//		SqlSession session = sqlSessionFactory.openSession();	
-//		String statement = "LostMapper.selectLost";
-//		list = session.selectList(statement);
-//	    session.close();
-//		return list;
-//	}
-//	public LostVO listOne(String actid){
-//		LostVO list=null;
-//		SqlSession session = sqlSessionFactory.openSession();	
-//		String statement = "LostMapper.selectLostOne";
-//		list = session.selectOne(statement, actid);
-//	    session.close();
-//		return list;
-//	}
+	public LostVO listLostOne(String unique_id){
+		SqlSession session = sqlSessionFactory.openSession();	
+		String statement = "LostMapper.listLostOne";
+		return session.selectOne(statement, unique_id);
+		
+	}
 //	public List<LostVO> search(String keyword){
 //		List<LostVO> list=null;
 //		SqlSession session = sqlSessionFactory.openSession();	
@@ -48,17 +38,5 @@ public class LostMyBatisDAO implements LostDAO{
 //		list = session.selectList(statement, keyword);
 //		session.close();
 //		return list;
-//	}
-//	@Override
-//	public List<LostVO> listPageSearch(PageMaker pmas) throws Exception{
-//		SqlSession session = sqlSessionFactory.openSession();
-//		String statement = "LostMapper.listPageSearch";
-//		return session.selectList(statement, pmas);
-//	}
-//	@Override
-//	public int listPageCount(PageMaker pageMaker) throws Exception {
-//		SqlSession session = sqlSessionFactory.openSession();
-//		String statement = "LostMapper.listPageCount";
-//		return session.selectOne(statement, pageMaker);
 //	}
 }

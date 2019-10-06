@@ -1,6 +1,9 @@
 package vo;
 
-public class PageMaker {
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
+public class PageMakerAndSearch {
 	//mysql 들어갈 값은 page가 아닌 pageStart, perPageNum이다.
 	//limit #{pageStart}, #{perPageNum}
 	private int page;
@@ -12,9 +15,12 @@ public class PageMaker {
     private int endPage;   // 끝페이지
     private boolean prev;  // 이전 여부 
     private boolean next;  // 다음 여부
-    private int displayPageNum=10;
-     
-	public PageMaker() {
+    private int displayPageNum=10; 
+    //검색처리 추가
+    private String searchType;
+    private String keyword;
+    
+	public PageMakerAndSearch() {
 		this.page=1;		//초기 페이지 = 1
 		this.perPageNum=10; //limit 10개씩 보여준다.
 	}
@@ -98,4 +104,44 @@ public class PageMaker {
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	//스프링 MVC 의 UriComponectsBuilder를 이용하는 방식 - ?가 자동으로 출력
+	public String makeQuery(int page){
+	    UriComponents uriComponents=
+	            UriComponentsBuilder.newInstance()
+	            .queryParam("page", page)
+	            .queryParam("perPageNum", perPageNum)
+	            .build();
+	    return uriComponents.toUriString();
+	}
+	public String makeSearch(int page){
+        UriComponents uriComponents=
+                UriComponentsBuilder.newInstance()
+                .queryParam("page", page)
+                .queryParam("perPageNum", perPageNum)
+                .queryParam("searchType", searchType)
+                .queryParam("keyword", keyword)
+                .build();
+        return uriComponents.toUriString();
+    }
+	@Override
+	public String toString() {
+		return "PageMakerAndSearch [page=" + page + ", perPageNum=" + perPageNum + ", pageStart=" + pageStart
+				+ ", totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev
+				+ ", next=" + next + ", displayPageNum=" + displayPageNum + ", searchType=" + searchType + ", keyword="
+				+ keyword + "]";
+	}
+	
 }
