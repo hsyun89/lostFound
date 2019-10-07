@@ -393,12 +393,17 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<div id="searchBox" style="float:left">
-									<a id="searchDate" href="#" data-toggle="modla" data-target="#dateModal" onclick="selectDate();"onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
-										<i class="fas fa-calendar fa-2x text-gray-300" width="10" height="10"></i>
+								<div id="searchBox" style="float:left" style="height:10px;" >
+									<a id="selectDate" href="#dateModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
+										<i class="fas fa-calendar fa-2x text-gray-300"></i>
 										습득일자
+										<span id="lostDate"></span>
 									</a>
-									<span id="lostDate">ddd</span>
+									<a id="selectCat" href="#catModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
+										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										카테고리
+										<span id="lostCat"></span>
+									</a>
 								</div>
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
@@ -426,7 +431,9 @@
 														data-category="${vo.category }"
 														data-date="${vo.find_date }" data-content="${vo.content }"
 														data-place="${vo.keep_place }"
-														data-Addr="${vo.addr }">
+														data-Addr="${vo.addr }"
+														data-lon="${vo.lon }"
+														data-lat="${vo.lat }">
 														${vo.product_name }
 														</a></td>
 													<td>${vo.keep_place}</td>
@@ -466,10 +473,9 @@
 								습득일 : <span id="m_date" style="font-size: small;"></span>
 								<hr>
 								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
-								<div>
+								<div style="margin:10px;">
 								<p id="m_place" style="font-weight:bold;"></p>
-								<p>주소 ex)서울시 강남구 역삼동</p>
-								<p>연락처 ex)010-3214-4212</p>
+								<p id="m_addr"></p>
 								</div>
 						
 	
@@ -492,35 +498,21 @@
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title">분실물 상세정보</h4>
+								<h4 class="modal-title">기간을 선택해주세요.</h4>
 								<button type="button" class="close" data-dismiss="modal">×</button>
 							</div>
-							<div class="modal-body">
-								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
-									height="300" style="margin-left: auto; margin-right: auto; display: block;"> <br>
-								<h5 id="m_title" style="font-weight:bold;"></h5>
-								<p id="m_category" style="font-size: small;"></p>
-								<p id="m_content"></p>
-								습득일 : <span id="m_date" style="font-size: small;"></span>
-								<hr>
-								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
-								<div>
-								<p id="m_place" style="font-weight:bold;"></p>
-								<p>주소 ex)서울시 강남구 역삼동</p>
-								<p>연락처 ex)010-3214-4212</p>
-								</div>
-						
-	
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-							</div>
-						</div>
-
+						<div class="modal-body">
+	    			분실일 : <input type="date" id="startDate"/>
+	    			~ <input type="date" id="endDate"/>
+	    			<p style="font-size:small;">*정책에 따라 9개월 이내의 습득물만 보관합니다.</p>
+	    		</div>
+	    		<div class="modal-footer">
+	    			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+		       		<button class="btn btn-primary" type="button" id="btn_date">Modify</button>
+	    		</div>
 					</div>
 				</div>
-				<!-- -----------------------/조회 모달--------------------------- -->
+				<!-- -----------------------/날짜 모달--------------------------- -->
 				<!-- /.container-fluid -->
 
 			</div>
@@ -599,6 +591,9 @@
 			var m_content = $(this).data('content');
 			var m_place = $(this).data('place');
 			var m_addr=$(this).data('addr');
+			var m_lat=$(this).data('lat');
+			var m_lon=$(this).data('lon');
+			
 			var modal = $(this);
             $("#m_title").text(m_title);
             $("#m_image").attr("src", m_image);
@@ -606,10 +601,11 @@
             $('#m_date').text(m_date);
             $('#m_content').text(m_content);
             $('#m_place').text(m_place);
+            $('#m_addr').text(m_addr);
             
             //map 호출
             $("div#myModal").on("shown.bs.modal", function() {
-    			myMap(m_addr);
+    			myMap(m_addr,m_lat,m_lon,m_place);
     		});
     		$("div#myModal").on("hidden.bs.modal", function() {
     		$("div#mapid").empty();
@@ -633,29 +629,25 @@
 </script>
 
 <script>
-	function myMap(addr) {
+	function myMap(addr,lat,lon,place) {
 		var mymap; 
-		var lat;
-		var lng;
-		if (addr){
-		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD-nx_y7aBlJgfgVZRaIwMbnShQJsxpryY&address="+encodeURIComponent(addr), function(data) {
-			lat = data.results[0].geometry.location.lat;
-			lng = data.results[0].geometry.location.lng;
-			if(mymap)
-				mymap.remove();
-			mymap = L.map('mapid').setView([lat, lng], 16)
-			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-				maxZoom: 18,
-				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-					'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-					'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-				id: 'mapbox.streets'
-			}).addTo(mymap);
-
-			L.marker([lat, lng]).addTo(mymap)
-				.bindPopup("<b>여기...").openPopup();   
+		var mymap = L.map('mapid').setView([lat, lon], 18); //L.map 줌레벨
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+				'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+			id: 'mapbox.streets'
+		}).addTo(mymap);
+		
+		var myIcon = L.icon({
+			//주석 해제 시 분실물 이미지
+			<%--  iconUrl : <%listOne.getImage_address%> --%>
+		    iconUrl: "https://1.bp.blogspot.com/-QOboakmiddI/XZrPGzthaGI/AAAAAAAAANg/sOmFFT2UGBECPfO81YncyvgI9Db20C83wCLcBGAsYHQ/s320/policeman.png",
+		    iconSize: [50, 50]
 		});
-		}
+		var content = "<b>"+place+"</b><hr>"+addr
+			L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
 	}
 
 </script>
@@ -663,42 +655,18 @@
 
 <!-- 날짜 검색 -->
 <script>
-function selectDate(){
-		/* document.getElementById('m_title').value=m_title; 
-		document.getElementById('m_content').value=m_content.replace(/(<br\/>|(<br><\/button>))/g, '\r\n');
-		$('#'+m_star).parent().children("a").removeClass("on");
-		$('#'+m_star).addClass("on").prevAll("a").addClass("on");
+$(document).on("click", "#selectDate", function(e) {
+	$("#dateModal").modal('show');
+	$("#btn_date").on("click", function(e) {
+		//alert($(this).parent().siblings('span').text());
+		var startDate = $("#startDate").val();
+		var endDate = $("#endDate").val();
+		$('#lostDate').text(startDate+"~"+endDate);
+		$("#dateModal").modal('hide');
+		//$("#startDate").val("");
+	});
+});
 
-		var m_star = m_star;
-		$('a[target]').click(function(){
-			m_star = $(this).attr('id');
-		});
-		
-		//서평 추가 모달에서 확인버튼 눌렀을 때
-			$('button#m_submit').click(function(){ 
-				
-			    var m_title = $('input#m_title').val();
-			    var m_content = $('textarea#m_content').val();
-			  	m_content = m_content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-			    $.ajax({
-			        url: "readBook",
-			        type: 'POST', 
-			        data: {
-			        	bookNum : id,
-			        	m_title : m_title,
-			        	m_star : m_star,
-			        	m_content : m_content
-			        },
-			        dataType : "text",
-			        success: function(data){           
-			 	 		$("#myModal2 .close").click(); 			 	 		
-			        },
-			        error : function(request, status, error){
-			            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:");
-			        }
-			    }); 
-			});  */
-	}
 </script>
 
 </body>
