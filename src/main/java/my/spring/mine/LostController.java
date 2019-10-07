@@ -1,5 +1,7 @@
 package my.spring.mine;
 
+import java.awt.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +40,7 @@ public class LostController {
 //		mav.setViewName("lostView");
 //		return mav;
 //	}
+<<<<<<< HEAD
 //	public String listPageSearch(@ModelAttribute("pageMaker") PageMaker pageMaker, Model model) throws Exception{
 //		//전체 페이지 개수 구한후 하단 페이징 처리 하기
 //		pageMaker.setTotalCount(dao.listPageCount(pageMaker));
@@ -48,3 +51,18 @@ public class LostController {
 //		return "lostView";
 //	}
 //}
+=======
+	protected ModelAndView select(String atcid, String action, String keyword) {
+		ModelAndView mav = new ModelAndView();
+		if(atcid==null && action==null) {
+			mav.addObject("List", dao.listAll());
+		}else if(action.equals("read")) {
+			mav.addObject("listOne", dao.listOne(atcid));
+		}else if(action.equals("search")) {
+			mav.addObject("List", dao.search(keyword));
+		}
+		mav.setViewName("lost");
+		return mav;
+	}
+}
+>>>>>>> somiBranch

@@ -27,8 +27,17 @@ public class LostMyBatisDAO implements LostDAO{
 	}
 	public LostVO listLostOne(String unique_id){
 		SqlSession session = sqlSessionFactory.openSession();	
+<<<<<<< HEAD
 		String statement = "LostMapper.listLostOne";
 		return session.selectOne(statement, unique_id);
+=======
+		String statement = "LostMapper.searchLost";
+		list = session.selectList(statement, keyword);
+		session.close();
+		System.out.println(list.get(0).getProduct_name());
+		System.out.println(list.get(0).getFind_date());
+		return list;
+>>>>>>> somiBranch
 		
 	}
 //	public List<LostVO> search(String keyword){

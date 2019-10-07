@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
+<<<<<<< HEAD
 	<sql id="search">
 		<if test="searchType !=null">
 			<if test="searchType == 'all'.toString()">
@@ -52,4 +53,17 @@
 		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost 
 		where Unique_id = #{Unique_id} 
 	</select>
+=======
+ 	<select id="selectLost"  resultType="vo.LostVO">
+ 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, Find_date, Category, lon, lat from lost limit 0,10
+ 	</select>
+ 	
+ 	<select id="selectLostOne" parameterType="string"  resultType="vo.LostVO">
+ 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Unique_id = #{Unique_id}
+ 	</select>
+ 	
+	<select id="searchLost"  parameterType="string" resultType="vo.LostVO">
+		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Product_name like concat('%',#{key},'%') limit 0, 10
+    </select>
+>>>>>>> somiBranch
 </mapper>
