@@ -2,93 +2,75 @@ package vo;
 
 public class LostVO {
 	private String addr;
-	private String atcid;
-	private String fdsbjt;
-	private String depplace;
-	private String fdfilepathimg;
-	private String fdprdtnm;
-	private String fdymd;
-	private String prdtclnm;
+	private String unique_id;
+	private String content;
+	private String keep_place;
+	private String image_address;
+	private String product_name;
+	private String find_date;
+	private String category;
 	private Double lon;
 	private Double lat;
-
 	public String getAddr() {
 		return addr;
 	}
-
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-
-	public String getAtcid() {
-		return atcid;
+	public String getUnique_id() {
+		return unique_id;
 	}
-
-	public void setAtcid(String atcid) {
-		this.atcid = atcid;
+	public void setUnique_id(String unique_id) {
+		this.unique_id = unique_id;
 	}
-
-	public String getFdsbjt() {
-		return fdsbjt;
+	public String getContent() {
+		return content;
 	}
-
-	public void setFdsbjt(String fdsbjt) {
-		this.fdsbjt = fdsbjt;
+	public void setContent(String content) {
+		this.content = content;
 	}
-
-	public String getDepplace() {
-		return depplace;
+	public String getKeep_place() {
+		return keep_place;
 	}
-
-	public void setDepplace(String depplace) {
-		this.depplace = depplace;
+	public void setKeep_place(String keep_place) {
+		this.keep_place = keep_place;
 	}
-
-	public String getFdfilepathimg() {
-		return fdfilepathimg;
+	public String getImage_address() {
+		return image_address;
 	}
-
-	public void setFdfilepathimg(String fdfilepathimg) {
-		this.fdfilepathimg = fdfilepathimg;
+	public void setImage_address(String image_address) {
+		this.image_address = image_address;
 	}
-
-	public String getFdprdtnm() {
-		return fdprdtnm;
+	public String getProduct_name() {
+		return product_name;
 	}
-
-	public void setFdprdtnm(String fdprdtnm) {
-		this.fdprdtnm = fdprdtnm;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
-
-	public String getFdymd() {
-		return fdymd;
+	public String getFind_date() {
+		return find_date;
 	}
-
-	public void setFdymd(String fdymd) {
-		this.fdymd = fdymd;
+	public void setFind_date(String find_date) {
+		this.find_date = find_date;
 	}
-
-	public String getPrdtclnm() {
-		return prdtclnm;
+	public String getCategory() {
+		return category;
 	}
-
-	public void setPrdtclnm(String prdtclnm) {
-		this.prdtclnm = prdtclnm;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-
 	public Double getLon() {
 		return lon;
 	}
-
 	public void setLon(Double lon) {
 		this.lon = lon;
 	}
-
 	public Double getLat() {
 		return lat;
 	}
-
 	public void setLat(Double lat) {
 		this.lat = lat;
 	}
+
+	
 }

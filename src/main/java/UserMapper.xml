@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resource.UserMapper">
+
+	<!--회원가입-->
+	<insert id="insert"  parameterType="vo.UserVO"> 
+    		<selectKey resultType="string" keyProperty="user_id" order="BEFORE">
+      		SELECT UUID() FROM DUAL     
+    	</selectKey>
+    		INSERT INTO USER 
+    		VALUES (#{user_id}, #{email}, #{name}, NULL, #{password}, NULL)
+	</insert>
+	
+	<!--Email중복-->
+	<select id="checkEmail" parameterType="string" resultType="String">
+		SELECT EMAIL FROM USER WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="vo.UserVO" resultType="vo.UserVO">
+		SELECT * FROM USER WHERE EMAIL = #{email} and PASSWORD = #{password}
+	</select>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="delete">
+		delete from user where email = #{email}
+	</delete>
+	
+</mapper>
