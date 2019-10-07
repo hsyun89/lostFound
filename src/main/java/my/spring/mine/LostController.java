@@ -1,7 +1,5 @@
 package my.spring.mine;
 
-import java.awt.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +20,7 @@ public class LostController {
 		model.addAttribute("list", dao.listPageSearch(pageMaker));
 		model.addAttribute("listOne", dao.listLostOne(unique_id));
 		model.addAttribute("pageMaker", pageMaker);
+<<<<<<< HEAD
 		return "lostView";
 	}
 }
@@ -66,3 +65,8 @@ public class LostController {
 	}
 }
 >>>>>>> somiBranch
+=======
+		return "lost";
+	}
+}
+>>>>>>> kyungjun

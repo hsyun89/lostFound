@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -57,7 +57,11 @@
 					<c:forEach items="${list}" var="lost">
 						<tr>
 							<th>${lost.unique_id}</th>
+<<<<<<< HEAD
 							<th><c:url value = ${lost.unique_id } />${lost.product_name}</th>
+=======
+							<th>${lost.product_name}</th>
+>>>>>>> kyungjun
 							<th>${lost.keep_place}</th>
 							<th>${lost.find_date}</th>
 						</tr>
@@ -114,6 +118,7 @@
 	</div>
 </body>
 </html>
+<<<<<<< HEAD
 
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -257,6 +262,9 @@
 
 <script>
 >>>>>>> somiBranch
+=======
+<script>
+>>>>>>> kyungjun
 	var lat = "<%=listOne.getLat()%>";
 	var lon = "<%=listOne.getLon()%>";
 	var name ="<%=listOne.getProduct_name()%>"
@@ -277,11 +285,11 @@
 	});
 	var content = "<b>"+name+"</b><hr>찾아줘"
 		L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
-
- 
-	
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> kyungjun
 	<%
 		}
 		if (searchList != null) {
@@ -339,6 +347,7 @@
 		}
 	%>
 </body>
+<<<<<<< HEAD
 </html> --%>
 =======
 
@@ -378,3 +387,6 @@
 
 </html>
 >>>>>>> somiBranch
+=======
+</html> --%>
+>>>>>>> kyungjun

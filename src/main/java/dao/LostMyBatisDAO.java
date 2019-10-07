@@ -25,8 +25,10 @@ public class LostMyBatisDAO implements LostDAO{
 		String statement = "LostMapper.listPageCount";
 	    return session.selectOne(statement, pageMaker);
 	}
-	public LostVO listLostOne(String unique_id){
+	@Override
+	public LostVO listLostOne(String unique_id) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();	
+<<<<<<< HEAD
 <<<<<<< HEAD
 		String statement = "LostMapper.listLostOne";
 		return session.selectOne(statement, unique_id);
@@ -39,13 +41,9 @@ public class LostMyBatisDAO implements LostDAO{
 		return list;
 >>>>>>> somiBranch
 		
+=======
+		String statement = "LostMapper.listLostOne";
+	    return session.selectOne(statement, unique_id);
+>>>>>>> kyungjun
 	}
-//	public List<LostVO> search(String keyword){
-//		List<LostVO> list=null;
-//		SqlSession session = sqlSessionFactory.openSession();	
-//		String statement = "LostMapper.searchLost";
-//		list = session.selectList(statement, keyword);
-//		session.close();
-//		return list;
-//	}
 }
