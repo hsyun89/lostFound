@@ -57,7 +57,7 @@
 					<c:forEach items="${list}" var="lost">
 						<tr>
 							<th>${lost.unique_id}</th>
-							<th><c:url value="${lost.unique_id}" />${lost.product_name}</th>
+							<th>${lost.product_name}</th>
 							<th>${lost.keep_place}</th>
 							<th>${lost.find_date}</th>
 						</tr>
@@ -148,12 +148,25 @@
 <body>
 	<h1>찾기리스트</h1>
 <c:out value="${param.lostName}"/>
+<<<<<<< HEAD
 	<%
 		ArrayList<LostVO> listAll = (ArrayList<LostVO>) request.getAttribute("listAll");
 		LostVO listOne = (LostVO) request.getAttribute("listOne");
 		ArrayList<LostVO> searchList = (ArrayList<LostVO>) request.getAttribute("searchList");
 		if (listAll != null) {
 	%>
+=======
+
+<%-- <h1>찾기리스트</h1>
+<c:out value="${param.lostName}"/> --%>
+
+<%
+	ArrayList<LostVO> list = (ArrayList<LostVO>)request.getAttribute("list");
+	LostVO listOne = (LostVO)request.getAttribute("listOne");
+	ArrayList<LostVO> searchList = (ArrayList<LostVO>)request.getAttribute("searchList");
+	if(list != null) {
+%>
+>>>>>>> master
 	<h2>분실물 찾기</h2>
 	<table>
 		<tr>
@@ -238,7 +251,12 @@
 		<a href="/mine/lost"><input type="button" value="확인"></a>
 	</form>
 	<div id="mapid" style="width: 600px; height: 400px;"></div>
+<<<<<<< HEAD
 	<script>
+=======
+
+<script>
+>>>>>>> master
 	var lat = "<%=listOne.getLat()%>";
 	var lon = "<%=listOne.getLon()%>";
 	var name ="<%=listOne.getProduct_name()%>"
@@ -259,7 +277,11 @@
 	});
 	var content = "<b>"+name+"</b><hr>찾아줘"
 		L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
+
+ 
+	
 </script>
+<<<<<<< HEAD
 	<%
 		}
 		if (searchList != null) {
@@ -318,3 +340,41 @@
 	%>
 </body>
 </html> --%>
+=======
+
+<% 
+	}
+	if(searchList != null){
+%>
+	<h2>분실물 검색결과</h2>
+	<table>
+	<tr>
+	<td>관리번호</td>
+	<td>습득물명</td>
+	<td>보관장소</td>
+	<td>습득일자</td>
+	</tr>
+<% 
+	for(LostVO vo : searchList){
+%>
+	<tr>
+	<td><%= vo.getUnique_id()%></td>
+	<td class='<%=vo.getUnique_id()%>'><a href='/mine/lost?action=read&atcid=<%=vo.getUnique_id()%>'><%=vo.getProduct_name()%></a></td>
+	<td><%= vo.getKeep_place() %></td>
+	<td><%= vo.getFind_date() %></td>
+	</tr>
+<%
+	}
+%>
+	</table>
+
+
+<%
+	}
+%>
+</body>
+
+
+
+</html>
+>>>>>>> master
