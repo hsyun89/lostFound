@@ -57,7 +57,7 @@
 					<c:forEach items="${list}" var="lost">
 						<tr>
 							<th>${lost.unique_id}</th>
-							<th><c:url value="${lost.unique_id}" />${lost.product_name}</th>
+							<th><c:url value = ${lost.unique_id } />${lost.product_name}</th>
 							<th>${lost.keep_place}</th>
 							<th>${lost.find_date}</th>
 						</tr>
