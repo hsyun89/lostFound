@@ -3,6 +3,61 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> kyungjun
+	<sql id="search">
+		<if test="searchType !=null">
+			<if test="searchType == 'all'.toString()">
+				and (
+				Unique_id like CONCAT('%', #{keyword}, '%')
+				OR
+				Product_name like CONCAT('%', #{keyword}, '%')
+				OR
+				Keep_place like CONCAT('%', #{keyword}, '%')
+				OR
+				Find_date like CONCAT('%', #{keyword},
+				'%')
+				)
+			</if>
+			<if test="searchType == 'unique_id'.toString()">
+				and Unique_id like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType == 'product_name'.toString()">
+				and Product_name like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType == 'keep_place'.toString()">
+				and Keep_place like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'find_date'.toString()">
+				and Find_date like CONCAT('%', #{keyword}, '%')
+			</if>
+
+		</if>
+	</sql>
+	<select id="listPageSearch" resultType="vo.LostVO">
+		select Addr, Unique_id, Content, Keep_place, Image_address,
+		Product_name,
+		Find_date, Category, lon, lat from lost where Unique_id
+		is not null
+		<include refid="search"></include>
+		order by Find_date desc limit #{pageStart},#{perPageNum}
+
+	</select>
+	<select id="listPageCount" resultType="int">
+		select count(Unique_id) from lost where Unique_id is not null
+		<include refid="search"></include>
+	</select>
+	<select id="listLostOne" parameterType="string" resultType="vo.LostVO"> 
+		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, 
+		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost 
+		where Unique_id = #{Unique_id} 
+	</select>
+<<<<<<< HEAD
+=======
  	<select id="selectLost"  resultType="vo.LostVO">
  		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, Find_date, Category, lon, lat from lost limit 0,10
  	</select>
@@ -14,4 +69,7 @@
 	<select id="searchLost"  parameterType="string" resultType="vo.LostVO">
 		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Product_name like concat('%',#{key},'%') limit 0, 10
     </select>
+>>>>>>> somiBranch
+=======
+>>>>>>> kyungjun
 </mapper>

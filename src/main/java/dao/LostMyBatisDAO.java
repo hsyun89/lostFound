@@ -8,35 +8,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.LostVO;
+import vo.PageMakerAndSearch;
 @Repository
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
-	public List<LostVO> listAll(){
-		List<LostVO> list=null;
-		SqlSession session = sqlSessionFactory.openSession();	
-		String statement = "LostMapper.selectLost";
-		list = session.selectList(statement);
-	    session.close();
-		return list;
+	@Override
+	public List<LostVO> listPageSearch(PageMakerAndSearch pageMaker) throws Exception{
+		SqlSession session = sqlSessionFactory.openSession();
+		String statement = "LostMapper.listPageSearch";
+		return session.selectList(statement, pageMaker);
 	}
-	public LostVO listOne(String actid){
-		LostVO list=null;
+	@Override
+	public int listPageCount(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();	
-		String statement = "LostMapper.selectLostOne";
-		list = session.selectOne(statement, actid);
-	    session.close();
-		return list;
+		String statement = "LostMapper.listPageCount";
+	    return session.selectOne(statement, pageMaker);
 	}
-	public List<LostVO> search(String keyword){
-		List<LostVO> list=null;
+	@Override
+	public LostVO listLostOne(String unique_id) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();	
+<<<<<<< HEAD
+<<<<<<< HEAD
+		String statement = "LostMapper.listLostOne";
+		return session.selectOne(statement, unique_id);
+=======
 		String statement = "LostMapper.searchLost";
 		list = session.selectList(statement, keyword);
 		session.close();
 		System.out.println(list.get(0).getProduct_name());
 		System.out.println(list.get(0).getFind_date());
 		return list;
+>>>>>>> somiBranch
 		
+=======
+		String statement = "LostMapper.listLostOne";
+	    return session.selectOne(statement, unique_id);
+>>>>>>> kyungjun
 	}
 }

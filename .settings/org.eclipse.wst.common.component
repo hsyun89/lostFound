@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<wb-module deploy-name="findlost-1.0.0-BUILD-SNAPSHOT">
+=======
 	<wb-module deploy-name="mine">
+>>>>>>> somiBranch
+=======
+	<wb-module deploy-name="mine-1.0.0-BUILD-SNAPSHOT">
+>>>>>>> kyungjun
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+<<<<<<< HEAD
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+=======
+>>>>>>> somiBranch
+=======
+>>>>>>> kyungjun
+>>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="mine"/>
 	</wb-module>

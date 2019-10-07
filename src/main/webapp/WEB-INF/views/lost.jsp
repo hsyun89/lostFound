@@ -17,14 +17,26 @@
 <meta name="author" content="">
 
 <title>물건 찾기</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- 부가적인 테마 -->
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<!-- <script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
 <!-- map -->
-<<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
+<link rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
-   
+	integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+	crossorigin=""></script>
+
 <!-- Custom fonts for this template -->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
@@ -353,38 +365,19 @@
 									Logout
 								</a>
 							</div></li>
-
 					</ul>
-
 				</nav>
 				<!-- End of Topbar -->
-
-
-
-
-
-
 				<!-- ------------------------- 컨텐츠 시작------------------------- -->
 				<c:out value="${param.lostName}" />
-
-
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">여기에서 잃어버린 물건을 찾아보세요.</h1>
 					<p class="mb-4">
 						공공 습득물은 습득일부터 9개월간 이곳에 보관됩니다. 자세한 내용은 <a target="_blank"
 							href="https://datatables.net">여기</a>를 클릭하세요.
 					</p>
-					
-					<%
-						//ArrayList<LostVO> list = (ArrayList<LostVO>) request.getAttribute("list");
-						//LostVO listOne = (LostVO) request.getAttribute("listOne");
-						//ArrayList<LostVO> searchList = (ArrayList<LostVO>) request.getAttribute("searchList");
-						// if (list != null) {
-					%>
-
 					<!-- 습득물 리스트 게시판 -->
 					<!-- 테이블 -->
 					<div class="card shadow mb-4">
@@ -393,6 +386,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
+<<<<<<< HEAD
 								<div id="searchBox" style="float:left" style="height:10px;" >
 									<a id="selectDate" href="#dateModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -404,6 +398,16 @@
 										카테고리
 										<span id="lostCat"></span>
 									</a>
+=======
+								<div id="searchBox" style="float: left">
+									<a id="searchDate" href="#" data-toggle="modla"
+										data-target="#dateModal" onclick="selectDate();"
+										onmouseover="this.style.opacity='0.2';"
+										onmouseleave="this.style.opacity='1';"> <i
+										class="fas fa-calendar fa-2x text-gray-300" width="10"
+										height="10"></i> 습득일자
+									</a> <span id="lostDate">ddd</span>
+>>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 								</div>
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
@@ -416,48 +420,88 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${ !empty List }">
-											<c:forEach var="vo" items="${List}">
-												<%
-													//for (LostVO vo : list) {
-												%>
+											<c:forEach var="vo" items="${list}">
 												<tr>
 													<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
-														width="100" height="100" style="margin-left: auto; margin-right: auto; display: block;"></td>
+														width="100" height="100"
+														style="margin-left: auto; margin-right: auto; display: block;"></td>
 													<td><a href="#" data-target="#myModal"
-														data-toggle="modal" class="read"
+														data-toggle="modal" class="list"
 														data-title="${vo.product_name }"
 														data-image="${vo.image_address }"
 														data-category="${vo.category }"
 														data-date="${vo.find_date }" data-content="${vo.content }"
+<<<<<<< HEAD
 														data-place="${vo.keep_place }"
 														data-Addr="${vo.addr }"
 														data-lon="${vo.lon }"
 														data-lat="${vo.lat }">
 														${vo.product_name }
 														</a></td>
+=======
+														data-place="${vo.keep_place }" data-Addr="${vo.addr }">
+															${vo.product_name } </a></td>
+>>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 													<td>${vo.keep_place}</td>
 													<td>${vo.find_date}</td>
-
 												</tr>
 											</c:forEach>
-										</c:if>
-										<%
-											//	}
-										%>
 									</tbody>
+									<tfoot>
+									<tr>
+										<td colspan="8" class="text-center">
+											<ul class="pagination">
+												<c:if test="${pageMaker.prev}">
+													<li><a
+														href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
+												</c:if>
+
+												<c:forEach begin="${pageMaker.startPage }"
+													end="${pageMaker.endPage}" var="idx">
+													<li
+														<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
+														<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
+													</li>
+												</c:forEach>
+
+												<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+													<li><a
+														href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
+												</c:if>
+											</ul>
+										</td>
+									</tr>
+								</tfoot>
+							<%-- 	<div class="center-block">
+									<div class="col-sm-2">
+										<select name="searchType" class="form-control" id="searchType">
+											<option value="all"
+												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
+											<option value="unique_id"
+												<c:out value="${pageMaker.searchType eq 'unique_id' ? 'selected' : '' }"/>>관리번호</option>
+											<option value="product_name"
+												<c:out value="${pageMaker.searchType eq 'product_name' ? 'selected' : '' }"/>>습득물명</option>
+											<option value="keep_place"
+												<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
+											<option value="find_date"
+												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<input type="text" name="keyword" id="keywordInput"
+											class="form-control" value="${pageMaker.keyword}">
+									</div>
+									<button id="searchBtn" class="btn btn-primary">검색</button>
+								</div> --%>
 								</table>
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 				<!-- ------------------------- 조회 모달 ------------------------- -->
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
-
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
@@ -466,19 +510,28 @@
 							</div>
 							<div class="modal-body">
 								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
-									height="300" style="margin-left: auto; margin-right: auto; display: block;"> <br>
-								<h5 id="m_title" style="font-weight:bold;"></h5>
+									height="300"
+									style="margin-left: auto; margin-right: auto; display: block;">
+								<br>
+								<h5 id="m_title" style="font-weight: bold;"></h5>
 								<p id="m_category" style="font-size: small;"></p>
 								<p id="m_content"></p>
 								습득일 : <span id="m_date" style="font-size: small;"></span>
 								<hr>
+<<<<<<< HEAD
 								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
 								<div style="margin:10px;">
 								<p id="m_place" style="font-weight:bold;"></p>
 								<p id="m_addr"></p>
+=======
+								<div id="mapid"
+									style="width: 250px; height: 250px; float: left;"></div>
+								<div>
+									<p id="m_place" style="font-weight: bold;"></p>
+									<p>주소 ex)서울시 강남구 역삼동</p>
+									<p>연락처 ex)010-3214-4212</p>
+>>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 								</div>
-						
-	
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"
@@ -489,18 +542,18 @@
 					</div>
 				</div>
 				<!-- -----------------------/조회 모달--------------------------- -->
-				
+
 				<!-- ------------------------- 날짜 선택 모달 ------------------------- -->
 				<!-- Modal -->
 				<div class="modal fade" id="dateModal" role="dialog">
 					<div class="modal-dialog">
-
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">기간을 선택해주세요.</h4>
 								<button type="button" class="close" data-dismiss="modal">×</button>
 							</div>
+<<<<<<< HEAD
 						<div class="modal-body">
 	    			분실일 : <input type="date" id="startDate"/>
 	    			~ <input type="date" id="endDate"/>
@@ -510,6 +563,32 @@
 	    			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 		       		<button class="btn btn-primary" type="button" id="btn_date">Modify</button>
 	    		</div>
+=======
+							<div class="modal-body">
+								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
+									height="300"
+									style="margin-left: auto; margin-right: auto; display: block;">
+								<br>
+								<h5 id="m_title" style="font-weight: bold;"></h5>
+								<p id="m_category" style="font-size: small;"></p>
+								<p id="m_content"></p>
+								습득일 : <span id="m_date" style="font-size: small;"></span>
+								<hr>
+								<div id="mapid"
+									style="width: 250px; height: 250px; float: left;"></div>
+								<div>
+									<p id="m_place" style="font-weight: bold;"></p>
+									<p>주소 ex)서울시 강남구 역삼동</p>
+									<p>연락처 ex)010-3214-4212</p>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+>>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 					</div>
 				</div>
 				<!-- -----------------------/날짜 모달--------------------------- -->
@@ -527,13 +606,10 @@
 				</div>
 			</footer>
 			<!-- End of Footer -->
-
 		</div>
 		<!-- End of Content Wrapper -->
-
 	</div>
 	<!-- End of Page Wrapper -->
-
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
@@ -582,6 +658,7 @@
 
 	<!-- 분실물 상세보기 -->
 	<script>
+<<<<<<< HEAD
     $(function () {
         $(".read").click(function () {
             var m_title = $(this).data('title');
@@ -668,6 +745,142 @@ $(document).on("click", "#selectDate", function(e) {
 });
 
 </script>
+=======
+		$(function() {
+			$(".list").click(function() {
+				var m_title = $(this).data('title');
+				var m_image = $(this).data('image');
+				var m_category = $(this).data('category');
+				var m_date = $(this).data('date');
+				var m_content = $(this).data('content');
+				var m_place = $(this).data('place');
+				var m_addr = $(this).data('addr');
+				var modal = $(this);
+				$("#m_title").text(m_title);
+				$("#m_image").attr("src", m_image);
+				$('#m_category').text(m_category);
+				$('#m_date').text(m_date);
+				$('#m_content').text(m_content);
+				$('#m_place').text(m_place);
+
+				//map 호출
+				$("div#myModal").on("shown.bs.modal", function() {
+					myMap(m_addr);
+				});
+				$("div#myModal").on("hidden.bs.modal", function() {
+					$("div#mapid").empty();
+				});
+
+			})
+		});
+	</script>
+	<!-- 검색 스크립트 -->
+	<script>
+		$(document).ready(
+				function() {
+					$("#searchBtn").on(
+							"click",
+							function(event) {
+
+								var url = "lost${pageMaker.makeQuery(1)}";
+								url += "&searchType=" + searchType()
+										+ "&keyword=" + keywordInput();
+								self.location = url;
+							});
+				});
+		function searchType() {
+			return $("#searchType").val();
+		}
+		function keywordInput() {
+			return $("#keywordInput").val();
+		}
+	</script>
+	<!-- map  -->
+	<script>
+		/* 	$(document).ready(function() {
+		 //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
+		 $("div#myModal").on("shown.bs.modal", function() {
+		 myMap();
+		 });
+		 $("div#myModal").on("hidden.bs.modal", function() {
+		 $("div#mapid").empty();
+		 });
+		 }); */
+	</script>
+
+	<script>
+		function myMap(addr) {
+			var mymap;
+			var lat;
+			var lng;
+			if (addr) {
+				$
+						.getJSON(
+								"https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD-nx_y7aBlJgfgVZRaIwMbnShQJsxpryY&address="
+										+ encodeURIComponent(addr),
+								function(data) {
+									lat = data.results[0].geometry.location.lat;
+									lng = data.results[0].geometry.location.lng;
+									if (mymap)
+										mymap.remove();
+									mymap = L.map('mapid').setView(
+											[ lat, lng ], 16)
+									L
+											.tileLayer(
+													'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+													{
+														maxZoom : 18,
+														attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
+																+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
+																+ 'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+														id : 'mapbox.streets'
+													}).addTo(mymap);
+
+									L.marker([ lat, lng ]).addTo(mymap)
+											.bindPopup("<b>여기...").openPopup();
+								});
+			}
+		}
+	</script>
+	<!-- 날짜 검색 -->
+	<script>
+		function selectDate() {
+			/* document.getElementById('m_title').value=m_title; 
+			document.getElementById('m_content').value=m_content.replace(/(<br\/>|(<br><\/button>))/g, '\r\n');
+			$('#'+m_star).parent().children("a").removeClass("on");
+			$('#'+m_star).addClass("on").prevAll("a").addClass("on");
+
+			var m_star = m_star;
+			$('a[target]').click(function(){
+				m_star = $(this).attr('id');
+			});
+			
+			//서평 추가 모달에서 확인버튼 눌렀을 때
+				$('button#m_submit').click(function(){ 
+				    var m_title = $('input#m_title').val();
+				    var m_content = $('textarea#m_content').val();
+				  	m_content = m_content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+				    $.ajax({
+				        url: "readBook",
+				        type: 'POST', 
+				        data: {
+				        	bookNum : id,
+				        	m_title : m_title,
+				        	m_star : m_star,
+				        	m_content : m_content
+				        },
+				        dataType : "text",
+				        success: function(data){           
+				 	 		$("#myModal2 .close").click(); 			 	 		
+				        },
+				        error : function(request, status, error){
+				            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:");
+				        }
+				    }); 
+				});  */
+		}
+	</script>
+>>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 
 </body>
 
