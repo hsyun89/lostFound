@@ -40,7 +40,6 @@
 	rel="stylesheet">
 
 </head>
-
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -378,7 +377,7 @@
 						공공 습득물은 습득일부터 9개월간 이곳에 보관됩니다. 자세한 내용은 <a target="_blank"
 							href="https://datatables.net">여기</a>를 클릭하세요.
 					</p>
-
+					
 					<%
 						//ArrayList<LostVO> list = (ArrayList<LostVO>) request.getAttribute("list");
 						//LostVO listOne = (LostVO) request.getAttribute("listOne");
@@ -394,7 +393,13 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-
+								<div id="searchBox" style="float:left">
+									<a id="searchDate" href="#" data-toggle="modla" data-target="#dateModal" onclick="selectDate();"onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
+										<i class="fas fa-calendar fa-2x text-gray-300" width="10" height="10"></i>
+										습득일자
+									</a>
+									<span id="lostDate">ddd</span>
+								</div>
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
 									<thead>
@@ -406,14 +411,14 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${ !empty alllist }">
-											<c:forEach var="vo" items="${alllist}">
+										<c:if test="${ !empty List }">
+											<c:forEach var="vo" items="${List}">
 												<%
 													//for (LostVO vo : list) {
 												%>
 												<tr>
 													<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
-														width="100" height="100"></td>
+														width="100" height="100" style="margin-left: auto; margin-right: auto; display: block;"></td>
 													<td><a href="#" data-target="#myModal"
 														data-toggle="modal" class="read"
 														data-title="${vo.product_name }"
@@ -441,7 +446,7 @@
 
 				</div>
 
-				<!-- ------------------------- 모달 ------------------------- -->
+				<!-- ------------------------- 조회 모달 ------------------------- -->
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
@@ -449,19 +454,23 @@
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title">분u실물 상세정보</h4>
+								<h4 class="modal-title">분실물 상세정보</h4>
 								<button type="button" class="close" data-dismiss="modal">×</button>
 							</div>
 							<div class="modal-body">
-								<img id="m_image" alt="이미지 준비중입니다." src="" width="300"
-									height="300" align="center"> <br>
-								<h5 id="m_title"></h5>
-								<p id="m_category"></p>
-								<p id="m_date"></p>
+								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
+									height="300" style="margin-left: auto; margin-right: auto; display: block;"> <br>
+								<h5 id="m_title" style="font-weight:bold;"></h5>
+								<p id="m_category" style="font-size: small;"></p>
 								<p id="m_content"></p>
+								습득일 : <span id="m_date" style="font-size: small;"></span>
 								<hr>
-								<p id="m_place"></p>
-								<div id="mapid" style="width: 300px; height: 300px;"></div>
+								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
+								<div>
+								<p id="m_place" style="font-weight:bold;"></p>
+								<p>주소 ex)서울시 강남구 역삼동</p>
+								<p>연락처 ex)010-3214-4212</p>
+								</div>
 						
 	
 							</div>
@@ -473,8 +482,45 @@
 
 					</div>
 				</div>
-				<!-- -----------------------/모달--------------------------- -->
+				<!-- -----------------------/조회 모달--------------------------- -->
+				
+				<!-- ------------------------- 날짜 선택 모달 ------------------------- -->
+				<!-- Modal -->
+				<div class="modal fade" id="dateModal" role="dialog">
+					<div class="modal-dialog">
 
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">분실물 상세정보</h4>
+								<button type="button" class="close" data-dismiss="modal">×</button>
+							</div>
+							<div class="modal-body">
+								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
+									height="300" style="margin-left: auto; margin-right: auto; display: block;"> <br>
+								<h5 id="m_title" style="font-weight:bold;"></h5>
+								<p id="m_category" style="font-size: small;"></p>
+								<p id="m_content"></p>
+								습득일 : <span id="m_date" style="font-size: small;"></span>
+								<hr>
+								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
+								<div>
+								<p id="m_place" style="font-weight:bold;"></p>
+								<p>주소 ex)서울시 강남구 역삼동</p>
+								<p>연락처 ex)010-3214-4212</p>
+								</div>
+						
+	
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- -----------------------/조회 모달--------------------------- -->
 				<!-- /.container-fluid -->
 
 			</div>
@@ -612,6 +658,47 @@
 		}
 	}
 
+</script>
+
+
+<!-- 날짜 검색 -->
+<script>
+function selectDate(){
+		/* document.getElementById('m_title').value=m_title; 
+		document.getElementById('m_content').value=m_content.replace(/(<br\/>|(<br><\/button>))/g, '\r\n');
+		$('#'+m_star).parent().children("a").removeClass("on");
+		$('#'+m_star).addClass("on").prevAll("a").addClass("on");
+
+		var m_star = m_star;
+		$('a[target]').click(function(){
+			m_star = $(this).attr('id');
+		});
+		
+		//서평 추가 모달에서 확인버튼 눌렀을 때
+			$('button#m_submit').click(function(){ 
+				
+			    var m_title = $('input#m_title').val();
+			    var m_content = $('textarea#m_content').val();
+			  	m_content = m_content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			    $.ajax({
+			        url: "readBook",
+			        type: 'POST', 
+			        data: {
+			        	bookNum : id,
+			        	m_title : m_title,
+			        	m_star : m_star,
+			        	m_content : m_content
+			        },
+			        dataType : "text",
+			        success: function(data){           
+			 	 		$("#myModal2 .close").click(); 			 	 		
+			        },
+			        error : function(request, status, error){
+			            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:");
+			        }
+			    }); 
+			});  */
+	}
 </script>
 
 </body>

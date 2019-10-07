@@ -27,11 +27,11 @@ public class LostController {
 	protected ModelAndView select(String atcid, String action, String keyword) {
 		ModelAndView mav = new ModelAndView();
 		if(atcid==null && action==null) {
-			mav.addObject("alllist", dao.listAll());
+			mav.addObject("List", dao.listAll());
 		}else if(action.equals("read")) {
 			mav.addObject("listOne", dao.listOne(atcid));
 		}else if(action.equals("search")) {
-			mav.addObject("searchList", dao.search(keyword));
+			mav.addObject("List", dao.search(keyword));
 		}
 		mav.setViewName("lost");
 		return mav;
