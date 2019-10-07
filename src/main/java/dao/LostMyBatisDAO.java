@@ -17,6 +17,7 @@ public class LostMyBatisDAO implements LostDAO{
 		SqlSession session = sqlSessionFactory.openSession();	
 		String statement = "LostMapper.selectLost";
 		list = session.selectList(statement);
+		System.out.println(list.get(0).getLat()+" "+list.get(0).getLon());
 	    session.close();
 		return list;
 	}
