@@ -17,8 +17,18 @@
 <meta name="author" content="">
 
 <title>물건 찾기</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- 부가적인 테마 -->
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<!-- <script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
 <!-- map -->
-<
 <link rel="stylesheet"
 	href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
 	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -355,38 +365,19 @@
 									Logout
 								</a>
 							</div></li>
-
 					</ul>
-
 				</nav>
 				<!-- End of Topbar -->
-
-
-
-
-
-
 				<!-- ------------------------- 컨텐츠 시작------------------------- -->
 				<c:out value="${param.lostName}" />
-
-
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">여기에서 잃어버린 물건을 찾아보세요.</h1>
 					<p class="mb-4">
 						공공 습득물은 습득일부터 9개월간 이곳에 보관됩니다. 자세한 내용은 <a target="_blank"
 							href="https://datatables.net">여기</a>를 클릭하세요.
 					</p>
-
-					<%
-						//ArrayList<LostVO> list = (ArrayList<LostVO>) request.getAttribute("list");
-						//LostVO listOne = (LostVO) request.getAttribute("listOne");
-						//ArrayList<LostVO> searchList = (ArrayList<LostVO>) request.getAttribute("searchList");
-						// if (list != null) {
-					%>
-
 					<!-- 습득물 리스트 게시판 -->
 					<!-- 테이블 -->
 					<div class="card shadow mb-4">
@@ -415,8 +406,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:if test="${ !empty List }">
-											<c:forEach var="vo" items="${List}">
+											<c:forEach var="vo" items="${list}">
 												<tr>
 													<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
 														width="100" height="100"
@@ -433,35 +423,33 @@
 													<td>${vo.find_date}</td>
 												</tr>
 											</c:forEach>
-										</c:if>
-									<tfoot>
-										<tr>
-											<td colspan="8" class="text-center">
-												<ul class="pagination">
-													<c:if test="${pageMaker.prev}">
-														<li><a
-															href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
-													</c:if>
-
-													<c:forEach begin="${pageMaker.startPage }"
-														end="${pageMaker.endPage}" var="idx">
-														<li
-															<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
-															<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
-														</li>
-													</c:forEach>
-
-													<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-														<li><a
-															href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
-													</c:if>
-												</ul>
-											</td>
-										</tr>
-									</tfoot>
 									</tbody>
-								</table>
-								<div class="center-block">
+									<tfoot>
+									<tr>
+										<td colspan="8" class="text-center">
+											<ul class="pagination">
+												<c:if test="${pageMaker.prev}">
+													<li><a
+														href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
+												</c:if>
+
+												<c:forEach begin="${pageMaker.startPage }"
+													end="${pageMaker.endPage}" var="idx">
+													<li
+														<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
+														<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
+													</li>
+												</c:forEach>
+
+												<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+													<li><a
+														href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
+												</c:if>
+											</ul>
+										</td>
+									</tr>
+								</tfoot>
+							<%-- 	<div class="center-block">
 									<div class="col-sm-2">
 										<select name="searchType" class="form-control" id="searchType">
 											<option value="all"
@@ -481,7 +469,8 @@
 											class="form-control" value="${pageMaker.keyword}">
 									</div>
 									<button id="searchBtn" class="btn btn-primary">검색</button>
-								</div>
+								</div> --%>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -490,7 +479,6 @@
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
-
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
@@ -529,7 +517,6 @@
 				<!-- Modal -->
 				<div class="modal fade" id="dateModal" role="dialog">
 					<div class="modal-dialog">
-
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
@@ -553,8 +540,6 @@
 									<p>주소 ex)서울시 강남구 역삼동</p>
 									<p>연락처 ex)010-3214-4212</p>
 								</div>
-
-
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"
@@ -579,13 +564,10 @@
 				</div>
 			</footer>
 			<!-- End of Footer -->
-
 		</div>
 		<!-- End of Content Wrapper -->
-
 	</div>
 	<!-- End of Page Wrapper -->
-
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
@@ -635,7 +617,7 @@
 	<!-- 분실물 상세보기 -->
 	<script>
 		$(function() {
-			$(".read").click(function() {
+			$(".list").click(function() {
 				var m_title = $(this).data('title');
 				var m_image = $(this).data('image');
 				var m_category = $(this).data('category');
@@ -730,8 +712,6 @@
 			}
 		}
 	</script>
-
-
 	<!-- 날짜 검색 -->
 	<script>
 		function selectDate() {
@@ -747,7 +727,6 @@
 			
 			//서평 추가 모달에서 확인버튼 눌렀을 때
 				$('button#m_submit').click(function(){ 
-					
 				    var m_title = $('input#m_title').val();
 				    var m_content = $('textarea#m_content').val();
 				  	m_content = m_content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
