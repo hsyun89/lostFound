@@ -13,6 +13,11 @@ import vo.PageMakerAndSearch;
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
+	public List<LostVO> listMainSearch(PageMakerAndSearch pageMaker) throws Exception{
+		SqlSession session = sqlSessionFactory.openSession();
+		String statement = "LostMapper.listMainSearch";
+		return session.selectList(statement, pageMaker);
+	}
 	@Override
 	public List<LostVO> listPageSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();
@@ -24,11 +29,5 @@ public class LostMyBatisDAO implements LostDAO{
 		SqlSession session = sqlSessionFactory.openSession();	
 		String statement = "LostMapper.listPageCount";
 	    return session.selectOne(statement, pageMaker);
-	}
-	@Override
-	public LostVO listLostOne(String unique_id) throws Exception{
-		SqlSession session = sqlSessionFactory.openSession();	
-		String statement = "LostMapper.listLostOne";
-	    return session.selectOne(statement, unique_id);
 	}
 }

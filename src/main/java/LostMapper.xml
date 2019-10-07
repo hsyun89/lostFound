@@ -11,7 +11,8 @@
 				OR
 				Product_name like CONCAT('%', #{keyword}, '%')
 				OR
-				Keep_place like CONCAT('%', #{keyword}, '%')
+				Keep_place like
+				CONCAT('%', #{keyword}, '%')
 				OR
 				Find_date like CONCAT('%', #{keyword},
 				'%')
@@ -34,10 +35,18 @@
 
 		</if>
 	</sql>
+	<select id="listMainSearch" resultType="vo.LostVO">
+		select Addr, Unique_id,
+		Content, Keep_place, Image_address,
+		Product_name,
+		Find_date, Category,
+		lon, lat from lost where Product_name like CONCAT('%', #{keyword}, '%')
+	</select>
+	
 	<select id="listPageSearch" resultType="vo.LostVO">
 		select Addr, Unique_id, Content, Keep_place, Image_address,
 		Product_name,
-		Find_date, Category, lon, lat from lost where Unique_id
+		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Unique_id
 		is not null
 		<include refid="search"></include>
 		order by Find_date desc limit #{pageStart},#{perPageNum}
@@ -47,9 +56,11 @@
 		select count(Unique_id) from lost where Unique_id is not null
 		<include refid="search"></include>
 	</select>
-	<select id="listLostOne" parameterType="string" resultType="vo.LostVO"> 
-		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name, 
-		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost 
-		where Unique_id = #{Unique_id} 
+	<select id="listLostOne" parameterType="string"
+		resultType="vo.LostVO">
+		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name,
+		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from
+		lost
+		where Unique_id = #{Unique_id}
 	</select>
 </mapper>

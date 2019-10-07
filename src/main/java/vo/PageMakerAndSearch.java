@@ -104,7 +104,6 @@ public class PageMakerAndSearch {
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 	}
-	
 	public String getSearchType() {
 		return searchType;
 	}

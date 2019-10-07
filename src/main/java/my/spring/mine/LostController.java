@@ -15,11 +15,11 @@ public class LostController {
 	@Autowired
 	LostDAO dao;
 	@RequestMapping(value = "/lost", method = RequestMethod.GET)
-	public String listPageSearch(@ModelAttribute("pageMaker") PageMakerAndSearch pageMaker, String unique_id, Model model) throws Exception{
+	public String listPageSearch(@ModelAttribute("pageMaker") PageMakerAndSearch pageMaker, Model model) throws Exception{
 		pageMaker.setTotalCount(dao.listPageCount(pageMaker));
+		model.addAttribute("listMain", dao.listMainSearch(pageMaker));
 		model.addAttribute("list", dao.listPageSearch(pageMaker));
-		model.addAttribute("listOne", dao.listLostOne(unique_id));
 		model.addAttribute("pageMaker", pageMaker);
-		return "lost";
+		return "lostView";
 	}
 }
