@@ -378,37 +378,70 @@
 						공공 습득물은 습득일부터 9개월간 이곳에 보관됩니다. 자세한 내용은 <a target="_blank"
 							href="https://datatables.net">여기</a>를 클릭하세요.
 					</p>
-					<!-- 습득물 리스트 게시판 -->
-					<!-- 테이블 -->
+					<!-- -----------------습득물 리스트 게시판----------------- -->
+					<!-- -----------------검색창----------------- -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary">Found items</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-<<<<<<< HEAD
-								<div id="searchBox" style="float:left" style="height:10px;" >
+								<table id="searchBox" style="float:left; width:1000px; height:10px; table-layout: fixed;">
+									<tr>
+									<td width=300 style="word-break:break-all">
 									<a id="selectDate" href="#dateModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
 										습득일자
-										<span id="lostDate"></span>
 									</a>
+										<span id="lostDate"></span>
+									</td>
+									<td width=300 style="word-break:break-all">
 									<a id="selectCat" href="#catModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
 										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
 										카테고리
-										<span id="lostCat"></span>
 									</a>
-=======
-								<div id="searchBox" style="float: left">
-									<a id="searchDate" href="#" data-toggle="modla"
-										data-target="#dateModal" onclick="selectDate();"
-										onmouseover="this.style.opacity='0.2';"
-										onmouseleave="this.style.opacity='1';"> <i
-										class="fas fa-calendar fa-2x text-gray-300" width="10"
-										height="10"></i> 습득일자
-									</a> <span id="lostDate">ddd</span>
->>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
-								</div>
+										<span id="lostCat"></span>
+									</td>
+									<!-- <td width=50 style="word-break:break-all">
+										<a><img src="https://1.bp.blogspot.com/-FQPopRZ5jTI/XZwXRMhBk7I/AAAAAAAAAPo/qFqEFwUk-rclQdQfoQjJ86liaD4Z0a8xwCLcBGAsYHQ/s1600/%25EC%2583%2588%25EB%25A1%259C%25EA%25B3%25A0%25EC%25B9%25A8%2B%25EC%2595%2584%25EC%259D%25B4%25EC%25BD%2598%2B-%2BGoogle%2B%25EA%25B2%2580%25EC%2583%2589.png" width=20></a>
+									</td>
+									<td width=50 style="word-break:break-all">
+										<a><i class="fas fa-search fa-sm"></i></a>
+									</td>
+									
+									<td>-->
+									
+									<td>
+									 <div class="col-sm-2">
+										<select name="searchType" class="form-control" id="searchType">
+											<option value="all"
+												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
+											<option value="unique_id"
+												<c:out value="${pageMaker.searchType eq 'unique_id' ? 'selected' : '' }"/>>관리번호</option>
+											<option value="product_name"
+												<c:out value="${pageMaker.searchType eq 'product_name' ? 'selected' : '' }"/>>습득물명</option>
+											<option value="keep_place"
+												<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
+											<option value="find_date"
+												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
+										</select>
+									</div>
+										<input type="text" name="keyword" id="keywordInput"
+											class="form-control" value="${pageMaker.keyword}" style="float:left;">
+									
+									
+									
+									</td>
+									<td>
+									<button id="searchBtn" class="btn btn-primary">검색</button>
+									<button class="btn btn-primary">새로고침</button>
+									</td>
+									
+									</tr>
+								</table>
+								
+								<!-- <div><a>초기화</a><a><i class="fas fa-search fa-sm"></i></a></div> -->
+								<!--  -----------------테이블----------------- -->
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
 									<thead>
@@ -431,22 +464,18 @@
 														data-image="${vo.image_address }"
 														data-category="${vo.category }"
 														data-date="${vo.find_date }" data-content="${vo.content }"
-<<<<<<< HEAD
 														data-place="${vo.keep_place }"
 														data-Addr="${vo.addr }"
 														data-lon="${vo.lon }"
 														data-lat="${vo.lat }">
 														${vo.product_name }
 														</a></td>
-=======
-														data-place="${vo.keep_place }" data-Addr="${vo.addr }">
-															${vo.product_name } </a></td>
->>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 													<td>${vo.keep_place}</td>
 													<td>${vo.find_date}</td>
 												</tr>
 											</c:forEach>
 									</tbody>
+									<!--  페이징 -->
 									<tfoot>
 									<tr>
 										<td colspan="8" class="text-center">
@@ -472,27 +501,7 @@
 										</td>
 									</tr>
 								</tfoot>
-							<%-- 	<div class="center-block">
-									<div class="col-sm-2">
-										<select name="searchType" class="form-control" id="searchType">
-											<option value="all"
-												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
-											<option value="unique_id"
-												<c:out value="${pageMaker.searchType eq 'unique_id' ? 'selected' : '' }"/>>관리번호</option>
-											<option value="product_name"
-												<c:out value="${pageMaker.searchType eq 'product_name' ? 'selected' : '' }"/>>습득물명</option>
-											<option value="keep_place"
-												<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
-											<option value="find_date"
-												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
-										</select>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="keyword" id="keywordInput"
-											class="form-control" value="${pageMaker.keyword}">
-									</div>
-									<button id="searchBtn" class="btn btn-primary">검색</button>
-								</div> --%>
+							
 								</table>
 							</div>
 						</div>
@@ -518,19 +527,10 @@
 								<p id="m_content"></p>
 								습득일 : <span id="m_date" style="font-size: small;"></span>
 								<hr>
-<<<<<<< HEAD
 								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
 								<div style="margin:10px;">
 								<p id="m_place" style="font-weight:bold;"></p>
 								<p id="m_addr"></p>
-=======
-								<div id="mapid"
-									style="width: 250px; height: 250px; float: left;"></div>
-								<div>
-									<p id="m_place" style="font-weight: bold;"></p>
-									<p>주소 ex)서울시 강남구 역삼동</p>
-									<p>연락처 ex)010-3214-4212</p>
->>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -553,7 +553,6 @@
 								<h4 class="modal-title">기간을 선택해주세요.</h4>
 								<button type="button" class="close" data-dismiss="modal">×</button>
 							</div>
-<<<<<<< HEAD
 						<div class="modal-body">
 	    			분실일 : <input type="date" id="startDate"/>
 	    			~ <input type="date" id="endDate"/>
@@ -561,37 +560,88 @@
 	    		</div>
 	    		<div class="modal-footer">
 	    			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-		       		<button class="btn btn-primary" type="button" id="btn_date">Modify</button>
+		       		<button class="btn btn-primary" type="button" id="btn_date">Submit</button>
 	    		</div>
-=======
-							<div class="modal-body">
-								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
-									height="300"
-									style="margin-left: auto; margin-right: auto; display: block;">
-								<br>
-								<h5 id="m_title" style="font-weight: bold;"></h5>
-								<p id="m_category" style="font-size: small;"></p>
-								<p id="m_content"></p>
-								습득일 : <span id="m_date" style="font-size: small;"></span>
-								<hr>
-								<div id="mapid"
-									style="width: 250px; height: 250px; float: left;"></div>
-								<div>
-									<p id="m_place" style="font-weight: bold;"></p>
-									<p>주소 ex)서울시 강남구 역삼동</p>
-									<p>연락처 ex)010-3214-4212</p>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-							</div>
-						</div>
-
->>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
 					</div>
 				</div>
+				</div>
 				<!-- -----------------------/날짜 모달--------------------------- -->
+				
+				<!-- ------------------------- 카테고리 선택 모달 ------------------------- -->
+				<!-- Modal -->
+				<div class="modal fade" id="catModal" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content" style="width:850px;">
+							<div class="modal-header">
+								<h4 class="modal-title">분류를 선택해주세요.</h4>
+								<button type="button" class="close" data-dismiss="modal">×</button>
+							</div><form>
+						<div class="modal-body">
+							<table>
+								<tr>
+									<td id="bag">
+										<table>
+											<tr>
+												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico01.gif">가방</td>
+												<td><input type="checkbox" value="가방>남성가방" name="category">남성가방</td>
+											<tr>
+												<td><input type="checkbox" value="가방>여성가방" name="category">여성가방</td>
+											<tr>
+												<td><input type="checkbox" value="가방>기타" name="category">기타가방</td>
+											</tr>
+										</table>
+									</td>
+									<td id="jewelry">
+										<table>
+											<tr>
+												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico02.gif">귀금속</td>
+												<td><input type="checkbox" value="귀금속>반지" name="category">반지</td><td><input type="checkbox" name=name="category">목걸이</td>
+											<tr>
+												<td><input type="checkbox" value="귀금속>귀걸이" name="category">귀걸이</td><td><input type="checkbox" name=name="category">시계</td>
+											<tr>
+												<td><input type="checkbox" value="귀금속>기타" name="category">기타</td>
+											</tr>
+										</table>
+									</td>
+									<td id="book">
+										<table>
+											<tr>
+												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico03.gif">서적</td>
+												<td><input type="checkbox" value="서적>학습" name="category">학습</td><td><input type="checkbox" name="category">소설</td>
+											<tr>
+												<td><input type="checkbox" value="서적>만화" name="category">만화</td><td><input type="checkbox" name="category">컴퓨터</td>
+											<tr>
+												<td><input type="checkbox" value="서적>기타" name="category">기타</td>
+											</tr>
+										</table>
+									</td>
+									<td id="instrument">
+										<table>
+											<tr>
+												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico08.gif">악기</td>
+												<td><input type="checkbox" value="악기>건반악기" name="category">건반악기</td><td><input type="checkbox" name="category">관악기</td>
+											<tr>
+												<td><input type="checkbox" value="악기>타악기" name="category">타악기</td><td><input type="checkbox" name="category">현악기</td>
+											<tr>
+												<td><input type="checkbox" value="악기>기타" name="category">기타</td>
+											</tr>
+										</table>
+									</td>
+						</table>
+	    			<br><br>
+	    			<p style="font-size:small;">*정책에 따라 9개월 이내의 습득물만 보관합니다.</p>
+	    		</div>
+	    		<div class="modal-footer">
+	    			<!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
+		       		<button class="btn btn-primary" type="button" id="btn_cat">Submit</button>
+	    		</div>
+	    		</form>
+			</div>
+		</div>
+				<!-- -----------------------/카테고리 모달--------------------------- -->
+				
+				
 				<!-- /.container-fluid -->
 
 			</div>
@@ -658,9 +708,8 @@
 
 	<!-- 분실물 상세보기 -->
 	<script>
-<<<<<<< HEAD
     $(function () {
-        $(".read").click(function () {
+        $(".list").click(function () {
             var m_title = $(this).data('title');
             var m_image = $(this).data('image');
 			var m_category = $(this).data('category');
@@ -680,7 +729,7 @@
             $('#m_place').text(m_place);
             $('#m_addr').text(m_addr);
             
-            //map 호출
+            //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
             $("div#myModal").on("shown.bs.modal", function() {
     			myMap(m_addr,m_lat,m_lon,m_place);
     		});
@@ -692,20 +741,9 @@
     });
 </script>
 
-<!-- map  -->
+<!-- 분실물 상세보기 내 지도 -->
 <script>
-/* 	$(document).ready(function() {
-//모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
-		$("div#myModal").on("shown.bs.modal", function() {
-			myMap();
-		});
-		$("div#myModal").on("hidden.bs.modal", function() {
-		$("div#mapid").empty();
-		});
-	}); */
-</script>
 
-<script>
 	function myMap(addr,lat,lon,place) {
 		var mymap; 
 		var mymap = L.map('mapid').setView([lat, lon], 18); //L.map 줌레벨
@@ -719,14 +757,12 @@
 		
 		var myIcon = L.icon({
 			//주석 해제 시 분실물 이미지
-			<%--  iconUrl : <%listOne.getImage_address%> --%>
-		    iconUrl: "https://1.bp.blogspot.com/-QOboakmiddI/XZrPGzthaGI/AAAAAAAAANg/sOmFFT2UGBECPfO81YncyvgI9Db20C83wCLcBGAsYHQ/s320/policeman.png",
+		    iconUrl: "https://1.bp.blogspot.com/-Ust3Y-tSEuA/XZvxuJP7MQI/AAAAAAAAAPc/rWzTjUzDxdsIRjLv3oIxnQGwL-45xvQfQCLcBGAsYHQ/s320/police_guard-512.png",
 		    iconSize: [50, 50]
 		});
 		var content = "<b>"+place+"</b><hr>"+addr
 			L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
 	}
-
 </script>
 
 
@@ -743,38 +779,28 @@ $(document).on("click", "#selectDate", function(e) {
 		//$("#startDate").val("");
 	});
 });
-
 </script>
-=======
-		$(function() {
-			$(".list").click(function() {
-				var m_title = $(this).data('title');
-				var m_image = $(this).data('image');
-				var m_category = $(this).data('category');
-				var m_date = $(this).data('date');
-				var m_content = $(this).data('content');
-				var m_place = $(this).data('place');
-				var m_addr = $(this).data('addr');
-				var modal = $(this);
-				$("#m_title").text(m_title);
-				$("#m_image").attr("src", m_image);
-				$('#m_category').text(m_category);
-				$('#m_date').text(m_date);
-				$('#m_content').text(m_content);
-				$('#m_place').text(m_place);
 
-				//map 호출
-				$("div#myModal").on("shown.bs.modal", function() {
-					myMap(m_addr);
-				});
-				$("div#myModal").on("hidden.bs.modal", function() {
-					$("div#mapid").empty();
-				});
+<!-- 카테고리 검색 -->
+<script>
+$(document).on("click", "#selectCat", function(e) {
+	//모달 띄움
+	$("#catModal").modal('show');
+	//제출 버튼 눌렀을때
+	 $("#btn_cat").on("click", function(e) {
+		 var favorite = [];
+		    $.each($("input[name='category']:checked"), function() {
+		      favorite.push($(this).val());
+		    });
+		    //$('#catModal').modal('show').on('shown.bs.modal', function() {
+		      $("#lostCat").html(favorite.join(", "));
+		      $("#catModal").modal('hide');
+		    //});
+	}); 
+});
+</script>
 
-			})
-		});
-	</script>
-	<!-- 검색 스크립트 -->
+<!-- 검색 스크립트 -->
 	<script>
 		$(document).ready(
 				function() {
@@ -795,7 +821,7 @@ $(document).on("click", "#selectDate", function(e) {
 			return $("#keywordInput").val();
 		}
 	</script>
-	<!-- map  -->
+<!-- map  -->
 	<script>
 		/* 	$(document).ready(function() {
 		 //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
@@ -807,81 +833,7 @@ $(document).on("click", "#selectDate", function(e) {
 		 });
 		 }); */
 	</script>
-
-	<script>
-		function myMap(addr) {
-			var mymap;
-			var lat;
-			var lng;
-			if (addr) {
-				$
-						.getJSON(
-								"https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD-nx_y7aBlJgfgVZRaIwMbnShQJsxpryY&address="
-										+ encodeURIComponent(addr),
-								function(data) {
-									lat = data.results[0].geometry.location.lat;
-									lng = data.results[0].geometry.location.lng;
-									if (mymap)
-										mymap.remove();
-									mymap = L.map('mapid').setView(
-											[ lat, lng ], 16)
-									L
-											.tileLayer(
-													'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-													{
-														maxZoom : 18,
-														attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
-																+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
-																+ 'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-														id : 'mapbox.streets'
-													}).addTo(mymap);
-
-									L.marker([ lat, lng ]).addTo(mymap)
-											.bindPopup("<b>여기...").openPopup();
-								});
-			}
-		}
-	</script>
-	<!-- 날짜 검색 -->
-	<script>
-		function selectDate() {
-			/* document.getElementById('m_title').value=m_title; 
-			document.getElementById('m_content').value=m_content.replace(/(<br\/>|(<br><\/button>))/g, '\r\n');
-			$('#'+m_star).parent().children("a").removeClass("on");
-			$('#'+m_star).addClass("on").prevAll("a").addClass("on");
-
-			var m_star = m_star;
-			$('a[target]').click(function(){
-				m_star = $(this).attr('id');
-			});
-			
-			//서평 추가 모달에서 확인버튼 눌렀을 때
-				$('button#m_submit').click(function(){ 
-				    var m_title = $('input#m_title').val();
-				    var m_content = $('textarea#m_content').val();
-				  	m_content = m_content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-				    $.ajax({
-				        url: "readBook",
-				        type: 'POST', 
-				        data: {
-				        	bookNum : id,
-				        	m_title : m_title,
-				        	m_star : m_star,
-				        	m_content : m_content
-				        },
-				        dataType : "text",
-				        success: function(data){           
-				 	 		$("#myModal2 .close").click(); 			 	 		
-				        },
-				        error : function(request, status, error){
-				            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:");
-				        }
-				    }); 
-				});  */
-		}
-	</script>
->>>>>>> a564aa93c38195f197a47966d940bc18ed2a82a5
-
+	
 </body>
 
 </html>
