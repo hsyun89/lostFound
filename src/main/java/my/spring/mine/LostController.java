@@ -20,6 +20,6 @@ public class LostController {
 		model.addAttribute("listMain", dao.listMainSearch(pageMaker));
 		model.addAttribute("list", dao.listPageSearch(pageMaker));
 		model.addAttribute("pageMaker", pageMaker);
-		return "lostView";
+		return "lost";
 	}
 }

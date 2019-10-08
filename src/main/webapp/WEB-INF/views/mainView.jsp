@@ -51,7 +51,7 @@
 				<div class="row no-gutters">
 					<div class="col-md-4 col-sm-12 tf-hh-col">
 						<input class="mt-1 form-control" type="search" name="keyword"
-							value="${PageMaker.keyword}" placeholder="*물건명을 입력하세요">
+							value="${pageMaker.keyword}" placeholder="*물건명을 입력하세요">
 					</div>
 					<div class="col-md-3 col-sm-12">
 						<button

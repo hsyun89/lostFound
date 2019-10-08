@@ -406,50 +406,75 @@
 										</tr>
 									</thead>
 									<tbody>
-											<c:forEach var="vo" items="${list}">
-												<tr>
-													<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
-														width="100" height="100"
-														style="margin-left: auto; margin-right: auto; display: block;"></td>
-													<td><a href="#" data-target="#myModal"
-														data-toggle="modal" class="list"
-														data-title="${vo.product_name }"
-														data-image="${vo.image_address }"
-														data-category="${vo.category }"
-														data-date="${vo.find_date }" data-content="${vo.content }"
-														data-place="${vo.keep_place }" data-Addr="${vo.addr }">
-															${vo.product_name } </a></td>
-													<td>${vo.keep_place}</td>
-													<td>${vo.find_date}</td>
-												</tr>
-											</c:forEach>
+										<c:choose>
+											<c:when test="${not empty listMain }">
+												<c:forEach items="${listMain}" var="vo">
+													<tr>
+														<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
+															width="100" height="100"
+															style="margin-left: auto; margin-right: auto; display: block;"></td>
+														<td><a href="#" data-target="#myModal"
+															data-toggle="modal" class="listMain"
+															data-title="${vo.product_name }"
+															data-image="${vo.image_address }"
+															data-category="${vo.category }"
+															data-date="${vo.find_date }"
+															data-content="${vo.content }"
+															data-place="${vo.keep_place }" data-Addr="${vo.addr }">
+																${vo.product_name } </a></td>
+														<td>${vo.keep_place}</td>
+														<td>${vo.find_date}</td>
+													</tr>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${list}" var="vo">
+													<tr>
+														<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
+															width="100" height="100"
+															style="margin-left: auto; margin-right: auto; display: block;"></td>
+														<td><a href="#" data-target="#myModal"
+															data-toggle="modal" class="list"
+															data-title="${vo.product_name }"
+															data-image="${vo.image_address }"
+															data-category="${vo.category }"
+															data-date="${vo.find_date }"
+															data-content="${vo.content }"
+															data-place="${vo.keep_place }" data-Addr="${vo.addr }">
+																${vo.product_name } </a></td>
+														<td>${vo.keep_place}</td>
+														<td>${vo.find_date}</td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</tbody>
 									<tfoot>
-									<tr>
-										<td colspan="8" class="text-center">
-											<ul class="pagination">
-												<c:if test="${pageMaker.prev}">
-													<li><a
-														href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
-												</c:if>
+										<tr>
+											<td colspan="8" class="text-center">
+												<ul class="pagination">
+													<c:if test="${pageMaker.prev}">
+														<li><a
+															href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
+													</c:if>
 
-												<c:forEach begin="${pageMaker.startPage }"
-													end="${pageMaker.endPage}" var="idx">
-													<li
-														<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
-														<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
-													</li>
-												</c:forEach>
+													<c:forEach begin="${pageMaker.startPage }"
+														end="${pageMaker.endPage}" var="idx">
+														<li
+															<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
+															<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
+														</li>
+													</c:forEach>
 
-												<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-													<li><a
-														href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
-												</c:if>
-											</ul>
-										</td>
-									</tr>
-								</tfoot>
-							<%-- 	<div class="center-block">
+													<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+														<li><a
+															href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
+													</c:if>
+												</ul>
+											</td>
+										</tr>
+									</tfoot>
+									<%-- 	<div class="center-block">
 									<div class="col-sm-2">
 										<select name="searchType" class="form-control" id="searchType">
 											<option value="all"

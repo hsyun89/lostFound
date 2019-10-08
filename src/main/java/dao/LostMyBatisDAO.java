@@ -13,6 +13,7 @@ import vo.PageMakerAndSearch;
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
+	@Override
 	public List<LostVO> listMainSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();
 		String statement = "LostMapper.listMainSearch";

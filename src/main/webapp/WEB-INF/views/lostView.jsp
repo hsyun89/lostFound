@@ -54,26 +54,28 @@
 						<th>보관장소</th>
 						<th>습득일자</th>
 					</tr>
-					<c:if test="${empty searchType }">
-						<c:forEach items="${listMain}" var="lost">
-							<tr>
-								<th>${lost.unique_id}</th>
-								<th>${lost.product_name}</th>
-								<th>${lost.keep_place}</th>
-								<th>${lost.find_date}</th>
-							</tr>
-						</c:forEach>
-					</c:if>
-					<c:if test="${not empty searchType }">
-						<c:forEach items="${list}" var="lost">
-							<tr>
-								<th>${lost.unique_id}</th>
-								<th>${lost.product_name}</th>
-								<th>${lost.keep_place}</th>
-								<th>${lost.find_date}</th>
-							</tr>
-						</c:forEach>
-					</c:if>
+					<c:choose>
+						<c:when test="${not empty listMain }">
+							<c:forEach items="${listMain}" var="vo">
+								<tr>
+									<th>${vo.unique_id}</th>
+									<th>${vo.product_name}</th>
+									<th>${vo.keep_place}</th>
+									<th>${vo.find_date}</th>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="vo">
+								<tr>
+									<th>${vo.unique_id}</th>
+									<th>${vo.product_name}</th>
+									<th>${vo.keep_place}</th>
+									<th>${vo.find_date}</th>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					<tfoot>
 						<tr>
 							<td colspan="8" class="text-center">

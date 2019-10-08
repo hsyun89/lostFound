@@ -11,11 +11,9 @@
 				OR
 				Product_name like CONCAT('%', #{keyword}, '%')
 				OR
-				Keep_place like
-				CONCAT('%', #{keyword}, '%')
+				Keep_place like CONCAT('%', #{keyword}, '%')
 				OR
-				Find_date like CONCAT('%', #{keyword},
-				'%')
+				Find_date like CONCAT('%', #{keyword}, '%')
 				)
 			</if>
 			<if test="searchType == 'unique_id'.toString()">
@@ -29,6 +27,7 @@
 			<if test="searchType == 'keep_place'.toString()">
 				and Keep_place like CONCAT('%', #{keyword}, '%')
 			</if>
+			
 			<if test="searchType == 'find_date'.toString()">
 				and Find_date like CONCAT('%', #{keyword}, '%')
 			</if>
@@ -40,27 +39,24 @@
 		Content, Keep_place, Image_address,
 		Product_name,
 		Find_date, Category,
-		lon, lat from lost where Product_name like CONCAT('%', #{keyword}, '%')
+		lon, lat from
+		lost where Product_name like CONCAT('%', #{keyword},
+		'%')
+		order by Find_date desc limit #{pageStart}, #{perPageNum}
 	</select>
-	
+
 	<select id="listPageSearch" resultType="vo.LostVO">
 		select Addr, Unique_id, Content, Keep_place, Image_address,
 		Product_name,
-		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from lost where Unique_id
-		is not null
+		Find_date, Category,
+		lon, lat from lost where Unique_id is
+		not null
 		<include refid="search"></include>
-		order by Find_date desc limit #{pageStart},#{perPageNum}
-
+		order by Find_date desc limit #{pageStart}, #{perPageNum}
 	</select>
+
 	<select id="listPageCount" resultType="int">
 		select count(Unique_id) from lost where Unique_id is not null
 		<include refid="search"></include>
-	</select>
-	<select id="listLostOne" parameterType="string"
-		resultType="vo.LostVO">
-		select Addr, Unique_id, Content, Keep_place, Image_address, Product_name,
-		DATE_FORMAT(Find_date,'%Y-%m-%d') Find_date, Category, lon, lat from
-		lost
-		where Unique_id = #{Unique_id}
 	</select>
 </mapper>
