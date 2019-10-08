@@ -39,23 +39,28 @@
 			$('input[name=chatInput]').on('keyup', function(evt) { //키다운 치는순간 키업은 떼는순간
 				if (evt.keyCode == 13) { //엔터
 					var bidPrice = $('input[name=chatInput]').val(); //입력한 입찰가
-					var maxPrice = $('#bidValue').val(); //최고입찰가
+					if(bidPrice>maxPrice){
 					ws.send(bidPrice); //입찰가격 보내기
 					$('input[name=chatInput]').val(''); //입력창 초기화
+					}else{
+						alert('상위 입찰 하세요');
+					}
 				}
 			});
 		};
-
-		////////////////////////////////받기/////////////////////////////////////
+		var maxPrice=0;
 		var eventDataByJson = null; //제이슨 객체
+		////////////////////////////////받기/////////////////////////////////////
 		ws.onmessage = function(event) {
-			//$('#bidValue').text(event.data+'\n');  //최고가
 			eventDataByJson = JSON.parse(event.data); //제이슨 객체 반환
-			$('#bidValue').text(eventDataByJson.price + '\n'); //최고입찰가
+			$('#bidValue').text(eventDataByJson.price + '\n'); //최고입찰가 화면 갱신
 			$('textarea').eq(0).prepend(
 					eventDataByJson.name+ '\t입찰시간 '
 							+ eventDataByJson.date + '\t입찰가 '
 							+ eventDataByJson.price + '\n');
+			maxPrice = parseInt($('#bidValue').text()); //최고입찰가 변수 갱신
+			$('input[name=chatInput]').val(maxPrice); //입찰시 인풋태그 밸류값 갱신
+			//alert(maxPrice);
 		};
 
 		////////////////////////////////종료/////////////////////////////////////
@@ -68,7 +73,7 @@
 <body>
 	<p>
 	<div id='chatStatus'></div>
-	<div id='bidValue'>100</div>
+	<div id='bidValue'>0</div>
 	<textarea name="chatMsg" rows="20" cols="80"></textarea>
 	<p>
 		메시지 입력 : <input type="number" name="chatInput">

@@ -3,6 +3,7 @@ package my.spring.mine.handler;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,15 +21,21 @@ public class EchoHandler extends TextWebSocketHandler {
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
 		logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
+		String senderId = getId(session);
+		String payloadMessage = (String) message.getPayload();
+		System.out.println("서버에 도착한 메시지:"+payloadMessage);
 		for (WebSocketSession sess : sessionList) {
-			String payloadMessage = (String) message.getPayload();
-			System.out.println("서버에 도착한 메시지:"+payloadMessage);
-			sess.sendMessage(new TextMessage("{\"name\":\"session\", \"date\":\""+LocalDateTime.now()+"\",\"price\":\""+payloadMessage+"\"}"));
+			sess.sendMessage(new TextMessage("{\"name\":\""+senderId+"\", \"date\":\""+LocalDateTime.now()+"\",\"price\":\""+payloadMessage+"\"}"));
 		}
 //        session.sendMessage(new TextMessage("이름\t"+dateFormat.format(date)+"\t입찰가 : "+payloadMessage));
     }
  
-    // 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
+    private String getId(WebSocketSession session) {
+    	Map<String, Object>httpSession = session.getAttributes();
+		return null;
+	}
+
+	// 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
     @Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		sessionList.add(session);
