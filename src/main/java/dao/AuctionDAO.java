@@ -15,7 +15,7 @@ public class AuctionDAO {
 	@Autowired
 	SqlSession session = null;
 	
-	//°æ¸Å ¸®½ºÆ®
+	//ê²½ë§¤ë¦¬ìŠ¤íŠ¸
 	public List<ListVO> auctionlist() {
 		List<ListVO> list = null;
 		String statement = "resource.AuctionMapper.auctionlistAll";
@@ -23,7 +23,7 @@ public class AuctionDAO {
 		return list;
 	}
 	
-	//Ä«Å×°í¸®
+	//ì¹´í…Œê³ ë¦¬
 	public List<ListVO> category(String key){
 		List<ListVO> list = null;
 		String statement = "resource.AuctionMapper.category";
@@ -35,7 +35,7 @@ public class AuctionDAO {
 		return list;
 	}
 	
-	//°æ¸Å Ãß°¡
+	//ê²½ë§¤ì¶”ê°€
 	public boolean insert(AuctionVO vo) {
 		boolean result=true;
 		String statement = "resource.AuctionMapper.insertAuction";

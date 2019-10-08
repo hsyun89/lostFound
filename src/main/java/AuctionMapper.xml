@@ -12,7 +12,7 @@
 	<!--카테고리-->
 		<select id="category" resultType="vo.ListVO" parameterType="string">
  		SELECT LOST.UNIQUE_ID, IMAGE_ADDRESS, PRODUCT_NAME, CATEGORY, START_PRICE, MIN_BID, date_format(START_DATE, '%Y-%m-%d') START_DATE, date_format(END_DATE, '%Y-%m-%d')END_DATE FROM AUCTION, LOST 
- 		WHERE AUCTION.UNIQUE_ID = LOST.UNIQUE_ID AND LOST.CATEGORY LIKE '%'||#{KEY}||'%';
+ 		WHERE AUCTION.UNIQUE_ID = LOST.UNIQUE_ID AND LOST.CATEGORY LIKE CONCAT('%', #{KEY},'%');
  	</select>
  	
 	<!--경매 추가-->

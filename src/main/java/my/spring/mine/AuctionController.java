@@ -21,7 +21,7 @@ public class AuctionController {
 	@RequestMapping(value = "/auction", method = RequestMethod.GET)
 	public ModelAndView auctionmain(ListVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		//String id = (String)session.getAttribute("·Î±×ÀÎÇßÀ»°æ¿ì »ı¼ºµÇ´Â ¼¼¼Ç °´Ã¼ ÀÌ¸§ ÀúÀå");
+		//String id = (String)session.getAttribute("");
 		/*
 		 * if(id != null) {
 		 * 
@@ -35,15 +35,16 @@ public class AuctionController {
 	}
 	
 	@RequestMapping(value = "/lostkey", method = RequestMethod.GET)
-	public ModelAndView categori(ListVO vo, HttpSession session,String key) {
+	public ModelAndView category(ListVO vo, HttpSession session,String key) {
 		ModelAndView mav = new ModelAndView();
-		String id = (String)session.getAttribute("·Î±×ÀÎÇßÀ»°æ¿ì »ı¼ºµÇ´Â ¼¼¼Ç °´Ã¼ ÀÌ¸§ ÁöÁ¤");
+		System.out.println("con : " + key);
+		//String id = (String)session.getAttribute("ë¡œê·¸ì¸í–ˆì„ê²½ìš° ìƒì„±ë˜ëŠ” ì„¸ì…˜ ê°ì²´ ì´ë¦„ ì§€ì •");
 		mav.addObject("list", dao.category(key));
 		mav.setViewName("auction");
 		return mav;	
 	}
 	
-	//°æ¸Å Ãß°¡
+	//ê²½ë§¤ì¶”ê°€
 	@RequestMapping(value = "/insertAuction", method = RequestMethod.GET)
 	public String get(AuctionVO vo) {
 		return "insertAuction";
@@ -55,11 +56,11 @@ public class AuctionController {
 		boolean result = dao.insert(vo);
 		System.out.println("CON : "+ result);
 		if(result) {
-			mav.addObject("msg", "¼º°øÀûÀ¸·Î ÀúÀåµÇ¾ú¾î¿ä.");
+			mav.addObject("msg", "ì„±ê³µì ìœ¼ë¡œ ì €ì¥ë˜ì—ˆì–´ìš”.");
 		} else {
-			mav.addObject("msg", "ÀÛ¼ºÀ» ½ÇÆĞÇß¾î¿ä.");
+			mav.addObject("msg", "ì‘ì„±ì„ ì‹¤íŒ¨í–ˆì–´ìš”.");
 		}
-		System.out.println("°æ¸ÅÃß°¡");
+		System.out.println("ì…ë ¥ì™„ë£Œ");
 		return mav;
 	}
 }

@@ -3,7 +3,7 @@ package vo;
 public class UserVO {
 	private String user_id;
 	private String email;
-	private String name;
+	private String user_name;
 	private String gender;		
 	private String password;
 	private String admin;
@@ -20,11 +20,11 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getName() {
-		return name;
+	public String getuser_name() {
+		return user_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setuser_name(String user_name) {
+		this.user_name = user_name;
 	}
 	public String getGender() {
 		return gender;

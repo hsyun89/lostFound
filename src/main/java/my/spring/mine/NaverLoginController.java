@@ -62,7 +62,7 @@ public class NaverLoginController {
 		// response의 nickname값 파싱
 				String user_id = (String) response_obj.get("id");
 				String email = (String) response_obj.get("email");
-				String name = (String) response_obj.get("name");
+				String user_name = (String) response_obj.get("name");
 				String gender = (String) response_obj.get("gender");
 
 				UserVO vo = new UserVO();
@@ -70,7 +70,7 @@ public class NaverLoginController {
 
 				vo.setUser_id(user_id);
 				vo.setEmail(email);
-				vo.setName(name);
+				vo.setuser_name(user_name);
 				vo.setGender(gender);
 				System.out.println(vo.getEmail());
 				
@@ -78,8 +78,8 @@ public class NaverLoginController {
 				if(userVO == null) {
 					service.insert(vo);
 				}
-				System.out.println(vo.getName());
-				session.setAttribute("sessionId", name);
+				System.out.println(vo.getuser_name());
+				session.setAttribute("sessionId", user_name);
 				model.addAttribute("status", vo);
 				
 				return "redirect:/auction";

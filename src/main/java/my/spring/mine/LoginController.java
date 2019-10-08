@@ -92,21 +92,19 @@ public class LoginController {
 	public ModelAndView logIn(@ModelAttribute UserVO vo, Model model, HttpServletResponse response,
 			HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(vo.getEmail());
-		System.out.println(vo.getPassword());
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
 		UserVO vo1 = service.login(vo);
 		if (vo1 != null) {
-			session.setAttribute("email", vo.getEmail());
-			session.setAttribute("password", vo.getPassword());
-			System.out.println(vo.getEmail()); // 수정하기
+			session.setAttribute("status", vo.getEmail());		
+			//System.out.println(vo.getEmail()); // 수정하기
 			System.out.println("login완료");
-			mav.setViewName("auction");
+			mav.setViewName("mainView");
 		} else {
 			mav.addObject("msg", "로그인에 실패했습니다.");
 			mav.setViewName("login");
 		}
+		
 		return mav;
 	}
 

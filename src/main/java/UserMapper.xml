@@ -10,7 +10,7 @@
       		SELECT UUID() FROM DUAL     
     	</selectKey>
     		INSERT INTO USER 
-    		VALUES (#{user_id}, #{email}, #{name}, NULL, #{password}, NULL)
+    		VALUES (#{user_id}, #{email}, #{user_name}, NULL, #{password}, NULL)
 	</insert>
 	
 	<!--Email중복-->

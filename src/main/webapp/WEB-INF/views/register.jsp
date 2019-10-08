@@ -27,7 +27,7 @@
 		
 		<div class="check" id="checkemail"></div>
 
-		<input type="text" id="name" name="name" class="form-control"
+		<input type="text" id="user_name" name="user_name" class="form-control"
 			placeholder="이름"> 
 		<input type="password" id="password" name="password" class="form-control" 
 			placeholder="비밀번호">
@@ -78,7 +78,7 @@
 					})
 				});
 	 })
-/*비밀번호 중복체크*/
+	/*비밀번호 중복체크*/
 		$(document).ready(function() {
 			$('.login-info-box').fadeOut();
 			$('.login-show').addClass('show-log-panel');
