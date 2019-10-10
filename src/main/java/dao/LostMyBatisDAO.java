@@ -31,4 +31,13 @@ public class LostMyBatisDAO implements LostDAO{
 		String statement = "LostMapper.listPageCount";
 	    return session.selectOne(statement, pageMaker);
 	}
+	@Override
+	public boolean insertLost(LostVO vo) {
+		boolean result=true;
+		SqlSession session = sqlSessionFactory.openSession();
+		String statement = "LostMapper.insertLost";
+		if(session.insert(statement, vo) != 1)
+			result = false;
+		return result;
+	}
 }

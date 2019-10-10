@@ -10,25 +10,20 @@
 //import org.apache.hadoop.fs.FileSystem;
 //import org.apache.hadoop.fs.Path;
 //import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.ApplicationContext;
-//import org.springframework.context.support.ClassPathXmlApplicationContext;
-//import org.springframework.stereotype.Component;
 //import org.springframework.stereotype.Service;
 //
 //@Service
 //public class HdTestService {
-//   
 //    @Autowired
 //    public void putRun() {
 //        //Component: 자동메모리 할당
 //        //Autowired : 주소값 설정
-//       
 //        try{
 //        	Configuration conf = new Configuration();
 //			conf.set("fs.defaultFS", "hdfs://192.168.111.120:9000");
 //			FileSystem hdfs = FileSystem.get(conf);
 //			String fname = "lost.csv";
-//			File f = new File("c:/mine/" +fname);
+//			File f = new File("C:/Rstudy/" +fname);
 //			if (!f.exists()) {
 //				System.out.println("파일이 없음!!");
 //				return;

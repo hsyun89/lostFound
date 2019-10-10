@@ -142,5 +142,4 @@ public class PageMakerAndSearch {
 				+ ", next=" + next + ", displayPageNum=" + displayPageNum + ", searchType=" + searchType + ", keyword="
 				+ keyword + "]";
 	}
-	
 }
