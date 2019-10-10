@@ -10,8 +10,9 @@
       		SELECT UUID() FROM DUAL     
     	</selectKey>
     		INSERT INTO USER 
-    		VALUES (#{user_id}, #{email}, #{user_name}, NULL, #{password}, NULL)
+    		VALUES (#{user_id}, #{email}, #{user_name}, NULL, #{password}, 0)
 	</insert>
+	
 	
 	<!--Email중복-->
 	<select id="checkEmail" parameterType="string" resultType="String">
@@ -22,6 +23,11 @@
 	<select id="login" parameterType="vo.UserVO" resultType="vo.UserVO">
 		SELECT * FROM USER WHERE EMAIL = #{email} and PASSWORD = #{password}
 	</select>
+	
+	<!--회원정보 수정-->
+	<update id="update" parameterType="vo.UserVO">
+	UPDATE USER SET EMAIL = #{email} WHERE USER_ID = #{user_id}
+	</update>
 	
 	<!-- 회원 탈퇴 -->
 	<delete id="delete">

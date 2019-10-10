@@ -30,6 +30,15 @@ public class UserDAO {
 		return session.selectOne(statement, email);
 	}
 	
+	//회원 정보 수정
+	public boolean update(UserVO vo) {
+		boolean result = true;
+		String statement = "resource.UserMapper.update";
+				if(session.update(statement,vo) != 1) {
+					result = false;
+				}
+		return result;
+	}
 	//회원 탈퇴
 	public boolean delete(String email) {
 		boolean result = true;

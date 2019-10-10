@@ -37,6 +37,7 @@
 			<div class="btn-group">
 				<form method="post" action="/mine/logout">
 			<li class="nav-item"><a class="nav-link" href="/mine/logout">로그아웃</a></li>
+			<li class="nav-item"><a class="nav-link" href="/mine/mypage">마이페이지</a></li>
 				</form>
 			</div>
 		</c:otherwise>

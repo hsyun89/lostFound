@@ -32,6 +32,11 @@ public class MemberService {
 		return dao.login(vo);
 	}
 	
+	// 회원 정보 수정
+		public boolean update(UserVO vo) {
+			return dao.update(vo);
+		}
+	
 	// 회원 탈퇴
 	public boolean delete(String email) {
 		return dao.delete(email);

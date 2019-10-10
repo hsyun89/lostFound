@@ -3,6 +3,7 @@ package my.spring.mine;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -95,8 +97,10 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
 		UserVO vo1 = service.login(vo);
+		//System.out.println("con : 1r  " + vo1.getAdmin());
 		if (vo1 != null) {
-			session.setAttribute("status", vo.getEmail());		
+			session.setAttribute("status", vo);
+			session.setAttribute("admin", vo1.getAdmin());
 			//System.out.println(vo.getEmail()); // 수정하기
 			System.out.println("login완료");
 			mav.setViewName("mainView");
@@ -107,11 +111,34 @@ public class LoginController {
 		
 		return mav;
 	}
+	
+	// 회원 수정  페이지 이동
+		@RequestMapping(value="/userupdate", method=RequestMethod.GET)
+		public String  infoUpdate() throws Exception {
+			return "userUpdate";
+		}
+		
+		// 회원 수정
+		@RequestMapping(value="/userupdate", method=RequestMethod.POST)
+		public ModelAndView infoUpdate(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, Log log) throws Exception {
+			ModelAndView mav = new ModelAndView();
+			String email = user.getEmail();
+			vo.setEmail(email);
+			boolean result = service.update(vo);
+			//log테이블 userName 수정
+			if(result) {
+				user = vo;
+				mav.addObject("status", user);
+			}
+			mav.setViewName("userUpdate");
+			return mav;
+		}
 
 	// 로그아웃
 	@RequestMapping(value = "/logout")
 	public String logout(SessionStatus session) {
 		session.setComplete();
+		System.out.println("로그아웃");
 		return "redirect:/main";
 	}
 
