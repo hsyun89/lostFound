@@ -59,7 +59,7 @@
 							+ eventDataByJson.date + '\t입찰가 '
 							+ eventDataByJson.price + '\n');
 			maxPrice = parseInt($('#bidValue').text()); //최고입찰가 변수 갱신
-			$('input[name=chatInput]').val(maxPrice); //입찰시 인풋태그 밸류값 갱신
+			$('input[name=chatInput]').attr('placeholder',maxPrice+' 상위 입찰'); //입찰시 인풋태그 밸류값 갱신
 			//alert(maxPrice);
 		};
 

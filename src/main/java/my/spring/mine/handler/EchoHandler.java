@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.CloseStatus;
@@ -16,11 +14,13 @@ import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import vo.UserVO;
+
 public class EchoHandler extends TextWebSocketHandler {
 	//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
-	private List<WebSocketSession> sessions = new ArrayList<>();
-	Map<String, WebSocketSession> userSessions = new HashMap<>();
+	private List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
+	Map<String, WebSocketSession> userSessions = new HashMap<String, WebSocketSession>();
 	
 	// 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
 	@Override
@@ -41,10 +41,12 @@ public class EchoHandler extends TextWebSocketHandler {
 		for (WebSocketSession sess : sessions) {
 			sess.sendMessage(new TextMessage("{\"name\":\""+senderId+"\", \"date\":\""+LocalDateTime.now()+"\",\"price\":\""+payloadMessage+"\"}"));
 		}
-//        session.sendMessage(new TextMessage("이름\t"+dateFormat.format(date)+"\t입찰가 : "+payloadMessage));
+        //session.sendMessage(new TextMessage("이름\t"+dateFormat.format(date)+"\t입찰가 : "+payloadMessage));
     }
     private String getId(WebSocketSession session) {
     	Map<String, Object>httpSession = session.getAttributes();
+    	//System.out.println(session.toString());
+    	//System.out.println(httpSession.toString());
     	UserVO loginUser = (UserVO)httpSession.get("status");
     	if(null==loginUser) {
     		return session.getId();
