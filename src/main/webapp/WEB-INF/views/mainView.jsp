@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -10,6 +11,12 @@
     <meta name="description" content="This is a basic starter template for MMPilot which includes Bootstrap Framework."/>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,600,700" rel="stylesheet">
     <link href="/mine/resources/styles/main.css" rel="stylesheet">
+    
+  <style>
+  .nav-link {
+  
+  }
+  </style>
   </head>
   <body id="top">
     <header class="tf-header">
@@ -21,8 +28,23 @@
               <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
               <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="/mine/auction">Auction</a></li>
+             <c:choose>
+		<c:when test="${empty status}">
+			<li class="nav-item"><a class="nav-link" href="/mine/login">로그인</a></li>
+		</c:when>
+		<c:otherwise> 
+			<div class="btn-group">
+				<form method="post" action="/mine/logout">
+			<li class="nav-item"><a class="nav-link" href="/mine/logout">로그아웃</a></li>
+			<li class="nav-item"><a class="nav-link" href="/mine/mypage">마이페이지</a></li>
+				</form>
+			</div>
+		</c:otherwise>
+	</c:choose>
             </ul>
           </div>
+         
         </div>
       </nav>
       <div class="container">
