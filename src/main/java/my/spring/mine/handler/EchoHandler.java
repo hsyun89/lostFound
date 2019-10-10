@@ -2,8 +2,11 @@ package my.spring.mine.handler;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +19,18 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class EchoHandler extends TextWebSocketHandler {
 	//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
-	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
+	private List<WebSocketSession> sessions = new ArrayList<>();
+	Map<String, WebSocketSession> userSessions = new HashMap<>();
+	
+	// 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
+	@Override
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		sessions.add(session);
+		String senderId=getId(session);
+		userSessions.put(senderId, session);
+		logger.info("{} 연결됨", session.getId());
+	}
+	
     // 웹소켓 서버측에 텍스트 메시지가 접수되면 호출되는 메소드
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
@@ -24,27 +38,25 @@ public class EchoHandler extends TextWebSocketHandler {
 		String senderId = getId(session);
 		String payloadMessage = (String) message.getPayload();
 		System.out.println("서버에 도착한 메시지:"+payloadMessage);
-		for (WebSocketSession sess : sessionList) {
+		for (WebSocketSession sess : sessions) {
 			sess.sendMessage(new TextMessage("{\"name\":\""+senderId+"\", \"date\":\""+LocalDateTime.now()+"\",\"price\":\""+payloadMessage+"\"}"));
 		}
 //        session.sendMessage(new TextMessage("이름\t"+dateFormat.format(date)+"\t입찰가 : "+payloadMessage));
     }
- 
     private String getId(WebSocketSession session) {
     	Map<String, Object>httpSession = session.getAttributes();
-		return null;
+    	UserVO loginUser = (UserVO)httpSession.get("status");
+    	if(null==loginUser) {
+    		return session.getId();
+    	}else {
+    		return loginUser.getEmail();
+    	}
 	}
-
-	// 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
-    @Override
-	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		sessionList.add(session);
-		logger.info("{} 연결됨", session.getId());
-	}
+    
     // 클라이언트가 접속을 종료하면 호출되는 메소드
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		sessionList.remove(session);
+		sessions.remove(session);
 		logger.info("{} 연결 끊김", session.getId());
         System.out.println("클라이언트 접속해제");
     }

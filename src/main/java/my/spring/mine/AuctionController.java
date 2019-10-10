@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AuctionController {
-	@RequestMapping(value = "/auction", method = RequestMethod.GET)
+	@RequestMapping(value = "/auctionWebsocket", method = RequestMethod.GET)
 	protected ModelAndView get() {
 		ModelAndView mav = new ModelAndView();
 		String viewName = "auctionView";
