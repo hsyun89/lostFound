@@ -19,7 +19,6 @@ public class LostMyBatisDAO implements LostDAO{
 		SqlSession session = sqlSessionFactory.openSession();
 		String statement = "LostMapper.listPageSearch";
 		List<LostVO> list =session.selectList(statement, pageMaker);
-		System.out.println(list.get(0).getLat()+" "+list.get(0).getLon());
 		return list;
 	}
 	@Override

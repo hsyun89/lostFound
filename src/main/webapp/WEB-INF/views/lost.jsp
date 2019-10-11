@@ -73,7 +73,10 @@
 					내꺼야 <sup>2</sup>
 				</div>
 			</a>
-
+			
+			
+			
+			<!--  -------------------사이드 바------------------- -->
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
@@ -87,78 +90,376 @@
 
 			<!-- Heading -->
 			<div class="sidebar-heading">Interface</div>
-
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Components</span>
+			
+			<!-- Nav Item - All -->
+			<li class="nav-item"><a class="nav-link collapsed" href="/mine/lost"
+		
+				aria-expanded="true">
+				 <span>All</span>
 			</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+			</li>
+			
+			<!-- Nav Item - Bag -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseBag"
+				aria-expanded="true" aria-controls="collapseBag">
+				<img src="https://www.lost112.go.kr/images/home/common/ico01.gif"> <span>가방</span>
+			</a>
+				<div id="collapseBag" class="collapse" aria-labelledby="headingBag"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Components:</h6>
-						<a class="collapse-item" href="buttons.html">Buttons</a> <a
-							class="collapse-item" href="cards.html">Cards</a>
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-key="여성용가방" href="/mine/lost?key=여성용가방">여성용가방</a>
+>>>>>>> cf18d53ac3c1206e76819a8b877e5398c957a6a3
+						<a class="collapse-item" href="cards.html">남성용가방</a>
+						<a class="collapse-item" href="cards.html">기타가방</a>
 					</div>
-				</div></li>
+				</div>
+			</li>
 
-			<!-- Nav Item - Utilities Collapse Menu -->
+			<!-- Nav Item - Jewelry -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Utilities</span>
+				data-toggle="collapse" data-target="#collapseJewelry"
+				aria-expanded="true" aria-controls="collapseJewelry">
+				<img src="https://www.lost112.go.kr/images/home/common/ico02.gif"> <span>귀금속</span>
 			</a>
-				<div id="collapseUtilities" class="collapse"
-					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+				<div id="collapseJewelry" class="collapse"
+					aria-labelledby="headingJewelry" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Utilities:</h6>
-						<a class="collapse-item" href="utilities-color.html">Colors</a> <a
-							class="collapse-item" href="utilities-border.html">Borders</a> <a
-							class="collapse-item" href="utilities-animation.html">Animations</a>
-						<a class="collapse-item" href="utilities-other.html">Other</a>
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">반지</a>
+						<a class="collapse-item" href="utilities-border.html">목걸이</a>
+						<a class="collapse-item" href="utilities-animation.html">귀걸이</a>
+						<a class="collapse-item" href="utilities-other.html">시계</a>
+						<a class="collapse-item" href="utilities-other.html">기타</a>
 					</div>
-				</div></li>
-
+				</div>
+			</li>
+			
+			<!-- Nav Item - Book -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseBook"
+				aria-expanded="true" aria-controls="collapseBook">
+				<img src="https://www.lost112.go.kr/images/home/common/ico03.gif"> <span>서적</span>
+			</a>
+				<div id="collapseBook" class="collapse"
+					aria-labelledby="headingBook" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">학습서적</a>
+						<a class="collapse-item" href="utilities-border.html">컴퓨터서적</a>
+						<a class="collapse-item" href="utilities-animation.html">소설</a>
+						<a class="collapse-item" href="utilities-other.html">만화책</a>
+						<a class="collapse-item" href="utilities-other.html">기타서적</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Document -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseDocument"
+				aria-expanded="true" aria-controls="collapseDocument">
+				<img src="https://www.lost112.go.kr/images/home/common/ico04.gif"> <span>서류</span>
+			</a>
+				<div id="collapseDocument" class="collapse"
+					aria-labelledby="headingDocument" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">서류</a>
+						<a class="collapse-item" href="utilities-border.html">기타물품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Tools -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTools"
+				aria-expanded="true" aria-controls="collapseTools">
+				<img src="https://www.lost112.go.kr/images/home/common/ico05.gif"> <span>산업용품</span>
+			</a>
+				<div id="collapseTools" class="collapse"
+					aria-labelledby="headingTools" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">기타물품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Shoppingbag -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseShoppingbag"
+				aria-expanded="true" aria-controls="collapseShoppingbag">
+				<img src="https://www.lost112.go.kr/images/home/common/ico06.gif"> <span>쇼핑백</span>
+			</a>
+				<div id="collapseShoppingbag" class="collapse"
+					aria-labelledby="headingShoppingbag" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">쇼핑백</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Sport -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseSport"
+				aria-expanded="true" aria-controls="collapseSport">
+				<img src="https://www.lost112.go.kr/images/home/common/ico07.gif"> <span>서적</span>
+			</a>
+				<div id="collapseSport" class="collapse"
+					aria-labelledby="headingSport" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">기타용품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Instrument -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseInstrument"
+				aria-expanded="true" aria-controls="collapseInstrument">
+				<img src="https://www.lost112.go.kr/images/home/common/ico08.gif"> <span>악기</span>
+			</a>
+				<div id="collapseInstrument" class="collapse"
+					aria-labelledby="headingSport" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">건반악기</a>
+						<a class="collapse-item" href="utilities-color.html">관악기</a>
+						<a class="collapse-item" href="utilities-color.html">현악기</a>
+						<a class="collapse-item" href="utilities-color.html">타악기</a>
+						<a class="collapse-item" href="utilities-color.html">기타악기</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Securities -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseSecurities"
+				aria-expanded="true" aria-controls="collapseSecurities">
+				<img src="https://www.lost112.go.kr/images/home/common/ico09.gif"> <span>유가증권</span>
+			</a>
+				<div id="collapseSecurities" class="collapse"
+					aria-labelledby="headingSecurities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">어음</a>
+						<a class="collapse-item" href="utilities-color.html">상품권</a>
+						<a class="collapse-item" href="utilities-color.html">채권</a>
+						<a class="collapse-item" href="utilities-color.html">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Clothes -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseClothes"
+				aria-expanded="true" aria-controls="collapseClothes">
+				<img src="https://www.lost112.go.kr/images/home/common/ico10.gif"> <span>의류</span>
+			</a>
+				<div id="collapseClothes" class="collapse"
+					aria-labelledby="headingClothes" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">여성의류</a>
+						<a class="collapse-item" href="utilities-color.html">남성의류</a>
+						<a class="collapse-item" href="utilities-color.html">아기의류</a>
+						<a class="collapse-item" href="utilities-color.html">기타의류</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Car -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCar"
+				aria-expanded="true" aria-controls="collapseCar">
+				<img src="https://www.lost112.go.kr/images/home/common/ico11.gif"> <span>의류</span>
+			</a>
+				<div id="collapseCar" class="collapse"
+					aria-labelledby="headingCar" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">자동차열쇠</a>
+						<a class="collapse-item" href="utilities-color.html">자동차번호판</a>
+						<a class="collapse-item" href="utilities-color.html">임시번호판</a>
+						<a class="collapse-item" href="utilities-color.html">네비게이션</a>
+						<a class="collapse-item" href="utilities-color.html">기타용품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Electronic -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseElectronic"
+				aria-expanded="true" aria-controls="collapseElectronic">
+				<img src="https://www.lost112.go.kr/images/home/common/ico12.gif"> <span>전자기기</span>
+			</a>
+				<div id="collapseElectronic" class="collapse"
+					aria-labelledby="headingElectronic" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">PMP</a>
+						<a class="collapse-item" href="utilities-color.html">PDA</a>
+						<a class="collapse-item" href="utilities-color.html">MP3</a>
+						<a class="collapse-item" href="utilities-color.html">카메라</a>
+						<a class="collapse-item" href="utilities-color.html">전자수첩</a>
+						<a class="collapse-item" href="utilities-color.html">기타용품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Wallet -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseWallet"
+				aria-expanded="true" aria-controls="collapseWallet">
+				<img src="https://www.lost112.go.kr/images/home/common/ico13.gif"> <span>지갑</span>
+			</a>
+				<div id="collapseWallet" class="collapse"
+					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">여성용 지갑</a>
+						<a class="collapse-item" href="utilities-color.html">남성용 지갑</a>
+						<a class="collapse-item" href="utilities-color.html">기타 지갑</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Wallet -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseWallet"
+				aria-expanded="true" aria-controls="collapseWallet">
+				<img src="https://www.lost112.go.kr/images/home/common/ico13.gif"> <span>지갑</span>
+			</a>
+				<div id="collapseWallet" class="collapse"
+					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">여성용 지갑</a>
+						<a class="collapse-item" href="utilities-color.html">남성용 지갑</a>
+						<a class="collapse-item" href="utilities-color.html">기타 지갑</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Certificate -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCertificate"
+				aria-expanded="true" aria-controls="collapseCertificate">
+				<img src="https://www.lost112.go.kr/images/home/common/ico14.gif"> <span>증명서</span>
+			</a>
+				<div id="collapseCertificate" class="collapse"
+					aria-labelledby="headingCertificate" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">신분증</a>
+						<a class="collapse-item" href="utilities-color.html">면허증</a>
+						<a class="collapse-item" href="utilities-color.html">여권</a>
+						<a class="collapse-item" href="utilities-color.html">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Computer -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseComputer"
+				aria-expanded="true" aria-controls="collapseComputer">
+				<img src="https://www.lost112.go.kr/images/home/common/ico15.gif"> <span>컴퓨터</span>
+			</a>
+				<div id="collapseComputer" class="collapse"
+					aria-labelledby="headingComputer" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">삼성노트북</a>
+						<a class="collapse-item" href="utilities-color.html">LG노트북</a>
+						<a class="collapse-item" href="utilities-color.html">삼보노트북</a>
+						<a class="collapse-item" href="utilities-color.html">HP노트북</a>
+						<a class="collapse-item" href="utilities-color.html">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Card -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCard"
+				aria-expanded="true" aria-controls="collapseCard">
+				<img src="https://www.lost112.go.kr/images/home/common/ico16.gif"> <span>카드</span>
+			</a>
+				<div id="collapseCard" class="collapse"
+					aria-labelledby="headingCard" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">신용(체크)카드</a>
+						<a class="collapse-item" href="utilities-color.html">일반카드</a>
+						<a class="collapse-item" href="utilities-color.html">기타카드</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Cash -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCash"
+				aria-expanded="true" aria-controls="collapseCash">
+				<img src="https://www.lost112.go.kr/images/home/common/ico17.gif"> <span>현금</span>
+			</a>
+				<div id="collapseCash" class="collapse"
+					aria-labelledby="headingCash" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">현금</a>
+						<a class="collapse-item" href="utilities-color.html">수표</a>
+						<a class="collapse-item" href="utilities-color.html">카드</a>
+						<a class="collapse-item" href="utilities-color.html">외화</a>
+						<a class="collapse-item" href="utilities-color.html">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Cellphone -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCellphone"
+				aria-expanded="true" aria-controls="collapseCellphone">
+				<img src="https://www.lost112.go.kr/images/home/common/ico18.gif"> <span>휴대폰</span>
+			</a>
+				<div id="collapseCellphone" class="collapse"
+					aria-labelledby="headingCellphone" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">삼성휴대폰</a>
+						<a class="collapse-item" href="utilities-color.html">LG휴대폰</a>
+						<a class="collapse-item" href="utilities-color.html">아이폰</a>
+						<a class="collapse-item" href="utilities-color.html">모토로라휴대폰</a>
+						<a class="collapse-item" href="utilities-color.html">SKY휴대폰</a>
+						<a class="collapse-item" href="utilities-color.html">기타통신기기</a>
+					</div>
+				</div>
+			</li>
+			
+						<!-- Nav Item - Ect -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseEct"
+				aria-expanded="true" aria-controls="collapseEct">
+				<img src="https://www.lost112.go.kr/images/home/common/ico19.gif"> <span>기타물품</span>
+			</a>
+				<div id="collapseEct" class="collapse"
+					aria-labelledby="headingEct" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" href="utilities-color.html">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			
+			
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
 			<div class="sidebar-heading">Addons</div>
 
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapsePages"
-				aria-expanded="true" aria-controls="collapsePages"> <i
-					class="fas fa-fw fa-folder"></i> <span>Pages</span>
-			</a>
-				<div id="collapsePages" class="collapse"
-					aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="login.html">Login</a> <a
-							class="collapse-item" href="register.html">Register</a> <a
-							class="collapse-item" href="forgot-password.html">Forgot
-							Password</a>
-						<div class="collapse-divider"></div>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a
-							class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-
-			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i> <span>Charts</span>
-			</a></li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item active"><a class="nav-link"
-				href="tables.html"> <i class="fas fa-fw fa-table"></i> <span>Tables</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider d-none d-md-block">
 
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
@@ -167,7 +468,10 @@
 
 		</ul>
 		<!-- End of Sidebar -->
-
+		<!--  -------------------/사이드 바------------------- -->
+		
+		
+		
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 
@@ -398,7 +702,7 @@
 									<td width=300 style="word-break:break-all">
 									<a id="selectCat" href="#catModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
 										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-										카테고리
+										지역
 									</a>
 										<span id="lostCat"></span>
 									</td>
@@ -416,8 +720,8 @@
 										<select name="searchType" class="form-control" id="searchType">
 											<option value="all"
 												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
-											<option value="unique_id"
-												<c:out value="${pageMaker.searchType eq 'unique_id' ? 'selected' : '' }"/>>관리번호</option>
+											<%-- <option value="unique_id"
+												<c:out value="${pageMaker.searchType eq 'category' ? 'selected' : '' }"/>>관리번호</option> --%>
 											<option value="product_name"
 												<c:out value="${pageMaker.searchType eq 'product_name' ? 'selected' : '' }"/>>습득물명</option>
 											<option value="keep_place"
@@ -466,8 +770,9 @@
 														data-date="${vo.find_date }" data-content="${vo.content }"
 														data-place="${vo.keep_place }"
 														data-Addr="${vo.addr }"
-														data-lon="${vo.lon }"
-														data-lat="${vo.lat }">
+														<%-- data-lon="${vo.lon }"
+														data-lat="${vo.lat }" --%>
+														>
 														${vo.product_name }
 														</a></td>
 													<td>${vo.keep_place}</td>
@@ -717,8 +1022,8 @@
 			var m_content = $(this).data('content');
 			var m_place = $(this).data('place');
 			var m_addr=$(this).data('addr');
-			var m_lat=$(this).data('lat');
-			var m_lon=$(this).data('lon');
+			//var m_lat=$(this).data('lat');
+			//var m_lon=$(this).data('lon');
 			
 			var modal = $(this);
             $("#m_title").text(m_title);
@@ -731,7 +1036,7 @@
             
             //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
             $("div#myModal").on("shown.bs.modal", function() {
-    			myMap(m_addr,m_lat,m_lon,m_place);
+    			myMap(m_addr,m_place);
     		});
     		$("div#myModal").on("hidden.bs.modal", function() {
     		$("div#mapid").empty();
@@ -740,28 +1045,45 @@
         })
     });
 </script>
-
+<script>
+function keyInput(){
+	 var key = $(this).data('key');
+	 consol.log(key);
+	 $("#key").val();
+	
+}
+</script>
 <!-- 분실물 상세보기 내 지도 -->
 <script>
 
-	function myMap(addr,lat,lon,place) {
+	function myMap(addr,place) {
 		var mymap; 
-		var mymap = L.map('mapid').setView([lat, lon], 18); //L.map 줌레벨
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+		var lat;
+		var lng;
+		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key={}&address="+encodeURIComponent(addr), function(data) {
+			 if (data.results.length > 0) {
+			lat = data.results[0].geometry.location.lat;
+			lng = data.results[0].geometry.location.lng;
+			if(mymap)
+				mymap.remove();
+			mymap = L.map('mapid').setView([lat, lng], 16)
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+				maxZoom: 18,
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 				'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 				'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-			id: 'mapbox.streets'
-		}).addTo(mymap);
+				id: 'mapbox.streets'
+			}).addTo(mymap);
 		
-		var myIcon = L.icon({
-			//주석 해제 시 분실물 이미지
-		    iconUrl: "https://1.bp.blogspot.com/-Ust3Y-tSEuA/XZvxuJP7MQI/AAAAAAAAAPc/rWzTjUzDxdsIRjLv3oIxnQGwL-45xvQfQCLcBGAsYHQ/s320/police_guard-512.png",
-		    iconSize: [50, 50]
+			var myIcon = L.icon({
+				//주석 해제 시 분실물 이미지
+		   		iconUrl: "https://1.bp.blogspot.com/-Ust3Y-tSEuA/XZvxuJP7MQI/AAAAAAAAAPc/rWzTjUzDxdsIRjLv3oIxnQGwL-45xvQfQCLcBGAsYHQ/s320/police_guard-512.png",
+		    	iconSize: [50, 50]
+			});
+			var content = "<b>"+place+"</b><hr>"+addr
+			L.marker([lat, lng],{icon: myIcon}).addTo(mymap).bindPopup(content);
+			}
 		});
-		var content = "<b>"+place+"</b><hr>"+addr
-			L.marker([lat, lon],{icon: myIcon}).addTo(mymap).bindPopup(content);
 	}
 </script>
 
@@ -807,10 +1129,11 @@ $(document).on("click", "#selectCat", function(e) {
 					$("#searchBtn").on(
 							"click",
 							function(event) {
-
+								
 								var url = "lost${pageMaker.makeQuery(1)}";
 								url += "&searchType=" + searchType()
 										+ "&keyword=" + keywordInput();
+								+"&key="+keyInput();
 								self.location = url;
 							});
 				});
@@ -819,6 +1142,9 @@ $(document).on("click", "#selectCat", function(e) {
 		}
 		function keywordInput() {
 			return $("#keywordInput").val();
+		}
+		function keyInput(){
+			return $("")
 		}
 	</script>
 <!-- map  -->

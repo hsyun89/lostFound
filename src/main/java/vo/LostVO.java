@@ -9,8 +9,7 @@ public class LostVO {
 	private String Product_name;
 	private String Find_date;
 	private String Category;
-	private Double lon;
-	private Double lat;
+	private String Find_place;
 
 	public String getAddr() {
 		return Addr;
@@ -60,22 +59,11 @@ public class LostVO {
 	public void setCategory(String category) {
 		Category = category;
 	}
-	public Double getLon() {
-		return lon;
+	public String getFind_place() {
+		return Find_place;
 	}
-	public void setLon(Double lon) {
-		this.lon = lon;
+	public void setFind_place(String find_place) {
+		Find_place = find_place;
 	}
-	public Double getLat() {
-		return lat;
-	}
-	public void setLat(Double lat) {
-		this.lat = lat;
-	}
-	@Override
-	public String toString() {
-		return "LostVO [Addr=" + Addr + ", Unique_id=" + Unique_id + ", Content=" + Content + ", Keep_place="
-				+ Keep_place + ", Image_address=" + Image_address + ", Product_name=" + Product_name + ", Find_date="
-				+ Find_date + ", Category=" + Category + ", lon=" + lon + ", lat=" + lat + "]";
-	}
+	
 }
