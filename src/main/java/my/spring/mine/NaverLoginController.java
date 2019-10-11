@@ -74,14 +74,16 @@ public class NaverLoginController {
 				vo.setGender(gender);
 				System.out.println(vo.getEmail());
 				
-				userVO = service.login(vo);
-				if(userVO == null) {
-					service.insert(vo);
+				userVO = service.naverLogin(vo);
+		
+				if(userVO == null) { 
+					service.insert(vo); 
 				}
+				
 				System.out.println(vo.getuser_name());
 				session.setAttribute("sessionId", user_name);
 				model.addAttribute("status", vo);
 				
-				return "redirect:/auction";
+				return "redirect:/main";
 	}
 }

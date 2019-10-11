@@ -3,7 +3,6 @@ package my.spring.mine;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,6 +72,7 @@ public class LoginController {
 	@RequestMapping(value = "/checkEmail")
 	@ResponseBody
 	public int checkEmail(String email) {
+		System.out.println("체크이메일 들어옴");
 		if (service.checkEmail(email)) {
 			return 1;
 		} else
@@ -114,13 +114,16 @@ public class LoginController {
 	
 	// 회원 수정  페이지 이동
 		@RequestMapping(value="/userupdate", method=RequestMethod.GET)
-		public String  infoUpdate() throws Exception {
+		public String  userUpdate( HttpSession session) throws Exception {
+			if(session.getAttribute("status")==null)
+				return "mainView";
+			else
 			return "userUpdate";
 		}
 		
 		// 회원 수정
 		@RequestMapping(value="/userupdate", method=RequestMethod.POST)
-		public ModelAndView infoUpdate(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, Log log) throws Exception {
+		public ModelAndView userUpdate(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user) throws Exception {
 			ModelAndView mav = new ModelAndView();
 			String email = user.getEmail();
 			vo.setEmail(email);
@@ -130,7 +133,27 @@ public class LoginController {
 				user = vo;
 				mav.addObject("status", user);
 			}
-			mav.setViewName("userUpdate");
+			mav.setViewName("mypage");
+			return mav;
+		}
+		
+		//회원탈퇴
+		@RequestMapping(value="/userdelete", method=RequestMethod.GET)
+		public String userDelete() {
+			return "userdelete";
+		}
+		
+		@RequestMapping(value="/userdelete", method=RequestMethod.POST)
+		public ModelAndView userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user) throws Exception {
+			ModelAndView mav = new ModelAndView();
+			String email = user.getEmail();
+			vo.setEmail(email);
+			boolean result = service.delete(vo);
+			if(result) {
+				user = vo;
+				mav.addObject("status", user);
+			}
+			mav.setViewName("mainView");
 			return mav;
 		}
 

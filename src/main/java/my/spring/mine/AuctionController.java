@@ -54,7 +54,7 @@ public class AuctionController {
 	public ModelAndView auction_insert(Model model, HttpSession session, AuctionVO vo) {
 		ModelAndView mav = new ModelAndView();
 		boolean result = dao.insert(vo);
-		System.out.println("CON : "+ result);
+		System.out.println("CON11 : "+ result);
 		if(result) {
 			mav.addObject("msg", "성공적으로 저장되었어요.");
 		} else {

@@ -22,6 +22,11 @@ public class UserDAO {
 		String statement = "resource.UserMapper.login";
 		return session.selectOne(statement, vo);
 	}
+	
+	public UserVO naverLogin(UserVO vo) {
+		String statement = "resource.UserMapper.naverlogin";
+		return session.selectOne(statement, vo);
+	}
 
 	// 이메일 확인
 	public String checkEmail(String email) {
@@ -37,13 +42,14 @@ public class UserDAO {
 				if(session.update(statement,vo) != 1) {
 					result = false;
 				}
+				System.out.println("daots : " + result);
 		return result;
 	}
 	//회원 탈퇴
-	public boolean delete(String email) {
+	public boolean delete(UserVO vo) {
 		boolean result = true;
 		String statement = "resource.UserMapper.delete";
-		if(session.delete(statement, email)!=1) {
+		if(session.delete(statement, vo)!=1) {
 			result = false;
 		}
 		return result;

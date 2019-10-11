@@ -5,7 +5,8 @@
 <html>
 <head>
 
-
+<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
@@ -50,15 +51,14 @@
 		</div>
 	</form>
 
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	
 	<script>
 	/*이메일 중복체크*/
 	 $(document).ready(function(){
 		$("#email").blur(function() {
 					var email = $("#email").val();
 					$.ajax({
-						url : '/tst/checkEmail?email=' + email,
+						url : '/mine/checkEmail?email=' + email,
 						type : 'get',
 						success : function(data) {
 							 console.log(data);
@@ -82,7 +82,6 @@
 		$(document).ready(function() {
 			$('.login-info-box').fadeOut();
 			$('.login-show').addClass('show-log-panel');
-
 			$('#confirmpassword').blur(function() {
 				if ($('#confirmpassword').val() != $('#password').val()) {
 					$('#pwcheck').text("비밀번호가 다릅니다.");

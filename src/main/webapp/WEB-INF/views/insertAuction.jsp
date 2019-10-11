@@ -8,14 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <c:if test="${empty msg}">
-		<script>
-			alert("로그인 후 이용하실 수 있습니다")
-			location.href = "/mine/login";
-		</script>
-	</c:if> --%>
 
-<form action="/mine/insertAuction" method="post">
+<form action="/mine/userupdate" method="post">
 <input type="text" id="unique_id" name="unique_id">	
 <input type="text" id="start_price" name="start_price">	
 <input type="text" id="min_bid" name="min_bid">	

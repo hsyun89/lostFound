@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/mine/login" method="POST" class="form-signin">
+<form action="/mine/userupdate" method="POST" class="form-signin">
 <input value="${ status.email }" name="email"
 							class="form-control" placeholder="이메일" type="text" readonly>
 
@@ -23,13 +23,18 @@
 
 <p id="pwcheck" style="color: red"></p>
 
+<button type="submit">수정하기</button>
+
 <!-- 비밀번호 중복체크 -->
+<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
 	$('.login-info-box').fadeOut();
 	$('.login-show').addClass('show-log-panel');
 
 	$('#confirmpassword').blur(function() {
+		console.log('#confirmpassword')
 		if ($('#confirmpassword').val() != $('#password').val()) {
 			$('#pwcheck').text("비밀번호가 다릅니다.");
 		} else {
