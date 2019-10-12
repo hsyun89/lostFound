@@ -6,7 +6,6 @@
 <head>
 <title>NAVER LOGIN TEST</title>
 <style>
-
 /* BASIC */
 
 html {
@@ -103,7 +102,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  margin: 5px 20px 20px 20px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -289,19 +288,24 @@ input[type=text]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
+    <a href="/mine/main">
       <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+   </a>
     </div>
 
     <!-- Login Form -->
     <form action="/mine/login" method="POST">
       <input type="text" id="Email" name="email"  class="fadeIn second" placeholder="Email" required autofocus>
       <input type="text" id="Passward" name="password" class="fadeIn third" placeholder="password">
-      <input type="submit" id="signIn" class="fadeIn fourth" value="LogIn">
+      <input type="submit" id="LogIn" class="fadeIn fourth" value="Log In">
     </form>
     <div id="naver_id_login" style="text-align:center"><a href="${url}">
 <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-  <br>
+<div class="modal-footer">
+					<h6><a class="small" href="/mine/register">Register here</a></h6>
+				</div>
   </div>
 </div>
+</center>
 </body>
 </html>

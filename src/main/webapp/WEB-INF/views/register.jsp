@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script
@@ -12,46 +14,119 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.button
+{
+
+   margin: auto;
+
+   width: 50%;
+
+}
+.button input
+
+{
+
+   padding: 5px;
+
+   width: 100%;
+
+   font-size: 30px;
+
+}
+#naver_id_login
+{
+
+   margin: auto;
+
+   width: 50%;
+
+}
+#naver_id_login
+
+{
+
+   padding: 10px;
+
+   width: 100%;
+
+   font-size: 18px;
+
+}
+
 </style>
 </head>
 <body>
-	<c:if test="${!empty msg}">
+<c:if test="${!empty msg}">
 		<script>
 			alert("${msg}");
 		</script>
 	</c:if>
-	<form class="form-signin" action="/mine/register" method="post"
-		onsubmit='return regcheck();'>
-
-		<input type="email" id="email" name="email" class="form-control"
-			placeholder="이메일">
-		
-		<div class="check" id="checkemail"></div>
-
-		<input type="text" id="user_name" name="user_name" class="form-control"
-			placeholder="이름"> 
-		<input type="password" id="password" name="password" class="form-control" 
-			placeholder="비밀번호">
-
-		<input type="password" id="confirmpassword" name="confirmpassword"
-			class="form-control" placeholder="비밀번호재확인">
-
-		<p id="pwcheck" style="color: red"></p>
-
-		<button type="submit">회원가입</button>
-		<!-- 네이버 로그인 창으로 이동 -->
+<div class="container">
+	<div class="row">
+    <div class="col col-md-5">
+		<div class="modal-content">
+				<div class="modal-body">
+				<div class="fadeIn first">
+				<a href="/mine/main">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </a>
+    </div>
+					<form id="formSignUp" class="form-signin" action="/mine/register" method="post"
+							onsubmit='return regcheck();'>
+						<div id="errorSignUp">
+						
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label" for="email">Email</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="email" id="email" name="email" class="form-control" placeholder="email@example.com">
+							</div>
+							<div class="check" id="checkemail"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="email">Name</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="text" id="user_name" name="user_name" class="form-control"	placeholder="이름">
+							</div>
+						</div>
+							
+						<div class="form-group">
+							<label class="control-label" for="password">Password</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								<input type="password" id="password" name="password" class="form-control" placeholder="password">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label" for="password">Confirm password</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								<input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="confirm password">
+							</div>
+							<p id="pwcheck" style="color: red"></p>
+						</div>
+						<div class="button">
+						<button type="submit" id="btnSignUp" class="btn btn-primary" style="width: 215px;">Create an account</button>
+					</div>
+					</form>
+					<!-- 네이버 로그인 창으로 이동 -->
 		<div id="naver_id_login" style="text-align: center">
-			<a href="${url}"> <img width="223"
+			<a href="${url}"> <img width="218"
 				src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" /></a>
 		</div>
-		<br>
-
-		<div class="text-center">
-			<a class="small" href="/tst/login">로그인으로 이동하기</a>
-		</div>
-	</form>
-
-	
+					
+				</div>
+				<div class="modal-footer">
+					<small>Already a member? <a class="small" href="/mine/login">Login here</a></small>
+				</div>
+			</div>
+            </div>
+	</div>
+</div>
 	<script>
 	/*이메일 중복체크*/
 	 $(document).ready(function(){

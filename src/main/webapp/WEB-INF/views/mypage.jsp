@@ -32,20 +32,21 @@
 				</h1>
 				<div id="navbar">
 					<ul class="nav pull-right">
-						<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
-						<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="/mine/main">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="/mine/auction">Auction</a></li>
+						<li class="nav-item"><a class="nav-link" href="/mine/userupdate">회원수정</a></li>
 						<c:choose>
 							<c:when test="${empty status}">
 								<li class="nav-item"><a class="nav-link" href="/mine/login">로그인</a></li>
 							</c:when>
 							<c:otherwise>
-								<div class="btn-group">
+								<c:if test="${admin==1}">
+								<li class="nav-item"><a class="nav-link" href="/mine/insertAuction">경매추가</a></li>
+								</c:if>
 									<form method="post" action="/mine/logout">
 										<li class="nav-item"><a class="nav-link" href="/mine/logout">로그아웃</a></li>
 									</form>
-								</div>
+								
 							</c:otherwise>
 						</c:choose>
 					</ul>
@@ -61,9 +62,6 @@
 		</script>
 	</c:if>
 	</header>
-	<c:if test="${admin==1}">
-		<input type="button"><a href="/mine/insertAuction">rrr</a>
-	</c:if>
-		<input><a href = "/mine/userupdate">수정하기</a>
+
 </body>
 </html>
