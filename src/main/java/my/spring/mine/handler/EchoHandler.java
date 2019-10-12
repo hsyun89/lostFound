@@ -51,7 +51,7 @@ public class EchoHandler extends TextWebSocketHandler {
     	if(null==loginUser) {
     		return session.getId();
     	}else {
-    		return loginUser.getEmail();
+    		return loginUser.getUser_id();
     	}
 	}
     

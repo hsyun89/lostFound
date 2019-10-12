@@ -19,9 +19,10 @@ public class AuctionController {
 	AuctionDAO dao;
 
 	@RequestMapping(value = "/auctionWebsocket", method = RequestMethod.GET)
-	protected ModelAndView get() {
+	protected ModelAndView get(String productId) {
 		ModelAndView mav = new ModelAndView();
-		String viewName = "auctionView";
+		String viewName = "auctionOneView";
+		mav.addObject("list", dao.auctionOne(productId));
 		mav.setViewName(viewName);
 		return mav;
 	}

@@ -87,7 +87,7 @@
 								<tr>
 									<td>${vo.unique_id}</td>
 									<td><img src="${vo.image_address}"></td>
-									<td>${vo.product_name}</td>
+									<td><a href="/mine/auctionWebsocket?productId=${vo.unique_id}">${vo.product_name}</a></td>
 									<td>${vo.start_price}</td>
 									<td>${vo.min_bid}</td>
 									<td>${vo.start_date}</td>

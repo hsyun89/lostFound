@@ -23,6 +23,15 @@ public class AuctionDAO {
 		return list;
 	}
 	
+	//경매상세페이지
+	public ListVO auctionOne(String productId) {
+		ListVO result = null;
+		String statement = "resource.AuctionMapper.auctionOne";
+		result = session.selectOne(statement, productId);
+		//update(result);
+		return result;
+	}
+	
 	//카테고리
 	public List<ListVO> category(String key){
 		List<ListVO> list = null;
