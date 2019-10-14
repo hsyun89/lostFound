@@ -140,21 +140,23 @@ public class LoginController {
 		//회원탈퇴
 		@RequestMapping(value="/userdelete", method=RequestMethod.GET)
 		public String userDelete() {
-			return "userdelete";
+			return "userDelete";
 		}
 		
 		@RequestMapping(value="/userdelete", method=RequestMethod.POST)
-		public ModelAndView userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user) throws Exception {
+		public String userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, SessionStatus session) throws Exception {
 			ModelAndView mav = new ModelAndView();
 			String email = user.getEmail();
 			vo.setEmail(email);
 			boolean result = service.delete(vo);
 			if(result) {
 				user = vo;
-				mav.addObject("status", user);
 			}
+			System.out.println("delete con :" + result + user.getEmail());
+			session.setComplete();
+			mav.addObject("status", user);
 			mav.setViewName("mainView");
-			return mav;
+			return "redirect:/main";
 		}
 
 	// 로그아웃

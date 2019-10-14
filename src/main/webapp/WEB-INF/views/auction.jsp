@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:if test="${empty status}">
+		<script>
+			alert("로그인 후 이용 가능합니다")
+			location.href = "/mine/login";
+		</script>
+	</c:if>
 
 <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

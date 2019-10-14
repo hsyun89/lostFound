@@ -14,6 +14,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.modal-content {
+	top : 60%;
+	left : 80%;
+	margin : auto;
+}
 .button
 {
 
@@ -52,6 +57,10 @@
    font-size: 18px;
 
 }
+#main{
+	left : 50%;
+	margin : auto;
+}
 
 </style>
 </head>
@@ -66,10 +75,8 @@
     <div class="col col-md-5">
 		<div class="modal-content">
 				<div class="modal-body">
-				<div class="fadeIn first">
-				<a href="/mine/main">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-    </a>
+				<div class="fadeIn first">			
+      <h2><a id="main" href="/mine/main" style="text-decoration:none">It's Mine</a></h2>
     </div>
 					<form id="formSignUp" class="form-signin" action="/mine/register" method="post"
 							onsubmit='return regcheck();'>

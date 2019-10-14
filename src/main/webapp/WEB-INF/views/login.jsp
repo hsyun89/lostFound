@@ -288,9 +288,7 @@ input[type=text]:placeholder {
 
     <!-- Icon -->
     <div class="fadeIn first">
-    <a href="/mine/main">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-   </a>
+     <h2><a id="main" href="/mine/main" style="text-decoration:none">It's Mine</a></h2>
     </div>
 
     <!-- Login Form -->

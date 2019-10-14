@@ -40,4 +40,9 @@
 		DELETE FROM USER WHERE EMAIL = #{email}
 	</delete>
 	
+	<!--회원 탈퇴(비밀번호 체크)-->
+	<select id="checkpw" resultType="int">
+	SELECT * FROM USER WHERE EMAIL = #{email} AND PASSWORD = #{password}
+	</select>
+	
 </mapper>

@@ -8,24 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>내꺼야</title>
-<style>
-#btn1{
-    height:40px; 
-    width:100px; 
-    margin: -20px -50px; 
-    position:relative;
-    top:10%; 
-    left:45%;
-}
-#btn2{
-    height:40px; 
-    width:100px; 
-    margin: -20px -50px; 
-    position:relative;
-    top:10%; 
-    left:55%;
-} 
-</style>
+
 <meta name="description"
 	content="This is a basic starter template for MMPilot which includes Bootstrap Framework." />
 <link
@@ -77,9 +60,10 @@
 		</script>
 	</c:if>
 	</header>
-<button type="button" id="btn1" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                   수정하기
-                </button>   
+                </button>
+              
                 <!-- The Modal -->
                 <div class="modal" id="myModal">
                 <!-- inside the modal, instead of the page itself-->    
@@ -135,17 +119,17 @@ $(document).ready(function() {
 });
 </script>
 </form>
-                      </div>                  
+                      </div>
+                      
                       <!-- Modal footer -->
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
-                <form action="/mine/userdelete" method="post">
-<button type="submit" class="btn btn-danger" id="btn2" data-dismiss="modal" >탈퇴하기</button>
+          <form action="/mine/userdelete" method="POST" class="form-signin">
+<button type="submit" class="btn btn-danger" data-dismiss="modal" >탈퇴하기</button>
 </form>
 </body>
 </html>

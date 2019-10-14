@@ -42,10 +42,13 @@ $(document).ready(function() {
 		}
 	});
 	function registerSuccess() {
-		alert("회원가입 성공")
+		alert("수정완료")
 	}
 });
 </script>
+</form>
+<form action="/mine/userdelete" method="POST" class="form-signin">
+<button type="submit">탈퇴하기</button>
 </form>
 </body>
 </html>
