@@ -1,50 +1,76 @@
 package service;
 
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.rosuda.REngine.REXP;
+import org.rosuda.REngine.REXPMismatchException;
+import org.rosuda.REngine.RList;
 import org.rosuda.REngine.Rserve.RConnection;
+import org.rosuda.REngine.Rserve.RserveException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import vo.LostVO;
+
 @Service
 public class LostScheduler {
-	public String ServiceRun() {
-		RConnection r = null;
-		String retStr = "";
+	@Scheduled(cron = "0 0/15 * * * ?")
+	public static void ServiceRun() throws RserveException, REXPMismatchException {
+		RConnection rc = null;
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		try {
-			r = new RConnection();
-			r.eval("library(XML)");
-			r.eval("library(rvest)");
-			r.eval("imsi <- read_html(\"http://media.daum.net/ranking/popular/\")");
-			r.eval("t <- htmlParse(imsi)");
-			r.eval("newstitle <- xpathSApply(t,\"//a[@class='link_txt']\", xmlValue)");
-			r.eval("newstitle <- gsub(\"\\t\", \"\", newstitle)");
-			r.eval("newstitle <- gsub(\"[\\r\\n]\", \"\", newstitle)");
-			r.eval("newstitle <- newstitle[1:5]");
-			r.eval("newspapername <- xpathSApply(t,\"//span[@class='info_news']\", xmlValue)");
-			r.eval("newspapername <- newspapername[1:5]");
-			r.eval("daumnews <- cbind(newstitle, newspapername)");
-			r.eval("write.csv(daumnews, \"daumnews2.csv\")");
+			rc = new RConnection();
+			REXP x = rc.eval("imsi<-source('C:/Rstudy/lost.R', encoding = 'UTF-8'); imsi$value");
+			RList list = x.asList();
+			String[] addr = list.at("addr").asStrings();
+			String[] unique_id = list.at("unique_id").asStrings();
+			String[] content = list.at("content").asStrings();
+			String[] keep_place = list.at("keep_place").asStrings();
+			String[] image_address = list.at("image_address").asStrings();
+			String[] product_name = list.at("product_name").asStrings();
+			String[] find_date = list.at("find_date").asStrings();
+			String[] category = list.at("category").asStrings();
+			String[] find_place = list.at("find_place").asStrings();
+			Charset.forName("UTF-8");
+			System.out.println("저장완료!");
+			
+			LostVO vo = new LostVO();
+			for (int i = 0; i < unique_id.length; i++) {
+				vo.setAddr(addr[i]);
+				vo.setUnique_id(unique_id[i]);
+				vo.setContent(content[i]);
+				vo.setKeep_place(keep_place[i]);
+				vo.setImage_address(image_address[i]);
+				vo.setProduct_name(product_name[i]);
+				vo.setFind_date(find_date[i]);
+				vo.setCategory(category[i]);
+				vo.setFind_place(find_place[i]);
+				System.out.println(addr[i]);
+			}
+			System.out.println("삽입완료!");
 		} catch (Exception e) {
 			System.out.println(e);
-			e.printStackTrace();
-		} finally {
-			r.close();
 		}
-		return retStr;
+		rc.close();
+		System.out.println(new java.util.Date() + "스케줄 실행(Lost):" + dateFormat.format(calendar.getTime()));
 	}
-	@Scheduled(cron="10 * * * * *")
-	public void scheduleRun() {
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			Thread.sleep(2000);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(new java.util.Date()+"스케줄 실행(Lost):"+dateFormat.format(calendar.getTime()));
-	}
+//	public static void main(String[] args) throws RserveException, REXPMismatchException{
+//		LostScheduler.ServiceRun();
+//	}
+//	@Scheduled(cron = "0 0/20 * * * ?")
+//	public void scheduleRun() throws RserveException, REXPMismatchException {
+//		Calendar calendar = Calendar.getInstance();
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+//		try {
+//			LostScheduler.ServiceRun();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(new java.util.Date() + "스케줄 실행(Lost):" + dateFormat.format(calendar.getTime()));
+//	}
 }
 
 //package service;
@@ -59,41 +85,41 @@ public class LostScheduler {
 //
 //@Service
 //public class LostScheduler {
-////	public static void ServiceRun() throws RserveException, REXPMismatchException{
-////		RConnection rc = null;
-////		try {
-////			rc = new RConnection();
-////			REXP x = rc.eval("imsi<-source('C:/Rstudy/lost.R', encoding = 'UTF-8'); imsi$value");
-////			RList list = x.asList();
-////			String[] addr = list.at("addr").asStrings();
-////			String[] unique_id = list.at("unique_id").asStrings();
-////			String[] content = list.at("content").asStrings();
-////			String[] keep_place = list.at("keep_place").asStrings();
-////			String[] image_address = list.at("image_address").asStrings();
-////			String[] product_name = list.at("product_name").asStrings();
-////			String[] find_date = list.at("find_date").asStrings();
-////			String[] category = list.at("category").asStrings();
-////			String[] find_place = list.at("find_place").asStrings();
-////			Charset.forName("UTF-8");
-////			
-////			LostVO vo = new LostVO();
-////			for(int i=0; i<unique_id.length; i++) {
-////				vo.setAddr(addr[i]);
-////				vo.setUnique_id(unique_id[i]);
-////				vo.setContent(content[i]);
-////				vo.setKeep_place(keep_place[i]);
-////				vo.setImage_address(image_address[i]);
-////				vo.setProduct_name(product_name[i]);
-////				vo.setFind_date(find_date[i]);
-////				vo.setCategory(category[i]);
-////				vo.setFind_place(find_place[i]);
-////			}
-////		} catch (Exception e) {
-////			System.out.println(e);
-////		} finally {
-////			rc.close();
-////		}
-////	}
+//	public static void ServiceRun() throws RserveException, REXPMismatchException{
+//		RConnection rc = null;
+//		try {
+//			rc = new RConnection();
+//			REXP x = rc.eval("imsi<-source('C:/Rstudy/lost.R', encoding = 'UTF-8'); imsi$value");
+//			RList list = x.asList();
+//			String[] addr = list.at("addr").asStrings();
+//			String[] unique_id = list.at("unique_id").asStrings();
+//			String[] content = list.at("content").asStrings();
+//			String[] keep_place = list.at("keep_place").asStrings();
+//			String[] image_address = list.at("image_address").asStrings();
+//			String[] product_name = list.at("product_name").asStrings();
+//			String[] find_date = list.at("find_date").asStrings();
+//			String[] category = list.at("category").asStrings();
+//			String[] find_place = list.at("find_place").asStrings();
+//			Charset.forName("UTF-8");
+//			
+//			LostVO vo = new LostVO();
+//			for(int i=0; i<unique_id.length; i++) {
+//				vo.setAddr(addr[i]);
+//				vo.setUnique_id(unique_id[i]);
+//				vo.setContent(content[i]);
+//				vo.setKeep_place(keep_place[i]);
+//				vo.setImage_address(image_address[i]);
+//				vo.setProduct_name(product_name[i]);
+//				vo.setFind_date(find_date[i]);
+//				vo.setCategory(category[i]);
+//				vo.setFind_place(find_place[i]);
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		} finally {
+//			rc.close();
+//		}
+//	}
 //	@Scheduled(fixedDelay = 1000)
 //	public void scheduleRun() throws RserveException, REXPMismatchException{
 //		Calendar calendar = Calendar.getInstance();
