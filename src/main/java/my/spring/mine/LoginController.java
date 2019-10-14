@@ -99,7 +99,7 @@ public class LoginController {
 		UserVO vo1 = service.login(vo);
 		//System.out.println("con : 1r  " + vo1.getAdmin());
 		if (vo1 != null) {
-			session.setAttribute("status", vo);
+			session.setAttribute("status", vo1);
 			session.setAttribute("admin", vo1.getAdmin());
 			//System.out.println(vo.getEmail()); // 수정하기
 			System.out.println("login완료");

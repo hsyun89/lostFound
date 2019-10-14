@@ -13,6 +13,12 @@ public class ListVO {
 	public String getUnique_id() {
 		return unique_id;
 	}
+	@Override
+	public String toString() {
+		return "ListVO [unique_id=" + unique_id + ", image_address=" + image_address + ", product_name=" + product_name
+				+ ", start_price=" + start_price + ", min_bid=" + min_bid + ", start_date=" + start_date + ", end_date="
+				+ end_date + ", category=" + category + "]";
+	}
 	public void setUnique_id(String unique_id) {
 		this.unique_id = unique_id;
 	}

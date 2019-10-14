@@ -23,11 +23,11 @@
 		var appCtx = pathname.substring(0, pathname.indexOf("/", 2));
 		var root = url + appCtx;
 		//alert(root);
-		//var ws = new WebSocket("ws://70.12.113.171:8000/mine/replyEcho");
-		var ws = new WebSocket("ws://localhost:8000/mine/replyEcho");
-		//var ws = new WebSocket("ws://"+root+"/replyEcho");
+		var ws = new WebSocket("ws://70.12.113.171:8000/mine/replyEcho");
+		//var ws = new WebSocket("ws://localhost:8000/mine/replyEcho");
+		//r ws = new WebSocket("ws://"+root+"/replyEcho");
 
-		////////////////////////////////아이디/////////////////////////////////////
+		//////////////////////////////아이디/////////////////////////////////////
 		/* 		var name;
 		 window.onload = function() {
 		 while (true) {

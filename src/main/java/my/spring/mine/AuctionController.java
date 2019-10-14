@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.AuctionDAO;
@@ -14,15 +15,20 @@ import vo.AuctionVO;
 import vo.ListVO;
 
 @Controller
+@SessionAttributes("list") //멀티룸
 public class AuctionController {
 	@Autowired
 	AuctionDAO dao;
 
 	@RequestMapping(value = "/auctionWebsocket", method = RequestMethod.GET)
-	protected ModelAndView get(String productId) {
+	protected ModelAndView get(String productId, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String viewName = "auctionOneView";
-		mav.addObject("list", dao.auctionOne(productId));
+		ListVO tempVO =  dao.auctionOne(productId);
+		mav.addObject("list", tempVO);
+		//멀티룸용 세션
+		session.setAttribute("list", tempVO);
+		//
 		mav.setViewName(viewName);
 		return mav;
 	}
