@@ -14,7 +14,8 @@ import vo.PageMakerAndSearch;
 public class LostController {
 	@Autowired
 	LostDAO dao;
-	@ModelAttribute 
+	//@ModelAttribute 
+	//String categroy; 
 	
 	@RequestMapping(value = "/lost", method = RequestMethod.GET)
 	public String listPageSearch(@ModelAttribute("pageMaker") PageMakerAndSearch pageMaker, String unique_id, Model model) throws Exception{

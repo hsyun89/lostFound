@@ -3,6 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
+	<sql id="categorySearch">
+		<if test="category !=null">
+			<if test="category != 'all'.toString()">
+				and Category like CONCAT('%', #{category},'%')
+			</if>
+		</if>
+	</sql>
+	<sql id="placeSearch">
+		<if test="place !=null">
+			<if test="place != 'all'.toString()" >
+				<if test="place != ''.toString()" >
+				and Find_place = #{place}
+				</if>
+			</if>
+		</if>
+		<if test="place ==null"></if>
+	</sql>
 	<sql id="search">
 		<if test="searchType !=null">
 			<if test="searchType == 'all'.toString()">
@@ -13,8 +30,7 @@
 				OR
 				Keep_place like CONCAT('%', #{keyword}, '%')
 				OR
-				Find_date like CONCAT('%', #{keyword},
-				'%')
+				Find_date like CONCAT('%', #{keyword},'%')
 				)
 			</if>
 			<if test="searchType == 'unique_id'.toString()">
@@ -37,9 +53,11 @@
 	<select id="listPageSearch" resultType="vo.LostVO">
 		select Addr, Unique_id, Content, Keep_place, Image_address,
 		Product_name,
-		Find_date, Category, lon, lat from lost where Unique_id
-		is not null
+		Find_date, Category, Find_place from lost
+		where Unique_id is not null
+		<include refid="categorySearch"></include>
 		<include refid="search"></include>
+		<include refid="placeSearch"></include>
 		order by Find_date desc limit #{pageStart},#{perPageNum}
 
 	</select>

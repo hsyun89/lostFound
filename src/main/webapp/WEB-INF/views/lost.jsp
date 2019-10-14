@@ -65,7 +65,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="/mine/main">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -78,6 +78,7 @@
 			
 			<!--  -------------------사이드 바------------------- -->
 			<!-- Divider -->
+			
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
@@ -109,10 +110,9 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" data-key="여성용가방" href="/mine/lost?key=여성용가방">여성용가방</a>
->>>>>>> cf18d53ac3c1206e76819a8b877e5398c957a6a3
-						<a class="collapse-item" href="cards.html">남성용가방</a>
-						<a class="collapse-item" href="cards.html">기타가방</a>
+						<a class="collapse-item" data-cat="여성용가방" >여성용가방</a>
+						<a class="collapse-item" data-cat="남성용가방">남성용가방</a>
+						<a class="collapse-item" data-cat="기타가방">기타가방</a>
 					</div>
 				</div>
 			</li>
@@ -127,11 +127,11 @@
 					aria-labelledby="headingJewelry" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">반지</a>
-						<a class="collapse-item" href="utilities-border.html">목걸이</a>
-						<a class="collapse-item" href="utilities-animation.html">귀걸이</a>
-						<a class="collapse-item" href="utilities-other.html">시계</a>
-						<a class="collapse-item" href="utilities-other.html">기타</a>
+						<a class="collapse-item" data-cat="반지">반지</a>
+						<a class="collapse-item" data-cat="목걸이">목걸이</a>
+						<a class="collapse-item" data-cat="귀걸이">귀걸이</a>
+						<a class="collapse-item" data-cat="시계">시계</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
 				</div>
 			</li>
@@ -146,11 +146,11 @@
 					aria-labelledby="headingBook" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">학습서적</a>
-						<a class="collapse-item" href="utilities-border.html">컴퓨터서적</a>
-						<a class="collapse-item" href="utilities-animation.html">소설</a>
-						<a class="collapse-item" href="utilities-other.html">만화책</a>
-						<a class="collapse-item" href="utilities-other.html">기타서적</a>
+						<a class="collapse-item" data-cat="학습서적">학습서적</a>
+						<a class="collapse-item" data-cat="컴퓨터서적">컴퓨터서적</a>
+						<a class="collapse-item" data-cat="소설">소설</a>
+						<a class="collapse-item" data-cat="만화책">만화책</a>
+						<a class="collapse-item" data-cat="기타서적">기타서적</a>
 					</div>
 				</div>
 			</li>
@@ -165,8 +165,8 @@
 					aria-labelledby="headingDocument" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">서류</a>
-						<a class="collapse-item" href="utilities-border.html">기타물품</a>
+						<a class="collapse-item" data-cat="서류">서류</a>
+						<a class="collapse-item" data-cat="기타물품">기타물품</a>
 					</div>
 				</div>
 			</li>
@@ -181,7 +181,7 @@
 					aria-labelledby="headingTools" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">기타물품</a>
+						<a class="collapse-item" data-cat="기타물품">기타물품</a>
 					</div>
 				</div>
 			</li>
@@ -196,7 +196,7 @@
 					aria-labelledby="headingShoppingbag" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">쇼핑백</a>
+						<a class="collapse-item" data-cat="쇼핑백">쇼핑백</a>
 					</div>
 				</div>
 			</li>
@@ -211,7 +211,7 @@
 					aria-labelledby="headingSport" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">기타용품</a>
+						<a class="collapse-item" data-cat="기타용품">기타용품</a>
 					</div>
 				</div>
 			</li>
@@ -226,11 +226,11 @@
 					aria-labelledby="headingSport" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">건반악기</a>
-						<a class="collapse-item" href="utilities-color.html">관악기</a>
-						<a class="collapse-item" href="utilities-color.html">현악기</a>
-						<a class="collapse-item" href="utilities-color.html">타악기</a>
-						<a class="collapse-item" href="utilities-color.html">기타악기</a>
+						<a class="collapse-item" data-cat="건반악기">건반악기</a>
+						<a class="collapse-item" data-cat="관악기">관악기</a>
+						<a class="collapse-item" data-cat="현악기">현악기</a>
+						<a class="collapse-item" data-cat="타악기">타악기</a>
+						<a class="collapse-item" data-cat="기타악기">기타악기</a>
 					</div>
 				</div>
 			</li>
@@ -245,10 +245,10 @@
 					aria-labelledby="headingSecurities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">어음</a>
-						<a class="collapse-item" href="utilities-color.html">상품권</a>
-						<a class="collapse-item" href="utilities-color.html">채권</a>
-						<a class="collapse-item" href="utilities-color.html">기타</a>
+						<a class="collapse-item" data-cat="어음">어음</a>
+						<a class="collapse-item" data-cat="상품권">상품권</a>
+						<a class="collapse-item" data-cat="채권">채권</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
 				</div>
 			</li>
@@ -263,10 +263,10 @@
 					aria-labelledby="headingClothes" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">여성의류</a>
-						<a class="collapse-item" href="utilities-color.html">남성의류</a>
-						<a class="collapse-item" href="utilities-color.html">아기의류</a>
-						<a class="collapse-item" href="utilities-color.html">기타의류</a>
+						<a class="collapse-item" data-cat="여성의류">여성의류</a>
+						<a class="collapse-item" data-cat="남성의류">남성의류</a>
+						<a class="collapse-item" data-cat="아기의류">아기의류</a>
+						<a class="collapse-item" data-cat="기타의류">기타의류</a>
 					</div>
 				</div>
 			</li>
@@ -275,17 +275,17 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseCar"
 				aria-expanded="true" aria-controls="collapseCar">
-				<img src="https://www.lost112.go.kr/images/home/common/ico11.gif"> <span>의류</span>
+				<img src="https://www.lost112.go.kr/images/home/common/ico11.gif"> <span>자동차</span>
 			</a>
 				<div id="collapseCar" class="collapse"
 					aria-labelledby="headingCar" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">자동차열쇠</a>
-						<a class="collapse-item" href="utilities-color.html">자동차번호판</a>
-						<a class="collapse-item" href="utilities-color.html">임시번호판</a>
-						<a class="collapse-item" href="utilities-color.html">네비게이션</a>
-						<a class="collapse-item" href="utilities-color.html">기타용품</a>
+						<a class="collapse-item" data-cat="자동차열쇠">자동차열쇠</a>
+						<a class="collapse-item" data-cat="자동차번호판">자동차번호판</a>
+						<a class="collapse-item" data-cat="임시번호판">임시번호판</a>
+						<a class="collapse-item" data-cat="네비게이션">네비게이션</a>
+						<a class="collapse-item" data-cat="기타용품">기타용품</a>
 					</div>
 				</div>
 			</li>
@@ -300,12 +300,12 @@
 					aria-labelledby="headingElectronic" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">PMP</a>
-						<a class="collapse-item" href="utilities-color.html">PDA</a>
-						<a class="collapse-item" href="utilities-color.html">MP3</a>
-						<a class="collapse-item" href="utilities-color.html">카메라</a>
-						<a class="collapse-item" href="utilities-color.html">전자수첩</a>
-						<a class="collapse-item" href="utilities-color.html">기타용품</a>
+						<a class="collapse-item" data-cat="PMP">PMP</a>
+						<a class="collapse-item" data-cat="PDA">PDA</a>
+						<a class="collapse-item" data-cat="MP3">MP3</a>
+						<a class="collapse-item" data-cat="카메라">카메라</a>
+						<a class="collapse-item" data-cat="전자수첩">전자수첩</a>
+						<a class="collapse-item" data-cat="기타용품">기타용품</a>
 					</div>
 				</div>
 			</li>
@@ -320,9 +320,9 @@
 					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">여성용 지갑</a>
-						<a class="collapse-item" href="utilities-color.html">남성용 지갑</a>
-						<a class="collapse-item" href="utilities-color.html">기타 지갑</a>
+						<a class="collapse-item" data-cat="여성용 지갑">여성용 지갑</a>
+						<a class="collapse-item" data-cat="남성용 지갑">남성용 지갑</a>
+						<a class="collapse-item" data-cat="기타 지갑">기타 지갑</a>
 					</div>
 				</div>
 			</li>
@@ -337,9 +337,9 @@
 					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">여성용 지갑</a>
-						<a class="collapse-item" href="utilities-color.html">남성용 지갑</a>
-						<a class="collapse-item" href="utilities-color.html">기타 지갑</a>
+						<a class="collapse-item" data-cat="여성용 지갑">여성용 지갑</a>
+						<a class="collapse-item" data-cat="남성용 지갑">남성용 지갑</a>
+						<a class="collapse-item" data-cat="기타 지갑">기타 지갑</a>
 					</div>
 				</div>
 			</li>
@@ -354,10 +354,10 @@
 					aria-labelledby="headingCertificate" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">신분증</a>
-						<a class="collapse-item" href="utilities-color.html">면허증</a>
-						<a class="collapse-item" href="utilities-color.html">여권</a>
-						<a class="collapse-item" href="utilities-color.html">기타</a>
+						<a class="collapse-item" data-cat="기타서적">신분증</a>
+						<a class="collapse-item" data-cat="면허증">면허증</a>
+						<a class="collapse-item" data-cat="여권">여권</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
 				</div>
 			</li>
@@ -372,11 +372,11 @@
 					aria-labelledby="headingComputer" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">삼성노트북</a>
-						<a class="collapse-item" href="utilities-color.html">LG노트북</a>
-						<a class="collapse-item" href="utilities-color.html">삼보노트북</a>
-						<a class="collapse-item" href="utilities-color.html">HP노트북</a>
-						<a class="collapse-item" href="utilities-color.html">기타</a>
+						<a class="collapse-item" data-cat="삼성노트북">삼성노트북</a>
+						<a class="collapse-item" data-cat="LG노트북">LG노트북</a>
+						<a class="collapse-item" data-cat="삼보노트북">삼보노트북</a>
+						<a class="collapse-item" data-cat="HP노트북">HP노트북</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
 				</div>
 			</li>
@@ -391,9 +391,9 @@
 					aria-labelledby="headingCard" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">신용(체크)카드</a>
-						<a class="collapse-item" href="utilities-color.html">일반카드</a>
-						<a class="collapse-item" href="utilities-color.html">기타카드</a>
+						<a class="collapse-item" data-cat="신용(체크)카드)">신용(체크)카드</a>
+						<a class="collapse-item" data-cat="일반카드">일반카드</a>
+						<a class="collapse-item" data-cat="기타카드">기타카드</a>
 					</div>
 				</div>
 			</li>
@@ -408,11 +408,11 @@
 					aria-labelledby="headingCash" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">현금</a>
-						<a class="collapse-item" href="utilities-color.html">수표</a>
-						<a class="collapse-item" href="utilities-color.html">카드</a>
-						<a class="collapse-item" href="utilities-color.html">외화</a>
-						<a class="collapse-item" href="utilities-color.html">기타</a>
+						<a class="collapse-item" data-cat="현금">현금</a>
+						<a class="collapse-item" data-cat="수표">수표</a>
+						<a class="collapse-item" data-cat="카드">카드</a>
+						<a class="collapse-item" data-cat="외화">외화</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
 				</div>
 			</li>
@@ -427,12 +427,12 @@
 					aria-labelledby="headingCellphone" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">삼성휴대폰</a>
-						<a class="collapse-item" href="utilities-color.html">LG휴대폰</a>
-						<a class="collapse-item" href="utilities-color.html">아이폰</a>
-						<a class="collapse-item" href="utilities-color.html">모토로라휴대폰</a>
-						<a class="collapse-item" href="utilities-color.html">SKY휴대폰</a>
-						<a class="collapse-item" href="utilities-color.html">기타통신기기</a>
+						<a class="collapse-item" data-cat="삼성휴대폰">삼성휴대폰</a>
+						<a class="collapse-item" data-cat="LG휴대폰">LG휴대폰</a>
+						<a class="collapse-item" data-cat="아이폰">아이폰</a>
+						<a class="collapse-item" data-cat="모토로라휴대폰">모토로라휴대폰</a>
+						<a class="collapse-item" data-cat="스카이휴대폰">SKY휴대폰</a>
+						<a class="collapse-item" data-cat="기타통신기기">기타통신기기</a>
 					</div>
 				</div>
 			</li>
@@ -447,7 +447,7 @@
 					aria-labelledby="headingEct" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">분류명 선택:</h6>
-						<a class="collapse-item" href="utilities-color.html">기타</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
 				</div>
 			</li>
@@ -699,12 +699,12 @@
 									</a>
 										<span id="lostDate"></span>
 									</td>
-									<td width=300 style="word-break:break-all">
+									<td width=250 style="word-break:break-all">
 									<a id="selectCat" href="#catModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
 										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
 										지역
 									</a>
-										<span id="lostCat"></span>
+										<span id="lostPlace">${pageMaker.place}</span>
 									</td>
 									<!-- <td width=50 style="word-break:break-all">
 										<a><img src="https://1.bp.blogspot.com/-FQPopRZ5jTI/XZwXRMhBk7I/AAAAAAAAAPo/qFqEFwUk-rclQdQfoQjJ86liaD4Z0a8xwCLcBGAsYHQ/s1600/%25EC%2583%2588%25EB%25A1%259C%25EA%25B3%25A0%25EC%25B9%25A8%2B%25EC%2595%2584%25EC%259D%25B4%25EC%25BD%2598%2B-%2BGoogle%2B%25EA%25B2%2580%25EC%2583%2589.png" width=20></a>
@@ -716,7 +716,7 @@
 									<td>-->
 									
 									<td>
-									 <div class="col-sm-2">
+									<div style="display:inline-block">
 										<select name="searchType" class="form-control" id="searchType">
 											<option value="all"
 												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
@@ -729,18 +729,11 @@
 											<option value="find_date"
 												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
 										</select>
-									</div>
 										<input type="text" name="keyword" id="keywordInput"
 											class="form-control" value="${pageMaker.keyword}" style="float:left;">
-									
-									
-									
-									</td>
-									<td>
+									</div>
 									<button id="searchBtn" class="btn btn-primary">검색</button>
 									<button class="btn btn-primary">새로고침</button>
-									</td>
-									
 									</tr>
 								</table>
 								
@@ -786,20 +779,20 @@
 										<td colspan="8" class="text-center">
 											<ul class="pagination">
 												<c:if test="${pageMaker.prev}">
-													<li><a
+													<li><a class="btn blue" 
 														href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
 												</c:if>
 
 												<c:forEach begin="${pageMaker.startPage }"
 													end="${pageMaker.endPage}" var="idx">
-													<li
+													<li 
 														<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
-														<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
+														<a class="btn blue" href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
 													</li>
 												</c:forEach>
 
 												<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-													<li><a
+													<li><a class="btn blue" 
 														href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
 												</c:if>
 											</ul>
@@ -877,7 +870,7 @@
 				<div class="modal fade" id="catModal" role="dialog">
 					<div class="modal-dialog">
 						<!-- Modal content-->
-						<div class="modal-content" style="width:850px;">
+						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">분류를 선택해주세요.</h4>
 								<button type="button" class="close" data-dismiss="modal">×</button>
@@ -885,54 +878,15 @@
 						<div class="modal-body">
 							<table>
 								<tr>
-									<td id="bag">
-										<table>
-											<tr>
-												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico01.gif">가방</td>
-												<td><input type="checkbox" value="가방>남성가방" name="category">남성가방</td>
-											<tr>
-												<td><input type="checkbox" value="가방>여성가방" name="category">여성가방</td>
-											<tr>
-												<td><input type="checkbox" value="가방>기타" name="category">기타가방</td>
-											</tr>
-										</table>
-									</td>
-									<td id="jewelry">
-										<table>
-											<tr>
-												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico02.gif">귀금속</td>
-												<td><input type="checkbox" value="귀금속>반지" name="category">반지</td><td><input type="checkbox" name=name="category">목걸이</td>
-											<tr>
-												<td><input type="checkbox" value="귀금속>귀걸이" name="category">귀걸이</td><td><input type="checkbox" name=name="category">시계</td>
-											<tr>
-												<td><input type="checkbox" value="귀금속>기타" name="category">기타</td>
-											</tr>
-										</table>
-									</td>
-									<td id="book">
-										<table>
-											<tr>
-												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico03.gif">서적</td>
-												<td><input type="checkbox" value="서적>학습" name="category">학습</td><td><input type="checkbox" name="category">소설</td>
-											<tr>
-												<td><input type="checkbox" value="서적>만화" name="category">만화</td><td><input type="checkbox" name="category">컴퓨터</td>
-											<tr>
-												<td><input type="checkbox" value="서적>기타" name="category">기타</td>
-											</tr>
-										</table>
-									</td>
-									<td id="instrument">
-										<table>
-											<tr>
-												<td rowspan="3"><img src="https://www.lost112.go.kr/images/home/common/ico08.gif">악기</td>
-												<td><input type="checkbox" value="악기>건반악기" name="category">건반악기</td><td><input type="checkbox" name="category">관악기</td>
-											<tr>
-												<td><input type="checkbox" value="악기>타악기" name="category">타악기</td><td><input type="checkbox" name="category">현악기</td>
-											<tr>
-												<td><input type="checkbox" value="악기>기타" name="category">기타</td>
-											</tr>
-										</table>
-									</td>
+								<td><input type="checkbox" value="강남구" name="find_place">강남구</td>
+								<td><input type="checkbox" value="서초구" name="find_place">서초구</td>
+								<td><input type="checkbox" value="강동구" name="find_place">강동구</td>
+								</tr>
+								<tr>
+								<td><input type="checkbox" value="동작구" name="find_place">동작구</td>
+								<td><input type="checkbox" value="관악구" name="find_place">관악구</td>
+								<td><input type="checkbox" value="구로구" name="find_place">구로구</td>
+								</tr>
 						</table>
 	    			<br><br>
 	    			<p style="font-size:small;">*정책에 따라 9개월 이내의 습득물만 보관합니다.</p>
@@ -1045,14 +999,18 @@
         })
     });
 </script>
+
+<!-- 카테고리 검색 -->
 <script>
-function keyInput(){
-	 var key = $(this).data('key');
-	 consol.log(key);
-	 $("#key").val();
-	
-}
+$(function () {
+	  $(".collapse-item").click(function () {
+		  var cat=$(this).data('cat');
+		  location.href = "lost${pageMaker.makeQuery(1)}"+
+		  "&cat="+cat;
+	  })
+});
 </script>
+
 <!-- 분실물 상세보기 내 지도 -->
 <script>
 
@@ -1087,7 +1045,6 @@ function keyInput(){
 	}
 </script>
 
-
 <!-- 날짜 검색 -->
 <script>
 $(document).on("click", "#selectDate", function(e) {
@@ -1103,7 +1060,7 @@ $(document).on("click", "#selectDate", function(e) {
 });
 </script>
 
-<!-- 카테고리 검색 -->
+<!-- 지역 검색 -->
 <script>
 $(document).on("click", "#selectCat", function(e) {
 	//모달 띄움
@@ -1111,11 +1068,11 @@ $(document).on("click", "#selectCat", function(e) {
 	//제출 버튼 눌렀을때
 	 $("#btn_cat").on("click", function(e) {
 		 var favorite = [];
-		    $.each($("input[name='category']:checked"), function() {
+		    $.each($("input[name='find_place']:checked"), function() {
 		      favorite.push($(this).val());
 		    });
 		    //$('#catModal').modal('show').on('shown.bs.modal', function() {
-		      $("#lostCat").html(favorite.join(", "));
+		      $("#lostPlace").html(favorite.join(","));
 		      $("#catModal").modal('hide');
 		    //});
 	}); 
@@ -1124,40 +1081,43 @@ $(document).on("click", "#selectCat", function(e) {
 
 <!-- 검색 스크립트 -->
 	<script>
-		$(document).ready(
-				function() {
-					$("#searchBtn").on(
-							"click",
-							function(event) {
-								
-								var url = "lost${pageMaker.makeQuery(1)}";
-								url += "&searchType=" + searchType()
-										+ "&keyword=" + keywordInput();
-								+"&key="+keyInput();
-								self.location = url;
-							});
-				});
+	$(document).ready(
+			function() {
+				$("#searchBtn").on(
+						"click",
+						function(event) {
+							var url = "lost${pageMaker.makeQuery(1)}";
+							url += "&searchType=" + searchType()
+									+ "&keyword=" + keywordInput()
+									+ "&place=" + placeInput()
+							        + "&cat=" + catInput();
+							self.location = url;
+						});
+			});
 		function searchType() {
 			return $("#searchType").val();
 		}
 		function keywordInput() {
 			return $("#keywordInput").val();
 		}
-		function keyInput(){
-			return $("")
+		function catInput(cat){
+			var pname= window.location.href;
+			var appctx = pname.substring(pname.lastIndexOf("&cat"),pname.lastIndexOf("&cat")+5);
+			//alert(appctx);
+			if(appctx=="&cat="){
+				alert(pname.substring(pname.lastIndexOf("=")+1));
+				return pname.substring(pname.lastIndexOf("=")+1);
+			}
+			else{
+				return "all";
+			}
 		}
-	</script>
-<!-- map  -->
-	<script>
-		/* 	$(document).ready(function() {
-		 //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
-		 $("div#myModal").on("shown.bs.modal", function() {
-		 myMap();
-		 });
-		 $("div#myModal").on("hidden.bs.modal", function() {
-		 $("div#mapid").empty();
-		 });
-		 }); */
+		function placeInput() {
+			if($("#lostPlace").text()== ""){
+				return "all";
+			}
+			else {return $("#lostPlace").text();}
+		}
 	</script>
 	
 </body>

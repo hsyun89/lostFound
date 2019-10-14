@@ -19,6 +19,8 @@ public class PageMakerAndSearch {
     //검색처리 추가
     private String searchType;
     private String keyword;
+    private String category;
+    private String place;
     
 	public PageMakerAndSearch() {
 		this.page=1;		//초기 페이지 = 1
@@ -63,6 +65,8 @@ public class PageMakerAndSearch {
 		this.totalCount = totalCount;
 		calcData();
 	}
+	
+	
 	public void calcData() {
 		//현재 페이지 번호 / 하단 페이지번호 수
         endPage=(int)(Math.ceil(page / (double)displayPageNum)*displayPageNum);
@@ -117,6 +121,19 @@ public class PageMakerAndSearch {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCat(String cat) {
+		this.category = cat;
+	}
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	
 	//스프링 MVC 의 UriComponectsBuilder를 이용하는 방식 - ?가 자동으로 출력
 	public String makeQuery(int page){
 	    UriComponents uriComponents=
@@ -133,6 +150,8 @@ public class PageMakerAndSearch {
                 .queryParam("perPageNum", perPageNum)
                 .queryParam("searchType", searchType)
                 .queryParam("keyword", keyword)
+                .queryParam("place", place)
+                .queryParam("cat", category)
                 .build();
         return uriComponents.toUriString();
     }
