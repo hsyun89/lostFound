@@ -7,12 +7,15 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import service.LostScheduler;
 import vo.LostVO;
 import vo.PageMakerAndSearch;
 @Repository
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
+	//@Autowired
+	//LostScheduler ScheduleRun;
 	@Override
 	public List<LostVO> listMainSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();
@@ -32,7 +35,7 @@ public class LostMyBatisDAO implements LostDAO{
 	    return session.selectOne(statement, pageMaker);
 	}
 	@Override
-	public boolean insertLost(LostVO vo) {
+	public boolean insertLost(LostVO vo) throws Exception{
 		boolean result=true;
 		SqlSession session = sqlSessionFactory.openSession();
 		String statement = "LostMapper.insertLost";

@@ -403,6 +403,7 @@
 											<th>습득물명</th>
 											<th>보관장소</th>
 											<th>습득일자</th>
+											<th>습득장소</tr>
 										</tr>
 									</thead>
 									<tbody>
@@ -422,15 +423,16 @@
 															data-content="${vo.content }"
 															data-place="${vo.keep_place }" data-Addr="${vo.addr }">
 																${vo.product_name } </a></td>
-														<td>${vo.keep_place}</td>
-														<td>${vo.find_date}</td>
+														<td>${vo.keep_place }</td>
+														<td>${vo.find_date }</td>
+														<td>${vo.find_place }</td>
 													</tr>
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
 												<c:forEach items="${list}" var="vo">
 													<tr>
-														<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
+														<td><img alt="이미지 준비중입니다." src="${vo.image_address }"
 															width="100" height="100"
 															style="margin-left: auto; margin-right: auto; display: block;"></td>
 														<td><a href="#" data-target="#myModal"
@@ -440,10 +442,11 @@
 															data-category="${vo.category }"
 															data-date="${vo.find_date }"
 															data-content="${vo.content }"
-															data-place="${vo.keep_place }" data-Addr="${vo.addr }">
+															data-place="${vo.keep_place }" data-Addr="${vo.addr}">
 																${vo.product_name } </a></td>
-														<td>${vo.keep_place}</td>
-														<td>${vo.find_date}</td>
+														<td>${vo.keep_place }</td>
+														<td>${vo.find_date }</td>
+														<td>${vo.find_place }</td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -474,7 +477,7 @@
 											</td>
 										</tr>
 									</tfoot>
-									<%-- 	<div class="center-block">
+									<div class="center-block">
 									<div class="col-sm-2">
 										<select name="searchType" class="form-control" id="searchType">
 											<option value="all"
@@ -487,6 +490,8 @@
 												<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
 											<option value="find_date"
 												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
+											<option value="find_place"
+												<c:out value="${pageMaker.searchType eq 'find_place' ? 'selected' : '' }"/>>습득장소</option>
 										</select>
 									</div>
 									<div class="col-sm-4">
@@ -494,7 +499,7 @@
 											class="form-control" value="${pageMaker.keyword}">
 									</div>
 									<button id="searchBtn" class="btn btn-primary">검색</button>
-								</div> --%>
+								</div>
 								</table>
 							</div>
 						</div>

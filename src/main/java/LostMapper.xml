@@ -11,11 +11,11 @@
 				OR
 				product_name like CONCAT('%', #{keyword}, '%')
 				OR
-				keep_place like
-				CONCAT('%', #{keyword}, '%')
+				keep_place like CONCAT('%', #{keyword}, '%')
 				OR
-				find_date like CONCAT('%', #{keyword},
-				'%')
+				find_date like CONCAT('%', #{keyword},'%')
+				OR
+				find_place list CONCAT('%', #{keyword}, '%')
 				)
 			</if>
 			<if test="searchType == 'unique_id'.toString()">
@@ -32,6 +32,10 @@
 
 			<if test="searchType == 'find_date'.toString()">
 				and find_date like CONCAT('%', #{keyword}, '%')
+			</if>
+			
+			<if test="searchType == 'find_place'.toString()">
+				and find_place like CONCAT('%', #{keyword}, '%')
 			</if>
 
 		</if>
@@ -63,7 +67,7 @@
 	</select>
 
 	<insert id="insertLost" parameterType="vo.LostVO">
-		insert into lost values (#{addr}, #{unique_id}, #{content}, #{keep_place},
+		insert into lost (addr, unique_id, content, keep_place, image_address, product_name, find_date, category, find_place) values (#{addr}, #{unique_id}, #{content}, #{keep_place},
 		#{image_address},
 		#{product_name}, #{find_date}, #{category},
 		#{find_place})

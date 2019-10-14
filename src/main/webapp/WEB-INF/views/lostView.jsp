@@ -53,6 +53,7 @@
 						<th>습득물명</th>
 						<th>보관장소</th>
 						<th>습득일자</th>
+						<th>습득장소</th>
 					</tr>
 					<c:choose>
 						<c:when test="${not empty listMain }">
@@ -62,6 +63,7 @@
 									<th>${vo.product_name}</th>
 									<th>${vo.keep_place}</th>
 									<th>${vo.find_date}</th>
+									<th>${vo.find_place}</th>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -72,6 +74,7 @@
 									<th>${vo.product_name}</th>
 									<th>${vo.keep_place}</th>
 									<th>${vo.find_date}</th>
+									<th>${vo.find_place}</th>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -114,6 +117,8 @@
 								<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
 							<option value="find_date"
 								<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
+							<option value="find_place"
+								<c:out value="${pageMaker.searchType eq 'find_place' ? 'selected' : '' }"/>>습득장소</option>
 						</select>
 					</div>
 					<div class="col-sm-4">
