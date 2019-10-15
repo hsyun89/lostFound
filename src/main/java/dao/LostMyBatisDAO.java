@@ -14,8 +14,6 @@ import vo.PageMakerAndSearch;
 public class LostMyBatisDAO implements LostDAO{
 	@Autowired
 	SqlSessionFactory sqlSessionFactory;
-	//@Autowired
-	//LostScheduler ScheduleRun;
 	@Override
 	public List<LostVO> listMainSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();

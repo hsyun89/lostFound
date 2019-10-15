@@ -11,24 +11,24 @@ import org.rosuda.REngine.Rserve.RConnection;
 import org.rosuda.REngine.Rserve.RserveException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import dao.LostDAO;
 import vo.LostVO;
 
 @Service
+@Repository
 public class LostScheduler {
 	@Autowired
-	static LostVO vo;
-	@Autowired
-	static LostDAO dao;
-	@Scheduled(cron = "0 0/48 * * * ?")
-	public static LostVO ScheduleRun() throws RserveException, REXPMismatchException {
+	LostDAO dao;
+	@Scheduled(cron = "0 7 15 * * ?")
+	public String ServiceRun() throws RserveException, REXPMismatchException{
 		RConnection rc = null;
+		String retStr = "";
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("스케줄 시작 : "+dateFormat.format(calendar.getTime()));
 		try {
 			rc = new RConnection();
 			REXP x = rc.eval("imsi<-source('C:/Rstudy/lost.R', encoding = 'UTF-8'); imsi$value");
@@ -43,8 +43,9 @@ public class LostScheduler {
 			String[] category = list.at("category").asStrings();
 			String[] find_place = list.at("find_place").asStrings();
 			Charset.forName("UTF-8");
+			System.out.println("R 완료 : "+dateFormat.format(calendar.getTime()));
 			
-			//LostVO vo = new LostVO();
+			LostVO vo = new LostVO();
 			for (int i = 0; i < unique_id.length; i++) {
 				vo.setAddr(addr[i]);
 				vo.setUnique_id(unique_id[i]);
@@ -55,22 +56,14 @@ public class LostScheduler {
 				vo.setFind_date(find_date[i]);
 				vo.setCategory(category[i]);
 				vo.setFind_place(find_place[i]);
+				dao.insertLost(vo);
 			}
-			System.out.println(addr[1]);
-			System.out.println(unique_id[1]);
-			System.out.println(content[1]);
-			System.out.println(keep_place[1]);
-			System.out.println(image_address[1]);
-			System.out.println(product_name[1]);
-			System.out.println(find_date[1]);
-			System.out.println(category[1]);
-			System.out.println(find_place[1]);
-			dao.insertLost(vo);
 		} catch (Exception e) {
 			System.out.println(e);
+		} finally {
+			rc.close();
+			System.out.println(new java.util.Date()+"DB INSERT 완료:"+dateFormat.format(calendar.getTime()));
 		}
-		rc.close();
-		System.out.println(new java.util.Date() + "스케줄 실행(Lost):" + dateFormat.format(calendar.getTime()));
-		return vo;
+		return retStr;
 	}
 }
