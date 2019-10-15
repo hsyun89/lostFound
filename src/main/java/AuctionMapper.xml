@@ -25,6 +25,12 @@
 		INSERT INTO AUCTION(UNIQUE_ID, START_PRICE, MIN_BID, START_DATE, END_DATE)
 		VALUES(#{unique_id},#{start_price},#{min_bid}, #{start_date}, #{end_date});
 	</insert>
+	
+	<!--경매 입찰 내역 인서트-->
+	<insert id="insertAuctionLog" parameterType="vo.AuctionLogVO">
+		INSERT INTO AUCTION_LOG(UNIQUE_ID, USER_ID, PRICE, BID_DATE)
+		VALUES(#{unique_id}, #{user_id}, #{price}, #{bid_date});
+	</insert>
 </mapper>
   
   

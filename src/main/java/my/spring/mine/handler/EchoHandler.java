@@ -1,23 +1,30 @@
 package my.spring.mine.handler;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import dao.AuctionDAO;
+import vo.AuctionLogVO;
 import vo.ListVO;
 import vo.UserVO;
 
 public class EchoHandler extends TextWebSocketHandler {
+	@Autowired
+	AuctionDAO dao;
 	private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
 	private Map<String, Object> bidRooms = new HashMap<String, Object>();// 멀티룸
+//	private Queue<String> q = new LinkedList<String>();
 
 	// 웹소켓 서버에 클라이언트가 접속하면 호출되는 메소드
 	@Override
@@ -37,18 +44,42 @@ public class EchoHandler extends TextWebSocketHandler {
 	}
 
 	// 웹소켓 서버측에 텍스트 메시지가 접수되면 호출되는 메소드
+	@SuppressWarnings("null")
 	@Override
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
 		logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
 		String senderId = getId(session);
-		String msg = (String) message.getPayload();
+		String price = (String) message.getPayload();
+		String pricePlusWon = price + "원";
 		/* 멀티룸 */
 		String productId = getProductId(session);
 		Map<String, WebSocketSession> tmp = (Map<String, WebSocketSession>) bidRooms.get(productId);
 		System.out.println(bidRooms);
+		String serverTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
+		//DB저장
+		AuctionLogVO vo = new AuctionLogVO();
+		System.out.println("1");
+		vo.setBid_date(serverTime);
+		System.out.println("2");
+		vo.setPrice(price);
+		System.out.println("3");
+		vo.setUnique_id(productId);
+		System.out.println("4");
+		vo.setUser_id(senderId);
+		System.out.println("5");
+		boolean result = dao.insertBiddingLog(vo);
+		System.out.println("6");
+		System.out.println(result);
+
+//		String st = ("{\"name\":\"" + senderId + "\", \"date\":\"" + serverTime + "\",\"price\":\"" + price + "\"}");
+//		q.offer(st);
+//		System.out.println(q);
+		
+		
+		//브로드캐스트
 		for (WebSocketSession sess : tmp.values()) {
-			sess.sendMessage(new TextMessage("{\"name\":\"" + senderId + "\", \"date\":\"" + LocalDateTime.now()
-					+ "\",\"price\":\"" + msg + "\"}"));
+			sess.sendMessage(new TextMessage("{\"name\":\"" + senderId + "\", \"date\":\"" + serverTime + "\",\"price\":\"" + pricePlusWon + "\"}"));
 		}
 		//
 

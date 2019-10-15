@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.AuctionLogVO;
 import vo.AuctionVO;
 import vo.ListVO;
 
@@ -48,6 +49,17 @@ public class AuctionDAO {
 	public boolean insert(AuctionVO vo) {
 		boolean result=true;
 		String statement = "resource.AuctionMapper.insertAuction";
+		if(session.insert(statement, vo) != 1)
+			result = false;
+		System.out.println("DAO : " + result);
+		return result;
+	}
+	
+	//경매 입찰 내역 인서트
+	public boolean insertBiddingLog(AuctionLogVO vo) {
+		System.out.println(vo);
+		boolean result=true;
+		String statement = "resource.AuctionMapper.insertAuctionLog";
 		if(session.insert(statement, vo) != 1)
 			result = false;
 		System.out.println("DAO : " + result);

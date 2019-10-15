@@ -1,5 +1,7 @@
 package my.spring.mine;
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ public class AuctionController {
 		ModelAndView mav = new ModelAndView();
 		String viewName = "auctionOneView";
 		ListVO tempVO =  dao.auctionOne(productId);
+		mav.addObject("serverTime",LocalDateTime.now());
 		mav.addObject("list", tempVO);
 		//멀티룸용 세션
 		session.setAttribute("list", tempVO);
