@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,7 +25,9 @@ public class LostMyBatisDAO implements LostDAO{
 	public List<LostVO> listPageSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();
 		String statement = "LostMapper.listPageSearch";
-		return session.selectList(statement, pageMaker);
+		System.out.println("place"+pageMaker.getSearchType());
+		List<LostVO> list =session.selectList(statement, pageMaker);
+		return list;
 	}
 	@Override
 	public int listPageCount(PageMakerAndSearch pageMaker) throws Exception{

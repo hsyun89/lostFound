@@ -17,17 +17,7 @@
 <meta name="author" content="">
 
 <title>물건 찾기</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-<!-- 부가적인 테마 -->
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<!-- <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+
 <!-- map -->
 <link rel="stylesheet"
 	href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -65,16 +55,20 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="/mine/main">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
 				<div class="sidebar-brand-text mx-3">
-					내꺼야 <sup>2</sup>
+					내꺼야 <sup>it's mine</sup>
 				</div>
 			</a>
-
+			
+			
+			
+			<!--  -------------------사이드 바------------------- -->
 			<!-- Divider -->
+			
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
@@ -87,78 +81,375 @@
 
 			<!-- Heading -->
 			<div class="sidebar-heading">Interface</div>
-
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Components</span>
+			
+			<!-- Nav Item - All -->
+			<li class="nav-item"><a class="nav-link collapsed" href="/mine/lost"
+		
+				aria-expanded="true">
+				 <span>All</span>
 			</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+			</li>
+			
+			<!-- Nav Item - Bag -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseBag"
+				aria-expanded="true" aria-controls="collapseBag">
+				<img src="https://www.lost112.go.kr/images/home/common/ico01.gif"> <span>가방</span>
+			</a>
+				<div id="collapseBag" class="collapse" aria-labelledby="headingBag"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Components:</h6>
-						<a class="collapse-item" href="buttons.html">Buttons</a> <a
-							class="collapse-item" href="cards.html">Cards</a>
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="여성용가방" >여성용가방</a>
+						<a class="collapse-item" data-cat="남성용가방">남성용가방</a>
+						<a class="collapse-item" data-cat="기타가방">기타가방</a>
 					</div>
-				</div></li>
+				</div>
+			</li>
 
-			<!-- Nav Item - Utilities Collapse Menu -->
+			<!-- Nav Item - Jewelry -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Utilities</span>
+				data-toggle="collapse" data-target="#collapseJewelry"
+				aria-expanded="true" aria-controls="collapseJewelry">
+				<img src="https://www.lost112.go.kr/images/home/common/ico02.gif"> <span>귀금속</span>
 			</a>
-				<div id="collapseUtilities" class="collapse"
-					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+				<div id="collapseJewelry" class="collapse"
+					aria-labelledby="headingJewelry" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Utilities:</h6>
-						<a class="collapse-item" href="utilities-color.html">Colors</a> <a
-							class="collapse-item" href="utilities-border.html">Borders</a> <a
-							class="collapse-item" href="utilities-animation.html">Animations</a>
-						<a class="collapse-item" href="utilities-other.html">Other</a>
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="반지">반지</a>
+						<a class="collapse-item" data-cat="목걸이">목걸이</a>
+						<a class="collapse-item" data-cat="귀걸이">귀걸이</a>
+						<a class="collapse-item" data-cat="시계">시계</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
 					</div>
-				</div></li>
-
+				</div>
+			</li>
+			
+			<!-- Nav Item - Book -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseBook"
+				aria-expanded="true" aria-controls="collapseBook">
+				<img src="https://www.lost112.go.kr/images/home/common/ico03.gif"> <span>서적</span>
+			</a>
+				<div id="collapseBook" class="collapse"
+					aria-labelledby="headingBook" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="학습서적">학습서적</a>
+						<a class="collapse-item" data-cat="컴퓨터서적">컴퓨터서적</a>
+						<a class="collapse-item" data-cat="소설">소설</a>
+						<a class="collapse-item" data-cat="만화책">만화책</a>
+						<a class="collapse-item" data-cat="기타서적">기타서적</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Document -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseDocument"
+				aria-expanded="true" aria-controls="collapseDocument">
+				<img src="https://www.lost112.go.kr/images/home/common/ico04.gif"> <span>서류</span>
+			</a>
+				<div id="collapseDocument" class="collapse"
+					aria-labelledby="headingDocument" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="서류">서류</a>
+						<a class="collapse-item" data-cat="기타물품">기타물품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Tools -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTools"
+				aria-expanded="true" aria-controls="collapseTools">
+				<img src="https://www.lost112.go.kr/images/home/common/ico05.gif"> <span>산업용품</span>
+			</a>
+				<div id="collapseTools" class="collapse"
+					aria-labelledby="headingTools" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="기타물품">기타물품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Shoppingbag -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseShoppingbag"
+				aria-expanded="true" aria-controls="collapseShoppingbag">
+				<img src="https://www.lost112.go.kr/images/home/common/ico06.gif"> <span>쇼핑백</span>
+			</a>
+				<div id="collapseShoppingbag" class="collapse"
+					aria-labelledby="headingShoppingbag" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="쇼핑백">쇼핑백</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Sport -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseSport"
+				aria-expanded="true" aria-controls="collapseSport">
+				<img src="https://www.lost112.go.kr/images/home/common/ico07.gif"> <span>서적</span>
+			</a>
+				<div id="collapseSport" class="collapse"
+					aria-labelledby="headingSport" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="기타용품">기타용품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Instrument -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseInstrument"
+				aria-expanded="true" aria-controls="collapseInstrument">
+				<img src="https://www.lost112.go.kr/images/home/common/ico08.gif"> <span>악기</span>
+			</a>
+				<div id="collapseInstrument" class="collapse"
+					aria-labelledby="headingSport" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="건반악기">건반악기</a>
+						<a class="collapse-item" data-cat="관악기">관악기</a>
+						<a class="collapse-item" data-cat="현악기">현악기</a>
+						<a class="collapse-item" data-cat="타악기">타악기</a>
+						<a class="collapse-item" data-cat="기타악기">기타악기</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Securities -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseSecurities"
+				aria-expanded="true" aria-controls="collapseSecurities">
+				<img src="https://www.lost112.go.kr/images/home/common/ico09.gif"> <span>유가증권</span>
+			</a>
+				<div id="collapseSecurities" class="collapse"
+					aria-labelledby="headingSecurities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="어음">어음</a>
+						<a class="collapse-item" data-cat="상품권">상품권</a>
+						<a class="collapse-item" data-cat="채권">채권</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Clothes -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseClothes"
+				aria-expanded="true" aria-controls="collapseClothes">
+				<img src="https://www.lost112.go.kr/images/home/common/ico10.gif"> <span>의류</span>
+			</a>
+				<div id="collapseClothes" class="collapse"
+					aria-labelledby="headingClothes" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="여성의류">여성의류</a>
+						<a class="collapse-item" data-cat="남성의류">남성의류</a>
+						<a class="collapse-item" data-cat="아기의류">아기의류</a>
+						<a class="collapse-item" data-cat="기타의류">기타의류</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Car -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCar"
+				aria-expanded="true" aria-controls="collapseCar">
+				<img src="https://www.lost112.go.kr/images/home/common/ico11.gif"> <span>자동차</span>
+			</a>
+				<div id="collapseCar" class="collapse"
+					aria-labelledby="headingCar" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="자동차열쇠">자동차열쇠</a>
+						<a class="collapse-item" data-cat="자동차번호판">자동차번호판</a>
+						<a class="collapse-item" data-cat="임시번호판">임시번호판</a>
+						<a class="collapse-item" data-cat="네비게이션">네비게이션</a>
+						<a class="collapse-item" data-cat="기타용품">기타용품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Electronic -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseElectronic"
+				aria-expanded="true" aria-controls="collapseElectronic">
+				<img src="https://www.lost112.go.kr/images/home/common/ico12.gif"> <span>전자기기</span>
+			</a>
+				<div id="collapseElectronic" class="collapse"
+					aria-labelledby="headingElectronic" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="PMP">PMP</a>
+						<a class="collapse-item" data-cat="PDA">PDA</a>
+						<a class="collapse-item" data-cat="MP3">MP3</a>
+						<a class="collapse-item" data-cat="카메라">카메라</a>
+						<a class="collapse-item" data-cat="전자수첩">전자수첩</a>
+						<a class="collapse-item" data-cat="기타용품">기타용품</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Wallet -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseWallet"
+				aria-expanded="true" aria-controls="collapseWallet">
+				<img src="https://www.lost112.go.kr/images/home/common/ico13.gif"> <span>지갑</span>
+			</a>
+				<div id="collapseWallet" class="collapse"
+					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="여성용 지갑">여성용 지갑</a>
+						<a class="collapse-item" data-cat="남성용 지갑">남성용 지갑</a>
+						<a class="collapse-item" data-cat="기타 지갑">기타 지갑</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Wallet -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseWallet"
+				aria-expanded="true" aria-controls="collapseWallet">
+				<img src="https://www.lost112.go.kr/images/home/common/ico13.gif"> <span>지갑</span>
+			</a>
+				<div id="collapseWallet" class="collapse"
+					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="여성용 지갑">여성용 지갑</a>
+						<a class="collapse-item" data-cat="남성용 지갑">남성용 지갑</a>
+						<a class="collapse-item" data-cat="기타 지갑">기타 지갑</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Certificate -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCertificate"
+				aria-expanded="true" aria-controls="collapseCertificate">
+				<img src="https://www.lost112.go.kr/images/home/common/ico14.gif"> <span>증명서</span>
+			</a>
+				<div id="collapseCertificate" class="collapse"
+					aria-labelledby="headingCertificate" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="기타서적">신분증</a>
+						<a class="collapse-item" data-cat="면허증">면허증</a>
+						<a class="collapse-item" data-cat="여권">여권</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Computer -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseComputer"
+				aria-expanded="true" aria-controls="collapseComputer">
+				<img src="https://www.lost112.go.kr/images/home/common/ico15.gif"> <span>컴퓨터</span>
+			</a>
+				<div id="collapseComputer" class="collapse"
+					aria-labelledby="headingComputer" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="삼성노트북">삼성노트북</a>
+						<a class="collapse-item" data-cat="LG노트북">LG노트북</a>
+						<a class="collapse-item" data-cat="삼보노트북">삼보노트북</a>
+						<a class="collapse-item" data-cat="HP노트북">HP노트북</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Card -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCard"
+				aria-expanded="true" aria-controls="collapseCard">
+				<img src="https://www.lost112.go.kr/images/home/common/ico16.gif"> <span>카드</span>
+			</a>
+				<div id="collapseCard" class="collapse"
+					aria-labelledby="headingCard" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="신용(체크)카드)">신용(체크)카드</a>
+						<a class="collapse-item" data-cat="일반카드">일반카드</a>
+						<a class="collapse-item" data-cat="기타카드">기타카드</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Cash -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCash"
+				aria-expanded="true" aria-controls="collapseCash">
+				<img src="https://www.lost112.go.kr/images/home/common/ico17.gif"> <span>현금</span>
+			</a>
+				<div id="collapseCash" class="collapse"
+					aria-labelledby="headingCash" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="현금">현금</a>
+						<a class="collapse-item" data-cat="수표">수표</a>
+						<a class="collapse-item" data-cat="카드">카드</a>
+						<a class="collapse-item" data-cat="외화">외화</a>
+						<a class="collapse-item" data-cat="기타">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			<!-- Nav Item - Cellphone -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseCellphone"
+				aria-expanded="true" aria-controls="collapseCellphone">
+				<img src="https://www.lost112.go.kr/images/home/common/ico18.gif"> <span>휴대폰</span>
+			</a>
+				<div id="collapseCellphone" class="collapse"
+					aria-labelledby="headingCellphone" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="삼성휴대폰">삼성휴대폰</a>
+						<a class="collapse-item" data-cat="LG휴대폰">LG휴대폰</a>
+						<a class="collapse-item" data-cat="아이폰">아이폰</a>
+						<a class="collapse-item" data-cat="모토로라휴대폰">모토로라휴대폰</a>
+						<a class="collapse-item" data-cat="스카이휴대폰">SKY휴대폰</a>
+						<a class="collapse-item" data-cat="기타통신기기">기타통신기기</a>
+					</div>
+				</div>
+			</li>
+			
+						<!-- Nav Item - Ect -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseEct"
+				aria-expanded="true" aria-controls="collapseEct">
+				<img src="https://www.lost112.go.kr/images/home/common/ico19.gif"> <span>기타물품</span>
+			</a>
+				<div id="collapseEct" class="collapse"
+					aria-labelledby="headingEct" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">분류명 선택:</h6>
+						<a class="collapse-item" data-cat="기타">기타</a>
+					</div>
+				</div>
+			</li>
+			
+			
+			
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
 			<div class="sidebar-heading">Addons</div>
 
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapsePages"
-				aria-expanded="true" aria-controls="collapsePages"> <i
-					class="fas fa-fw fa-folder"></i> <span>Pages</span>
-			</a>
-				<div id="collapsePages" class="collapse"
-					aria-labelledby="headingPages" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="login.html">Login</a> <a
-							class="collapse-item" href="register.html">Register</a> <a
-							class="collapse-item" href="forgot-password.html">Forgot
-							Password</a>
-						<div class="collapse-divider"></div>
-						<h6 class="collapse-header">Other Pages:</h6>
-						<a class="collapse-item" href="404.html">404 Page</a> <a
-							class="collapse-item" href="blank.html">Blank Page</a>
-					</div>
-				</div></li>
-
-			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i> <span>Charts</span>
-			</a></li>
-
-			<!-- Nav Item - Tables -->
-			<li class="nav-item active"><a class="nav-link"
-				href="tables.html"> <i class="fas fa-fw fa-table"></i> <span>Tables</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider d-none d-md-block">
 
 			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
@@ -167,7 +458,10 @@
 
 		</ul>
 		<!-- End of Sidebar -->
-
+		<!--  -------------------/사이드 바------------------- -->
+		
+		
+		
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 
@@ -378,23 +672,54 @@
 						공공 습득물은 습득일부터 9개월간 이곳에 보관됩니다. 자세한 내용은 <a target="_blank"
 							href="https://datatables.net">여기</a>를 클릭하세요.
 					</p>
-					<!-- 습득물 리스트 게시판 -->
-					<!-- 테이블 -->
+					<!-- -----------------습득물 리스트 게시판----------------- -->
+					<!-- -----------------검색창----------------- -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary">Found items</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<div id="searchBox" style="float: left">
-									<a id="searchDate" href="#" data-toggle="modla"
-										data-target="#dateModal" onclick="selectDate();"
-										onmouseover="this.style.opacity='0.2';"
-										onmouseleave="this.style.opacity='1';"> <i
-										class="fas fa-calendar fa-2x text-gray-300" width="10"
-										height="10"></i> 습득일자
-									</a> <span id="lostDate">ddd</span>
-								</div>
+								<table id="searchBox" style="float:left; width:1000px; height:10px; table-layout: fixed;">
+									<tr>
+									<td width=300 style="word-break:break-all">
+									<a id="selectDate" href="#dateModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
+										<i class="fas fa-calendar fa-2x text-gray-300"></i>
+										습득일자
+									</a>
+										<span id="lostDate">${pageMaker.from } ${pageMaker.to }</span>
+									</td>
+									<td width=250 style="word-break:break-all">
+									<a id="selectCat" href="#catModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
+										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										습득지역
+									</a>
+										<span id="lostPlace">${pageMaker.place}</span>
+									</td>
+									<td>
+									<div style="display:inline-block">
+										<select name="searchType" class="form-control" id="searchType">
+											<option value="all"
+												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
+											<option value="product_name"
+												<c:out value="${pageMaker.searchType eq 'product_name' ? 'selected' : '' }"/>>습득물명</option>
+											<option value="keep_place"
+												<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
+											<option value="find_date"
+												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
+											<option value="find_place"
+												<c:out value="${pageMaker.searchType eq 'find_place' ? 'selected' : '' }"/>>습득장소</option>
+										</select>
+										<input type="text" name="keyword" id="keywordInput"
+											class="form-control" value="${pageMaker.keyword}" style="float:left;">
+									</div>
+									<button id="searchBtn" class="btn btn-primary">검색</button>
+									<button class="btn btn-primary">새로고침</button>
+									</tr>
+								</table>
+								
+								<!-- <div><a>초기화</a><a><i class="fas fa-search fa-sm"></i></a></div> -->
+								<!--  -----------------테이블----------------- -->
 								<table class="table table-bordered" id="dataTable" width="100%"
 									cellspacing="0">
 									<thead>
@@ -451,55 +776,35 @@
 												</c:forEach>
 											</c:otherwise>
 										</c:choose>
+
 									</tbody>
+									<!--  페이징 -->
 									<tfoot>
 										<tr>
 											<td colspan="8" class="text-center">
 												<ul class="pagination">
 													<c:if test="${pageMaker.prev}">
-														<li><a
+														<li><a class = "btn blue"
 															href="lost${pageMaker.makeSearch(pageMaker.startPage -1)}">&laquo;</a></li>
 													</c:if>
 
 													<c:forEach begin="${pageMaker.startPage }"
 														end="${pageMaker.endPage}" var="idx">
-														<li
+														<li class = "btn blue"
 															<c:out value="${pageMaker.page ==idx? 'class=active' : ''}" />>
 															<a href="lost${pageMaker.makeSearch(idx)}">${idx}</a>
 														</li>
 													</c:forEach>
 
 													<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-														<li><a
+														<li><a class = "btn blue"
 															href="lost${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
 													</c:if>
 												</ul>
 											</td>
 										</tr>
 									</tfoot>
-									<div class="center-block">
-									<div class="col-sm-2">
-										<select name="searchType" class="form-control" id="searchType">
-											<option value="all"
-												<c:out value="${pageMaker.searchType eq 'all' ? 'selected' : '' }"/>>All</option>
-											<option value="unique_id"
-												<c:out value="${pageMaker.searchType eq 'unique_id' ? 'selected' : '' }"/>>관리번호</option>
-											<option value="product_name"
-												<c:out value="${pageMaker.searchType eq 'product_name' ? 'selected' : '' }"/>>습득물명</option>
-											<option value="keep_place"
-												<c:out value="${pageMaker.searchType eq 'keep_place' ? 'selected' : '' }"/>>보관장소</option>
-											<option value="find_date"
-												<c:out value="${pageMaker.searchType eq 'find_date' ? 'selected' : '' }"/>>습득일자(YYYY-MM-DD)</option>
-											<option value="find_place"
-												<c:out value="${pageMaker.searchType eq 'find_place' ? 'selected' : '' }"/>>습득장소</option>
-										</select>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="keyword" id="keywordInput"
-											class="form-control" value="${pageMaker.keyword}">
-									</div>
-									<button id="searchBtn" class="btn btn-primary">검색</button>
-								</div>
+
 								</table>
 							</div>
 						</div>
@@ -525,12 +830,10 @@
 								<p id="m_content"></p>
 								습득일 : <span id="m_date" style="font-size: small;"></span>
 								<hr>
-								<div id="mapid"
-									style="width: 250px; height: 250px; float: left;"></div>
-								<div>
-									<p id="m_place" style="font-weight: bold;"></p>
-									<p>주소 ex)서울시 강남구 역삼동</p>
-									<p>연락처 ex)010-3214-4212</p>
+								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
+								<div style="margin:10px;">
+								<p id="m_place" style="font-weight:bold;"></p>
+								<p id="m_addr"></p>
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -550,36 +853,88 @@
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title">분실물 상세정보</h4>
+								<h4 class="modal-title">기간을 선택해주세요.</h4>
 								<button type="button" class="close" data-dismiss="modal">×</button>
 							</div>
-							<div class="modal-body">
-								<img id="m_image" alt="이미지 준비중입니다." src="" width="400"
-									height="300"
-									style="margin-left: auto; margin-right: auto; display: block;">
-								<br>
-								<h5 id="m_title" style="font-weight: bold;"></h5>
-								<p id="m_category" style="font-size: small;"></p>
-								<p id="m_content"></p>
-								습득일 : <span id="m_date" style="font-size: small;"></span>
-								<hr>
-								<div id="mapid"
-									style="width: 250px; height: 250px; float: left;"></div>
-								<div>
-									<p id="m_place" style="font-weight: bold;"></p>
-									<p>주소 ex)서울시 강남구 역삼동</p>
-									<p>연락처 ex)010-3214-4212</p>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-							</div>
-						</div>
-
+						<div class="modal-body">
+	    			분실일 : <input type="date" id="startDate"/>
+	    			~ <input type="date" id="endDate"/>
+	    			<p style="font-size:small;">*정책에 따라 9개월 이내의 습득물만 보관합니다.</p>
+	    		</div>
+	    		<div class="modal-footer">
+	    			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+		       		<button class="btn btn-primary" type="button" id="btn_date">Submit</button>
+	    		</div>
 					</div>
 				</div>
-				<!-- -----------------------/조회 모달--------------------------- -->
+				</div>
+				<!-- -----------------------/날짜 모달--------------------------- -->
+				
+				<!-- ------------------------- 카테고리 선택 모달 ------------------------- -->
+				<!-- Modal -->
+				<div class="modal fade" id="catModal" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">분류를 선택해주세요.</h4>
+								<button type="button" class="close" data-dismiss="modal">×</button>
+							</div><form>
+						<div class="modal-body">
+							<table>
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="도봉구" name="find_place">강남구</td>
+								<td style="padding:5px;"><input type="checkbox" value="강북구" name="find_place">서초구</td>
+								<td style="padding:5px;"><input type="checkbox" value="노원구" name="find_place">강동구</td>
+								<td style="padding:5px;"><input type="checkbox" value="은평구" name="find_place">구</td>
+								</tr >
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="성북구" name="find_place">동작구</td>
+								<td style="padding:5px;"><input type="checkbox" value="중량구" name="find_place">관악구</td>
+								<td style="padding:5px;"><input type="checkbox" value="서대문구" name="find_place">구로구</td>
+								<td style="padding:5px;"><input type="checkbox" value="종로구" name="find_place">구로구</td>
+								</tr>
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="동대문구" name="find_place">동작구</td>
+								<td style="padding:5px;"><input type="checkbox" value="마포구" name="find_place">관악구</td>
+								<td style="padding:5px;"><input type="checkbox" value="중구" name="find_place">구로구</td>
+								<td style="padding:5px;"><input type="checkbox" value="성동구" name="find_place">구로구</td>
+								</tr>
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="용산구" name="find_place">동작구</td>
+								<td style="padding:5px;"><input type="checkbox" value="광진구" name="find_place">관악구</td>
+								<td style="padding:5px;"><input type="checkbox" value="강서구" name="find_place">구로구</td>
+								<td style="padding:5px;"><input type="checkbox" value="양천구" name="find_place">구로구</td>
+								</tr>
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="영등포구" name="find_place">구</td>
+								<td style="padding:5px;"><input type="checkbox" value="구로구" name="find_place">관악구</td>
+								<td style="padding:5px;"><input type="checkbox" value="금천구" name="find_place">구로구</td>
+								<td style="padding:5px;"><input type="checkbox" value="관악구" name="find_place">구로구</td>
+								</tr>
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="송파구" name="find_place">동작구</td>
+								<td style="padding:5px;"><input type="checkbox" value="강동구" name="find_place">관악구</td>
+								<td style="padding:5px;"><input type="checkbox" value="강남구" name="find_place">관악구</td>
+								<td style="padding:5px;"><input type="checkbox" value="서초구" name="find_place">관악구</td>
+								</tr>
+								<tr style="padding:5px;">
+								<td style="padding:5px;"><input type="checkbox" value="송파구" name="find_place">동작구</td>
+								</tr>
+						</table>
+	    			<br><br>
+	    			<p style="font-size:small;">*정책에 따라 9개월 이내의 습득물만 보관합니다.</p>
+	    		</div>
+	    		<div class="modal-footer">
+	    			<!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
+		       		<button class="btn btn-primary" type="button" id="btn_cat">Submit</button>
+	    		</div>
+	    		</form>
+			</div>
+		</div>
+				<!-- -----------------------/카테고리 모달--------------------------- -->
+				
+				
 				<!-- /.container-fluid -->
 
 			</div>
@@ -646,141 +1001,154 @@
 
 	<!-- 분실물 상세보기 -->
 	<script>
-		$(function() {
-			$(".list").click(function() {
-				var m_title = $(this).data('title');
-				var m_image = $(this).data('image');
-				var m_category = $(this).data('category');
-				var m_date = $(this).data('date');
-				var m_content = $(this).data('content');
-				var m_place = $(this).data('place');
-				var m_addr = $(this).data('addr');
-				var modal = $(this);
-				$("#m_title").text(m_title);
-				$("#m_image").attr("src", m_image);
-				$('#m_category').text(m_category);
-				$('#m_date').text(m_date);
-				$('#m_content').text(m_content);
-				$('#m_place').text(m_place);
+    $(function () {
+        $(".list").click(function () {
+            var m_title = $(this).data('title');
+            var m_image = $(this).data('image');
+			var m_category = $(this).data('category');
+			var m_date = $(this).data('date');
+			var m_content = $(this).data('content');
+			var m_place = $(this).data('place');
+			var m_addr=$(this).data('addr');
+			
+			var modal = $(this);
+            $("#m_title").text(m_title);
+            $("#m_image").attr("src", m_image);
+            $('#m_category').text(m_category);
+            $('#m_date').text(m_date);
+            $('#m_content').text(m_content);
+            $('#m_place').text(m_place);
+            $('#m_addr').text(m_addr);
+            
+            //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
+            $("div#myModal").on("shown.bs.modal", function() {
+    			myMap(m_addr,m_place);
+    		});
+    		$("div#myModal").on("hidden.bs.modal", function() {
+    		$("div#mapid").empty();
+    		});
+            
+        })
+    });
+</script>
 
-				//map 호출
-				$("div#myModal").on("shown.bs.modal", function() {
-					myMap(m_addr);
-				});
-				$("div#myModal").on("hidden.bs.modal", function() {
-					$("div#mapid").empty();
-				});
+<!-- 카테고리 검색 -->
+<script>
+$(function () {
+	  $(".collapse-item").click(function () {
+		  var cat=$(this).data('cat');
+		  location.href = "lost${pageMaker.makeQuery(1)}"+
+		  "&cat="+cat;
+	  })
+});
+</script>
 
-			})
+<!-- 분실물 상세보기 내 지도 -->
+<script>
+
+	function myMap(addr,place) {
+		var mymap; 
+		var lat;
+		var lng;
+		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key={}&address="+encodeURIComponent(addr), function(data) {
+			 if (data.results.length > 0) {
+			lat = data.results[0].geometry.location.lat;
+			lng = data.results[0].geometry.location.lng;
+			if(mymap)
+				mymap.remove();
+			mymap = L.map('mapid').setView([lat, lng], 16)
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+				maxZoom: 18,
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+				'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+				id: 'mapbox.streets'
+			}).addTo(mymap);
+		
+			var myIcon = L.icon({
+		   		iconUrl: "https://1.bp.blogspot.com/-Ust3Y-tSEuA/XZvxuJP7MQI/AAAAAAAAAPc/rWzTjUzDxdsIRjLv3oIxnQGwL-45xvQfQCLcBGAsYHQ/s320/police_guard-512.png",
+		    	iconSize: [50, 50]
+			});
+			var content = "<b>"+place+"</b><hr>"+addr
+			L.marker([lat, lng],{icon: myIcon}).addTo(mymap).bindPopup(content);
+			}
 		});
-	</script>
-	<!-- 검색 스크립트 -->
-	<script>
-		$(document).ready(
-				function() {
-					$("#searchBtn").on(
-							"click",
-							function(event) {
+	}
+</script>
 
-								var url = "lost${pageMaker.makeQuery(1)}";
-								url += "&searchType=" + searchType()
-										+ "&keyword=" + keywordInput();
-								self.location = url;
-							});
-				});
+<!-- 날짜 검색 -->
+<script>
+$(document).on("click", "#selectDate", function(e) {
+	$("#dateModal").modal('show');
+	$("#btn_date").on("click", function(e) {
+		var from = $("#startDate").val();
+		var to = $("#endDate").val();
+		$('#lostDate').text(from+"~"+to);
+		$("#dateModal").modal('hide');
+	});
+});
+</script>
+
+<!-- 지역 검색 -->
+<script>
+$(document).on("click", "#selectCat", function(e) {
+	//모달 띄움
+	$("#catModal").modal('show');
+	//제출 버튼 눌렀을때
+	 $("#btn_cat").on("click", function(e) {
+		 var favorite = [];
+		    $.each($("input[name='find_place']:checked"), function() {
+		      favorite.push($(this).val());
+		    });
+		      $("#lostPlace").html(favorite.join(","));
+		      $("#catModal").modal('hide');
+	}); 
+});
+</script>
+
+<!-- 검색 스크립트 -->
+	<script>
+	$(document).ready(
+			function() {
+				$("#searchBtn").on(
+						"click",
+						function(event) {
+							var url = "lost${pageMaker.makeQuery(1)}";
+							url += "&searchType=" + searchType()
+									+ "&keyword=" + keywordInput()
+									+ "&place=" + placeInput()
+									+ dateInput()
+							        + "&cat=" + catInput();
+							self.location = url;
+						});
+			});
 		function searchType() {
 			return $("#searchType").val();
 		}
 		function keywordInput() {
 			return $("#keywordInput").val();
 		}
-	</script>
-	<!-- map  -->
-	<script>
-		/* 	$(document).ready(function() {
-		 //모달창 이벤트 등록 -> myMap() 함수 호출, 동적 생성된 엘리먼트 삭제 연계
-		 $("div#myModal").on("shown.bs.modal", function() {
-		 myMap();
-		 });
-		 $("div#myModal").on("hidden.bs.modal", function() {
-		 $("div#mapid").empty();
-		 });
-		 }); */
-	</script>
-
-	<script>
-		function myMap(addr) {
-			var mymap;
-			var lat;
-			var lng;
-			if (addr) {
-				$
-						.getJSON(
-								"https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD-nx_y7aBlJgfgVZRaIwMbnShQJsxpryY&address="
-										+ encodeURIComponent(addr),
-								function(data) {
-									lat = data.results[0].geometry.location.lat;
-									lng = data.results[0].geometry.location.lng;
-									if (mymap)
-										mymap.remove();
-									mymap = L.map('mapid').setView(
-											[ lat, lng ], 16)
-									L
-											.tileLayer(
-													'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-													{
-														maxZoom : 18,
-														attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
-																+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
-																+ 'Imagery <a href="https://www.mapbox.com/">Mapbox</a>',
-														id : 'mapbox.streets'
-													}).addTo(mymap);
-
-									L.marker([ lat, lng ]).addTo(mymap)
-											.bindPopup("<b>여기...").openPopup();
-								});
+		function catInput(cat){
+			var pname= window.location.href;
+			var appctx = pname.substring(pname.lastIndexOf("&cat"),pname.lastIndexOf("&cat")+5);
+			if(appctx=="&cat="){
+				return pname.substring(pname.lastIndexOf("=")+1);
+			}
+			else{
+				return "all";
 			}
 		}
-	</script>
-	<!-- 날짜 검색 -->
-	<script>
-		function selectDate() {
-			/* document.getElementById('m_title').value=m_title; 
-			document.getElementById('m_content').value=m_content.replace(/(<br\/>|(<br><\/button>))/g, '\r\n');
-			$('#'+m_star).parent().children("a").removeClass("on");
-			$('#'+m_star).addClass("on").prevAll("a").addClass("on");
-
-			var m_star = m_star;
-			$('a[target]').click(function(){
-				m_star = $(this).attr('id');
-			});
-			
-			//서평 추가 모달에서 확인버튼 눌렀을 때
-				$('button#m_submit').click(function(){ 
-				    var m_title = $('input#m_title').val();
-				    var m_content = $('textarea#m_content').val();
-				  	m_content = m_content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-				    $.ajax({
-				        url: "readBook",
-				        type: 'POST', 
-				        data: {
-				        	bookNum : id,
-				        	m_title : m_title,
-				        	m_star : m_star,
-				        	m_content : m_content
-				        },
-				        dataType : "text",
-				        success: function(data){           
-				 	 		$("#myModal2 .close").click(); 			 	 		
-				        },
-				        error : function(request, status, error){
-				            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:");
-				        }
-				    }); 
-				});  */
+		function placeInput() {
+			if($("#lostPlace").text()== ""){
+				return "";
+			}
+			else {return $("#lostPlace").text();}
+		}
+		function dateInput() {
+			return "&from="+$("#startDate").val()+"&to="+$("#endDate").val();
 		}
 	</script>
-
+	
 </body>
 
 </html>
