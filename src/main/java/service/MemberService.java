@@ -43,8 +43,16 @@ public class MemberService {
 		}
 	
 	// 회원 탈퇴
-	public boolean delete(UserVO vo) {
-		return dao.delete(vo);
+	public boolean delete(String email) {
+		return dao.delete(email);
 	}
+	
+	//탈퇴 비밀번호 체크
+		public boolean checkpw(UserVO vo) {
+			System.out.println("111"+dao.checkpw(vo));
+			if (dao.checkpw(vo) != null)
+				return true;
+			return false;
+		}
 	
 }

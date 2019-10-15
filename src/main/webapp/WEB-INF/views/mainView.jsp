@@ -34,10 +34,8 @@
 			<li class="nav-item"><a class="nav-link" href="/mine/login">로그인</a></li>
 		</c:when>
 		<c:otherwise> 
-				<form method="post" action="/mine/logout">
 			<li class="nav-item"><a class="nav-link" href="/mine/logout">로그아웃</a></li>
 			<li class="nav-item"><a class="nav-link" href="/mine/mypage">마이페이지</a></li>
-				</form>
 		</c:otherwise>
 	</c:choose>
             </ul>

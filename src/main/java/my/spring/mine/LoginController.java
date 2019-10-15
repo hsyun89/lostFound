@@ -30,7 +30,6 @@ public class LoginController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
 	}
-
 	// 회원가입 페이지 이동
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String get(Model model, HttpSession session, UserVO vo) {
@@ -99,7 +98,7 @@ public class LoginController {
 		UserVO vo1 = service.login(vo);
 		//System.out.println("con : 1r  " + vo1.getAdmin());
 		if (vo1 != null) {
-			session.setAttribute("status", vo);
+			session.setAttribute("status", vo1);
 			session.setAttribute("admin", vo1.getAdmin());
 			//System.out.println(vo.getEmail()); // 수정하기
 			System.out.println("login완료");
@@ -138,14 +137,35 @@ public class LoginController {
 		}
 		
 		//회원탈퇴
-		@RequestMapping(value="/userdelete", method=RequestMethod.GET)
-		public String userDelete() {
-			return "userDelete";
-		}
-		
 		@RequestMapping(value="/userdelete", method=RequestMethod.POST)
-		public String userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, SessionStatus session) throws Exception {
+		public ModelAndView userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, SessionStatus session){
 			ModelAndView mav = new ModelAndView();
+			String email = user.getEmail();
+			System.out.println("이메일"+email);
+			boolean result = service.delete(email);
+			if(result) {
+				user = vo;
+			}
+			System.out.println("delete con :" + result + user.getEmail());
+			session.setComplete();
+			mav.addObject("status", user);
+			mav.setViewName("redirect:/main");
+			return mav;
+		}
+		@RequestMapping(value = "/checkpw")
+		@ResponseBody
+		public int checkpw(String password, String email) {
+		System.out.println("체크비밀번호 들어옴");
+		UserVO vo = new UserVO();
+		vo.setPassword(password);
+		vo.setEmail(email);
+				if (service.checkpw(vo)) {
+					return 1;
+				} else
+					return 0;
+			}
+			
+/*			ModelAndView mav = new ModelAndView();
 			String email = user.getEmail();
 			vo.setEmail(email);
 			boolean result = service.delete(vo);
@@ -156,8 +176,8 @@ public class LoginController {
 			session.setComplete();
 			mav.addObject("status", user);
 			mav.setViewName("mainView");
-			return "redirect:/main";
-		}
+			return "redirect:/main";*/
+		
 
 	// 로그아웃
 	@RequestMapping(value = "/logout")

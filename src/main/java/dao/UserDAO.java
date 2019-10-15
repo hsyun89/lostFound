@@ -46,13 +46,20 @@ public class UserDAO {
 		return result;
 	}
 	//회원 탈퇴
-	public boolean delete(UserVO vo) {
+	public boolean delete(String email) {
 		boolean result = true;
 		String statement = "resource.UserMapper.delete";
-		if(session.delete(statement, vo)!=1) {
+		if(session.delete(statement, email)!=1) {
 			result = false;
 		}
 		return result;
+	}
+	
+	//탈퇴 비밀번호 체크
+	public String checkpw(UserVO vo) {
+		String statement = "resource.UserMapper.checkpw";
+		System.out.println("dao : " + vo.getPassword()+"+"+vo.getEmail());
+		return session.selectOne(statement, vo);
 	}
 
 }

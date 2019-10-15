@@ -10,17 +10,17 @@
 <title>내꺼야</title>
 <style>
 #btn1{
-    height:40px; 
+    height:38px; 
     width:100px; 
     margin: -20px -50px; 
     position:relative;
-    top:10%; 
+    top:50%; 
     left:45%;
 }
 #btn2{
-    height:40px; 
+    height:38px; 
     width:100px; 
-    margin: -20px -50px; 
+    margin: -400px -50px; 
     position:relative;
     top:10%; 
     left:55%;
@@ -61,9 +61,7 @@
 								<c:if test="${admin==1}">
 								<li class="nav-item"><a class="nav-link" href="/mine/insertAuction">경매추가</a></li>
 								</c:if>
-									<form method="post" action="/mine/logout">
 										<li class="nav-item"><a class="nav-link" href="/mine/logout">로그아웃</a></li>
-									</form>
 							</c:otherwise>
 						</c:choose>
 					</ul>
@@ -77,6 +75,7 @@
 		</script>
 	</c:if>
 	</header>
+	<div style="margin-top: 20px">
 <button type="button" id="btn1" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                   수정하기
                 </button>   
@@ -111,12 +110,85 @@
 
 <p id="pwcheck" style="color: red"></p>
 
-<button type="submit">수정하기</button>
+<button type="submit" class="btn btn-success">수정하기</button>
 
 <!-- 비밀번호 중복체크 -->
 <script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>
+</form>
+                      </div>                  
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+<!-- <button type="submit" class="btn btn-danger" id="btn2" data-dismiss="modal" onclick="location.href='/mine/userdelete'">탈퇴하기</button> -->
+<button type="button" class="btn btn-danger" id="btn2" data-toggle="modal" data-target="#myModal2">
+                  탈퇴하기
+                </button>
+                </div>
+              
+                <!-- The Modal -->
+                <div class="modal" id="myModal2">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">탈퇴하실려면 비밀번호를 입력해주세요</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                      <input value="${ status.email }" name="email" id="deleteemail"
+							class="form-control" placeholder="이메일" type="hidden" readonly>
+                       <input type="password" id="checkpw" name="checkpw" class="form-control" 
+			placeholder="비밀번호" required autofocus>
+			<div class="check" id="checkpw1"></div>
+			<br>
+			<form action="/mine/userdelete" method="POST">
+			<button type="submit" class="btn btn-danger" id="withdraw" onclick="location.href='/mine/userdelete'">탈퇴하기</button>
+             </form>
+                      </div>
+                      
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <script>
+                 $(document).ready(function(){
+		$("#checkpw").blur(function() {
+					var password = $("#checkpw").val();
+					var email = $("#deleteemail").val();
+					$.ajax({
+						url : '/mine/checkpw?password=' + password+'&email='+email,
+						type : 'get',
+						success : function(data) {
+							 console.log(data);
+							if (data == 0) {
+								$('#checkpw1').text("비밀번호가 다릅니다.").css(
+										"color", "red");
+								$("#submit").attr("disabled", true);
+							} else {
+								$('#checkpw1').text("비밀번호가 일치").css(
+										"color", "blue");
+								$("#submit").attr("disabled", false);
+							}
+						},
+						error : function() {
+							console.log("실패");
+						}
+					})
+				});
+	 })
 $(document).ready(function() {
 	$('.login-info-box').fadeOut();
 	$('.login-show').addClass('show-log-panel');
@@ -133,19 +205,24 @@ $(document).ready(function() {
 		alert("수정완료")
 	}
 });
-</script>
-</form>
-                      </div>                  
-                      <!-- Modal footer -->
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div>
-                <form action="/mine/userdelete" method="post">
-<button type="submit" class="btn btn-danger" id="btn2" data-dismiss="modal" >탈퇴하기</button>
-</form>
+	 /* $("#withdraw").click(function(){
+		 var email = $("#deleteemail").val();
+		 alert(email);
+		 $.ajax({
+			 url : '/mine/userdelete?email=' + email,
+		 	 type : 'post',
+		 	 success : function(data) {
+		 		if(data == "true") {
+		 			location.href = "/mine/main";
+		 		} else {
+		 			console.log("실패~~~")
+		 		}		 		
+		 	 },
+		 	error : function() {
+				console.log("실패");
+		 	}
+		 })
+	 }); */
+	 </script>
 </body>
 </html>

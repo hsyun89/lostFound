@@ -36,12 +36,12 @@
 	</update>
 	
 	<!-- 회원 탈퇴 -->
-	<delete id="delete">
+	<delete id="delete" parameterType="vo.UserVO">
 		DELETE FROM USER WHERE EMAIL = #{email}
 	</delete>
 	
 	<!--회원 탈퇴(비밀번호 체크)-->
-	<select id="checkpw" resultType="int">
+	<select id="checkpw" parameterType="vo.UserVO" resultType="String">
 	SELECT * FROM USER WHERE EMAIL = #{email} AND PASSWORD = #{password}
 	</select>
 	
