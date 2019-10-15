@@ -697,12 +697,12 @@
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
 										습득일자
 									</a>
-										<span id="lostDate"></span>
+										<span id="lostDate">${pageMaker.from } ${pageMaker.to }</span>
 									</td>
 									<td width=250 style="word-break:break-all">
 									<a id="selectCat" href="#catModal" data-toggle="modal" onmouseover="this.style.opacity='0.2';" onmouseleave="this.style.opacity='1';">
 										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-										지역
+										습득지역
 									</a>
 										<span id="lostPlace">${pageMaker.place}</span>
 									</td>
@@ -976,8 +976,6 @@
 			var m_content = $(this).data('content');
 			var m_place = $(this).data('place');
 			var m_addr=$(this).data('addr');
-			//var m_lat=$(this).data('lat');
-			//var m_lon=$(this).data('lon');
 			
 			var modal = $(this);
             $("#m_title").text(m_title);
@@ -1034,7 +1032,6 @@ $(function () {
 			}).addTo(mymap);
 		
 			var myIcon = L.icon({
-				//주석 해제 시 분실물 이미지
 		   		iconUrl: "https://1.bp.blogspot.com/-Ust3Y-tSEuA/XZvxuJP7MQI/AAAAAAAAAPc/rWzTjUzDxdsIRjLv3oIxnQGwL-45xvQfQCLcBGAsYHQ/s320/police_guard-512.png",
 		    	iconSize: [50, 50]
 			});
@@ -1050,12 +1047,10 @@ $(function () {
 $(document).on("click", "#selectDate", function(e) {
 	$("#dateModal").modal('show');
 	$("#btn_date").on("click", function(e) {
-		//alert($(this).parent().siblings('span').text());
-		var startDate = $("#startDate").val();
-		var endDate = $("#endDate").val();
-		$('#lostDate').text(startDate+"~"+endDate);
+		var from = $("#startDate").val();
+		var to = $("#endDate").val();
+		$('#lostDate').text(from+"~"+to);
 		$("#dateModal").modal('hide');
-		//$("#startDate").val("");
 	});
 });
 </script>
@@ -1071,10 +1066,8 @@ $(document).on("click", "#selectCat", function(e) {
 		    $.each($("input[name='find_place']:checked"), function() {
 		      favorite.push($(this).val());
 		    });
-		    //$('#catModal').modal('show').on('shown.bs.modal', function() {
 		      $("#lostPlace").html(favorite.join(","));
 		      $("#catModal").modal('hide');
-		    //});
 	}); 
 });
 </script>
@@ -1090,6 +1083,7 @@ $(document).on("click", "#selectCat", function(e) {
 							url += "&searchType=" + searchType()
 									+ "&keyword=" + keywordInput()
 									+ "&place=" + placeInput()
+									+ dateInput()
 							        + "&cat=" + catInput();
 							self.location = url;
 						});
@@ -1103,9 +1097,7 @@ $(document).on("click", "#selectCat", function(e) {
 		function catInput(cat){
 			var pname= window.location.href;
 			var appctx = pname.substring(pname.lastIndexOf("&cat"),pname.lastIndexOf("&cat")+5);
-			//alert(appctx);
 			if(appctx=="&cat="){
-				alert(pname.substring(pname.lastIndexOf("=")+1));
 				return pname.substring(pname.lastIndexOf("=")+1);
 			}
 			else{
@@ -1114,9 +1106,12 @@ $(document).on("click", "#selectCat", function(e) {
 		}
 		function placeInput() {
 			if($("#lostPlace").text()== ""){
-				return "all";
+				return "";
 			}
 			else {return $("#lostPlace").text();}
+		}
+		function dateInput() {
+			return "&from="+$("#startDate").val()+"&to="+$("#endDate").val();
 		}
 	</script>
 	
