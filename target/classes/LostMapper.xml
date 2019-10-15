@@ -3,10 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
+	<sql id="categorySearch">
+		<if test="category !=null">
+			<if test="category != 'all'.toString()">
+				and category like CONCAT('%', #{category},'%')
+			</if>
+		</if>
+	</sql>
+	<sql id="placeSearch">
+		<if test="place !=null">
+			<if test="place != 'all'.toString()" >
+				<if test="place != ''.toString()" >
+				and find_place = #{place}
+				</if>
+			</if>
+		</if>
+	</sql>
 	<sql id="search">
-		<if test="searchType !=null">
-			<if test="searchType == 'unique_id'.toString()">
-				and unique_id like CONCAT('%', #{keyword}, '%')
+ 		<if test="searchType !=null">
+			<if test="searchType == 'all'.toString()">
+				and (
+				unique_id like CONCAT('%', #{keyword}, '%')
+				OR
+				product_name like CONCAT('%', #{keyword}, '%')
+				OR
+				keep_place like
+				CONCAT('%', #{keyword}, '%')
+				OR
+				find_date like CONCAT('%', #{keyword},'%')
+				OR
+				find_place like CONCAT('%', #{keyword}, '%')
+				)
 			</if>
 
 			<if test="searchType == 'product_name'.toString()">
@@ -24,25 +51,7 @@
 			<if test="searchType == 'find_place'.toString()">
 				and find_place like CONCAT('%', #{keyword}, '%')
 			</if>
-			<if test="searchType == 'all'.toString()">
-				and (
-				unique_id like
-				CONCAT('%', #{keyword}, '%')
-				OR
-				product_name like CONCAT('%',
-				#{keyword}, '%')
-				OR
-				keep_place like
-				CONCAT('%', #{keyword}, '%')
-				OR
-				find_date like CONCAT('%',
-				#{keyword},'%')
-				OR
-				find_place like
-				CONCAT('%', #{keyword}, '%')
-				)
-			</if>
-		</if>
+		</if>	
 	</sql>
 	<select id="listMainSearch" resultType="vo.LostVO">
 		select addr, unique_id,
@@ -59,10 +68,11 @@
 		select addr, unique_id, content, keep_place, image_address,
 		product_name,
 		find_date, category, find_place from lost where unique_id
-		is
-		not null
+		is not null
+		<include refid="categorySearch"></include>
 		<include refid="search"></include>
-		order by find_date desc limit #{pageStart}, #{perPageNum}
+		<include refid="placeSearch"></include>
+		order by Find_date desc limit #{pageStart},#{perPageNum}
 	</select>
 
 	<select id="listPageCount" resultType="int">
@@ -71,7 +81,7 @@
 	</select>
 
 	<insert id="insertLost" parameterType="vo.LostVO">
-		replace into lost2 (addr,
+		replace into lost (addr,
 		unique_id, content, keep_place, image_address, product_name,
 		find_date, category, find_place) values (#{addr}, #{unique_id},
 		#{content}, #{keep_place}, #{image_address}, #{product_name},

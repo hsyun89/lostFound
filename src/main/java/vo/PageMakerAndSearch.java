@@ -19,6 +19,10 @@ public class PageMakerAndSearch {
     //검색처리 추가
     private String searchType;
     private String keyword;
+    private String category;
+    private String place;
+    private String from;
+    private String to;
     
 	public PageMakerAndSearch() {
 		this.page=1;		//초기 페이지 = 1
@@ -63,6 +67,8 @@ public class PageMakerAndSearch {
 		this.totalCount = totalCount;
 		calcData();
 	}
+	
+	
 	public void calcData() {
 		//현재 페이지 번호 / 하단 페이지번호 수
         endPage=(int)(Math.ceil(page / (double)displayPageNum)*displayPageNum);
@@ -71,6 +77,8 @@ public class PageMakerAndSearch {
         if(endPage >tempEndPage){
             endPage=tempEndPage;
         }
+        System.out.println("tmp"+tempEndPage);
+        System.out.println(endPage);
         prev = startPage ==1 ? false :true;
         next = endPage *perPageNum >=totalCount ? false :true;
 	}
@@ -108,7 +116,11 @@ public class PageMakerAndSearch {
 		return searchType;
 	}
 	public void setSearchType(String searchType) {
-		this.searchType = searchType;
+		if(searchType==null) {
+			this.searchType="all";
+			return;
+		}
+		this.searchType=searchType;
 	}
 	public String getKeyword() {
 		return keyword;
@@ -116,6 +128,32 @@ public class PageMakerAndSearch {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCat(String cat) {
+		this.category = cat;
+	}
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	
+	public String getFrom() {
+		return from;
+	}
+	public void setFrom(String from) {
+		this.from = from;
+	}
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
+	}
+	
 	//스프링 MVC 의 UriComponectsBuilder를 이용하는 방식 - ?가 자동으로 출력
 	public String makeQuery(int page){
 	    UriComponents uriComponents=
@@ -132,6 +170,10 @@ public class PageMakerAndSearch {
                 .queryParam("perPageNum", perPageNum)
                 .queryParam("searchType", searchType)
                 .queryParam("keyword", keyword)
+                .queryParam("place", place)
+                .queryParam("from", from)
+                .queryParam("to", to)
+                .queryParam("cat", category)
                 .build();
         return uriComponents.toUriString();
     }
