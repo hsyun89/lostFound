@@ -732,51 +732,28 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:choose>
-											<c:when test="${not empty listMain }">
-												<c:forEach items="${listMain}" var="vo">
-													<tr>
-														<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
-															width="100" height="100"
-															style="margin-left: auto; margin-right: auto; display: block;"></td>
-														<td><a href="#" data-target="#myModal"
-															data-toggle="modal" class="listMain"
-															data-title="${vo.product_name }"
-															data-image="${vo.image_address }"
-															data-category="${vo.category }"
-															data-date="${vo.find_date }"
-															data-content="${vo.content }"
-															data-place="${vo.keep_place }" data-Addr="${vo.addr }">
-																${vo.product_name } </a></td>
-														<td>${vo.keep_place }</td>
-														<td>${vo.find_date }</td>
-														<td>${vo.find_place }</td>
-													</tr>
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="vo">
-													<tr>
-														<td><img alt="이미지 준비중입니다." src="${vo.image_address }"
-															width="100" height="100"
-															style="margin-left: auto; margin-right: auto; display: block;"></td>
-														<td><a href="#" data-target="#myModal"
-															data-toggle="modal" class="list"
-															data-title="${vo.product_name }"
-															data-image="${vo.image_address }"
-															data-category="${vo.category }"
-															data-date="${vo.find_date }"
-															data-content="${vo.content }"
-															data-place="${vo.keep_place }" data-Addr="${vo.addr}">
-																${vo.product_name } </a></td>
-														<td>${vo.keep_place }</td>
-														<td>${vo.find_date }</td>
-														<td>${vo.find_place }</td>
-													</tr>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-
+											<c:forEach var="vo" items="${list}">
+												<tr>
+													<td><img alt="이미지 준비중입니다." src="${vo.image_address}"
+														width="100" height="100"
+														style="margin-left: auto; margin-right: auto; display: block;"></td>
+													<td><a href="#" data-target="#myModal"
+														data-toggle="modal" class="list"
+														data-title="${vo.product_name }"
+														data-image="${vo.image_address }"
+														data-category="${vo.category }"
+														data-date="${vo.find_date }" data-content="${vo.content }"
+														data-place="${vo.keep_place }"
+														data-Addr="${vo.addr }"
+														<%-- data-lon="${vo.lon }"
+														data-lat="${vo.lat }" --%>
+														>
+														${vo.product_name }
+														</a></td>
+													<td>${vo.keep_place}</td>
+													<td>${vo.find_date}</td>
+												</tr>
+											</c:forEach>
 									</tbody>
 									<!--  페이징 -->
 									<tfoot>
@@ -883,10 +860,10 @@
 						<div class="modal-body">
 							<table>
 								<tr style="padding:5px;">
-								<td style="padding:5px;"><input type="checkbox" value="도봉구" name="find_place">강남구</td>
-								<td style="padding:5px;"><input type="checkbox" value="강북구" name="find_place">서초구</td>
-								<td style="padding:5px;"><input type="checkbox" value="노원구" name="find_place">강동구</td>
-								<td style="padding:5px;"><input type="checkbox" value="은평구" name="find_place">구</td>
+								<td style="padding:5px;"><input type="checkbox" value="도봉구" name="find_place">도봉구</td>
+								<td style="padding:5px;"><input type="checkbox" value="강북구" name="find_place">강북구</td>
+								<td style="padding:5px;"><input type="checkbox" value="노원구" name="find_place">노원구</td>
+								<td style="padding:5px;"><input type="checkbox" value="은평구" name="find_place">은평구</td>
 								</tr >
 								<tr style="padding:5px;">
 								<td style="padding:5px;"><input type="checkbox" value="성북구" name="find_place">동작구</td>
@@ -1126,6 +1103,7 @@ $(document).on("click", "#selectCat", function(e) {
 			return $("#searchType").val();
 		}
 		function keywordInput() {
+			alert(${param.lostName});
 			return $("#keywordInput").val();
 		}
 		function catInput(cat){

@@ -116,7 +116,11 @@ public class PageMakerAndSearch {
 		return searchType;
 	}
 	public void setSearchType(String searchType) {
-		this.searchType = searchType;
+		if(searchType==null) {
+			this.searchType="all";
+			return;
+		}
+		this.searchType=searchType;
 	}
 	public String getKeyword() {
 		return keyword;
