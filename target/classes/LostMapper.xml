@@ -5,21 +5,6 @@
 <mapper namespace="LostMapper">
 	<sql id="search">
 		<if test="searchType !=null">
-			<if test="searchType == 'all'.toString()">
-				and (
-				unique_id like CONCAT('%', #{keyword}, '%')
-				OR
-				product_name like CONCAT('%', #{keyword}, '%')
-				OR
-				keep_place like
-				CONCAT('%', #{keyword}, '%')
-				OR
-				find_date like CONCAT('%',
-				#{keyword},'%')
-				OR
-				find_place like CONCAT('%', #{keyword}, '%')
-				)
-			</if>
 			<if test="searchType == 'unique_id'.toString()">
 				and unique_id like CONCAT('%', #{keyword}, '%')
 			</if>
@@ -39,7 +24,24 @@
 			<if test="searchType == 'find_place'.toString()">
 				and find_place like CONCAT('%', #{keyword}, '%')
 			</if>
-
+			<if test="searchType == 'all'.toString()">
+				and (
+				unique_id like
+				CONCAT('%', #{keyword}, '%')
+				OR
+				product_name like CONCAT('%',
+				#{keyword}, '%')
+				OR
+				keep_place like
+				CONCAT('%', #{keyword}, '%')
+				OR
+				find_date like CONCAT('%',
+				#{keyword},'%')
+				OR
+				find_place like
+				CONCAT('%', #{keyword}, '%')
+				)
+			</if>
 		</if>
 	</sql>
 	<select id="listMainSearch" resultType="vo.LostVO">

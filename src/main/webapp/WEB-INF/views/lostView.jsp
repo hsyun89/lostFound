@@ -67,7 +67,7 @@
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
+						<c:when test="${not empty list }">
 							<c:forEach items="${list}" var="vo">
 								<tr>
 									<th>${vo.unique_id}</th>
@@ -77,7 +77,18 @@
 									<th>${vo.find_place}</th>
 								</tr>
 							</c:forEach>
-						</c:otherwise>
+						</c:when>
+						<%-- <c:otherwise>
+							<c:forEach items="${list}" var="vo">
+								<tr>
+									<th>${vo.unique_id}</th>
+									<th>${vo.product_name}</th>
+									<th>${vo.keep_place}</th>
+									<th>${vo.find_date}</th>
+									<th>${vo.find_place}</th>
+								</tr>
+							</c:forEach>
+						</c:otherwise> --%>
 					</c:choose>
 					<tfoot>
 						<tr>
