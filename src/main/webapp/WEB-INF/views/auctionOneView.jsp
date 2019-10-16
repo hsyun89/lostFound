@@ -57,9 +57,13 @@
 		 }
 		 } */
 
+/*  		window.onload = function() {
+		$('textarea').text('<c:out value="${biddingList}"/>' + '\n'); //모든 입찰내역 불러오기
+		} */
+		var maxPrice = parseInt($('#bidValue').text());
 		////////////////////////////////소켓 오픈/////////////////////////////////////
 		ws.onopen = function() {
-			$('#chatStatus').text('입찰 시작');
+			$('#chatStatus').text('웹소켓 연결중');
 			$('input[name=chatInput]').on('keyup', function(evt) { //키다운 치는순간 키업은 떼는순간
 				if (evt.keyCode == 13) { //엔터
 					var bidPrice = $('input[name=chatInput]').val(); //입력한 입찰가
@@ -71,15 +75,29 @@
 					}
 				}
 			});
+			$('button[id=bidButton]').on('click', function(evt) { //입찰하기 버튼 누르기
+					var bidPrice = $('input[name=chatInput]').val(); //입력한 입찰가
+					if (bidPrice > maxPrice) {
+						ws.send(bidPrice); //입찰가격 보내기
+						$('input[name=chatInput]').val(''); //입력창 초기화
+					} else {
+						alert('상위 입찰 하세요');
+					}
+			});
 		};
-		var maxPrice = 0;
 		var eventDataByJson = null; //제이슨 객체
 		////////////////////////////////받기/////////////////////////////////////
 		ws.onmessage = function(event) {
+			if(event.data == 'endBid'){
+				alert("마감된 경매입니다!!");
+			}
 			eventDataByJson = JSON.parse(event.data); //제이슨 객체 반환
+			clearInterval(timer);
+			CountDownTimer(eventDataByJson.end_date, 'HourCountdown'); //웹소켓 메시지 도착시 타이머 갱신
 			$('#bidValue').text(eventDataByJson.price + '\n'); //최고입찰가 화면 갱신
 			$('textarea').eq(0).prepend(
-					eventDataByJson.name + '  입찰시간 ' + eventDataByJson.date
+					//eventDataByJson.name + 
+					'입찰시간 ' + eventDataByJson.date
 							+ '  입찰가 ' + eventDataByJson.price + '\n');
 			maxPrice = parseInt($('#bidValue').text()); //최고입찰가 변수 갱신
 			$('input[name=chatInput]').attr('placeholder', maxPrice + '+'); //입찰시 인풋태그 밸류값 갱신
@@ -91,9 +109,8 @@
 			$('#chatStatus').text('Info: connection closed.');
 		};
 	});
-</script>
-<!-- 타이머 -->
-<script type="text/javascript">
+
+/* 타이머 */
 	var end_date = '<c:out value="${list.end_date}"/>';
 	CountDownTimer(end_date, 'HourCountdown');
 	function CountDownTimer(dt, id) {
@@ -126,11 +143,14 @@
 			var hours = Math.floor((distance % _day) / _hour);
 			var minutes = Math.floor((distance % _hour) / _minute);
 			var seconds = Math.floor((distance % _minute) / _second);
-			document.getElementById(id).innerHTML = days + '일 ';
+			document.getElementById(id).innerHTML = '입찰 마감까지 ';
+			document.getElementById(id).innerHTML += days + '일 ';
 			document.getElementById(id).innerHTML += hours + '시간 ';
 			document.getElementById(id).innerHTML += minutes + '분 ';
 			document.getElementById(id).innerHTML += seconds + '초';
+			document.getElementById(id).innerHTML += ' 남았습니다!';
 		}
+		//clearInterval(timer);
 		timer = setInterval(showRemaining, 1000);
 	}
 	
@@ -256,8 +276,18 @@
           <div class="col-md-6">
             <h2 class="text-black">${list.product_name}</h2>
             <p>콘텐츠</p>
-            <p class="mb-4">입찰 마감까지<div id="HourCountdown"></div>남았습니다.</p>
-            <p><strong id='bidValue'class="text-primary h4">0원</strong></p>
+            <p class="mb-4"><div id="HourCountdown"></div><div id='chatStatus'></div></p>
+            <p><strong id='bidValue'class="text-primary h4"><!-- 최고가 -->
+            	<!-- 최고입찰가 or 시작가 -->
+            	<c:choose>
+	            	<c:when test= "${empty maxPriceAndUser.price}">
+	            		${list.start_price}원
+	            	</c:when>
+	            	<c:otherwise>
+	            		${maxPriceAndUser.price}원
+	            	</c:otherwise>
+            	</c:choose>
+            </strong></p>
 <!--             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
@@ -281,10 +311,13 @@
               <div class="input-group-append">
                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
               </div>
-            <a href="cart.html" class="buy-now btn btn-sm btn-primary"style="margin-left: 20px;">입찰하기</a>
+            <button id="bidButton" class="buy-now btn btn-sm btn-primary"style="margin-left: 20px;">입찰하기</button>
             </div>
             </div>
-            <textarea name="chatMsg" rows="5" cols="60"></textarea>
+            <!-- 입찰가 그래프 -->
+            <!-- 경매내역 -->
+            <textarea name="chatMsg" rows="5" cols="60"><c:if test="${!empty biddingList}"><c:forEach var="vo" items="${biddingList}"><c:out value="입찰시간 ${vo.bid_date}  입찰가 ${vo.price}원
+"/></c:forEach></c:if></textarea>
 			<p><a href="cart.html" class="buy-now btn btn-sm btn-primary">결제하기</a></p>
           </div>
         </div>

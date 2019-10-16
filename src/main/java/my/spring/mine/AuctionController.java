@@ -26,11 +26,14 @@ public class AuctionController {
 	protected ModelAndView get(String productId, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String viewName = "auctionOneView";
-		ListVO tempVO =  dao.auctionOne(productId);
+		ListVO listVO =  dao.auctionOne(productId);
 		mav.addObject("serverTime",LocalDateTime.now());
-		mav.addObject("list", tempVO);
+		mav.addObject("list", listVO);
+		mav.addObject("maxPriceAndUser", dao.selectMaxPriceAndUser(productId));
+		mav.addObject("biddingList", dao.selectBiddingList(productId));
+		//System.out.println(dao.selectBiddingList(productId));
 		//멀티룸용 세션
-		session.setAttribute("list", tempVO);
+		session.setAttribute("list", listVO);
 		//
 		mav.setViewName(viewName);
 		return mav;
