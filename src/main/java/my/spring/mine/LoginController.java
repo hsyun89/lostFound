@@ -55,7 +55,6 @@ public class LoginController {
 				// 회원가입 완료(이메일 중복 없음)
 			} else {
 				if (service.insert(vo)) {
-					mav.addObject("msg", "회원가입을 축하드립니다");
 					mav.setViewName("login");
 					return mav;
 				} else {
@@ -111,14 +110,7 @@ public class LoginController {
 		return mav;
 	}
 	
-	// 회원 수정  페이지 이동
-		@RequestMapping(value="/userupdate", method=RequestMethod.GET)
-		public String  userUpdate( HttpSession session) throws Exception {
-			if(session.getAttribute("status")==null)
-				return "mainView";
-			else
-			return "userUpdate";
-		}
+	
 		
 		// 회원 수정
 		@RequestMapping(value="/userupdate", method=RequestMethod.POST)
@@ -132,7 +124,7 @@ public class LoginController {
 				user = vo;
 				mav.addObject("status", user);
 			}
-			mav.setViewName("mypage");
+			mav.setViewName("redirect:/main");
 			return mav;
 		}
 		
@@ -141,12 +133,10 @@ public class LoginController {
 		public ModelAndView userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, SessionStatus session){
 			ModelAndView mav = new ModelAndView();
 			String email = user.getEmail();
-			System.out.println("이메일"+email);
 			boolean result = service.delete(email);
 			if(result) {
 				user = vo;
 			}
-			System.out.println("delete con :" + result + user.getEmail());
 			session.setComplete();
 			mav.addObject("status", user);
 			mav.setViewName("redirect:/main");

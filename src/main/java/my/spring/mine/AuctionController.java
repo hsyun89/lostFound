@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.AuctionDAO;
 import vo.AuctionVO;
 import vo.ListVO;
+import vo.UserVO;
 
 @Controller
 public class AuctionController {
@@ -21,14 +23,6 @@ public class AuctionController {
 	@RequestMapping(value = "/auction", method = RequestMethod.GET)
 	public ModelAndView auctionmain(ListVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		//String id = (String)session.getAttribute("");
-		/*
-		 * if(id != null) {
-		 * 
-		 * } else {
-		 * 
-		 * }
-		 */
 		mav.addObject("list", dao.auctionlist());
 		mav.setViewName("auction");
 		return mav;
@@ -63,4 +57,18 @@ public class AuctionController {
 		System.out.println("입력완료");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/deleteAuction", method = RequestMethod.POST)
+	@ResponseBody
+	public int checkpw(String unique_id) {
+	System.out.println("체크비밀번호 들어옴");
+			if (dao.delete(unique_id)) {
+				return 1;
+			} else
+				return 0;
+		}
+	
+
+
+	
 }

@@ -293,8 +293,21 @@ input[type=text]:placeholder {
 
     <!-- Login Form -->
     <form action="/mine/login" method="POST">
-      <input type="text" id="Email" name="email"  class="fadeIn second" placeholder="Email" required autofocus>
-      <input type="text" id="Passward" name="password" class="fadeIn third" placeholder="password">
+      <div class="form-group">
+							<label class="control-label" for="email">Email</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="email" id="email" name="email" class="form-control" placeholder="email@example.com">
+							</div>
+							<div class="check" id="checkemail"></div>
+						</div>
+      <div class="form-group">
+							<label class="control-label" for="password">Password</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								<input type="password" id="password" name="password" class="form-control" placeholder="password">
+							</div>
+						</div>
       <input type="submit" id="LogIn" class="fadeIn fourth" value="Log In">
     </form>
     <div id="naver_id_login" style="text-align:center"><a href="${url}">

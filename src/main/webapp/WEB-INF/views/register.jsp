@@ -65,11 +65,6 @@
 </style>
 </head>
 <body>
-<c:if test="${!empty msg}">
-		<script>
-			alert("${msg}");
-		</script>
-	</c:if>
 <div class="container">
 	<div class="row">
     <div class="col col-md-5">

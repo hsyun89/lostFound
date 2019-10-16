@@ -5,8 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>내꺼야</title>
 <style>
 #btn1{
@@ -26,13 +24,6 @@
     left:55%;
 } 
 </style>
-<meta name="description"
-	content="This is a basic starter template for MMPilot which includes Bootstrap Framework." />
-<link
-	href="https://fonts.googleapis.com/css?family=Oxygen:300,400,600,700"
-	rel="stylesheet">
-<link href="/mine/resources/styles/main.css" rel="stylesheet">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -112,7 +103,7 @@
 
 <button type="submit" class="btn btn-success">수정하기</button>
 
-<!-- 비밀번호 중복체크 -->
+
 <script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 </form>
@@ -189,6 +180,7 @@
 					})
 				});
 	 })
+	 
 $(document).ready(function() {
 	$('.login-info-box').fadeOut();
 	$('.login-show').addClass('show-log-panel');

@@ -45,4 +45,13 @@ public class AuctionDAO {
 		return result;
 	}
 	
+	//경매삭제
+	public boolean delete(String unique_id) {
+		boolean result = true;
+		String statement = "resource.AuctionMapper.deleteAuction";
+		if(session.delete(statement, unique_id) != 1)
+			result = false;
+		return result;
+	}
+	
 }

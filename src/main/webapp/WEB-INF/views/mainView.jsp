@@ -7,15 +7,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>내꺼야</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <meta name="description" content="This is a basic starter template for MMPilot which includes Bootstrap Framework."/>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,600,700" rel="stylesheet">
     <link href="/mine/resources/styles/main.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>내꺼야</title>
+    
   <style>
-  .nav-link {
-  
-  }
+  #btn1{
+    height:38px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:70%; 
+    left:90%;
+}
+
+#withdraw1{
+    height:38px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:90%;
+}  
+#my{
+ color: #cccccc;
+ font-weight: bold;
+ :ho
+}
+#my:hover {
+	color: #f2f2f2;
+}
+
   </style>
   </head>
   <body id="top">
@@ -35,7 +67,9 @@
 		</c:when>
 		<c:otherwise> 
 			<li class="nav-item"><a class="nav-link" href="/mine/logout">로그아웃</a></li>
-			<li class="nav-item"><a class="nav-link" href="/mine/mypage">마이페이지</a></li>
+			<button id="my"type="button" class="btn nav-item" data-toggle="modal" data-target="#myModal1">
+                  마이페이지
+                </button>
 		</c:otherwise>
 	</c:choose>
             </ul>
@@ -43,6 +77,64 @@
          
         </div>
       </nav>
+      <div class="modal" id="myModal1">
+                <!-- inside the modal, instead of the page itself-->    
+                <!-- <div class="modal-dialog modal-dialog-scrollable"> -->
+                <!-- inside the modal, a scrollbar-->
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h3 class="modal-title" style="color: black">회원 수정 및 탈퇴</h3>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                       <form action="/mine/userupdate" method="POST" class="form-signin">
+<input value="${ status.email }" name="email" 
+							class="form-control" placeholder="이메일" type="text" readonly>
+
+<input value="${ status.user_name }" name="user_name"
+							class="form-control" placeholder="이름" type="text" required autofocus>						
+
+<input type="password" id="password" name="password" class="form-control" 
+			placeholder="수정비밀번호" required autofocus>
+
+
+<input type="password" id="confirmpassword" name="confirmpassword"
+			class="form-control" placeholder="수정비밀번호재확인" required autofocus>
+			
+<p id="pwcheck" style="color: red"></p>
+
+
+
+<div style="margin-top: 20px">
+<button type="submit" class="btn btn-success" id="btn1">수정하기</button>
+</div>
+</form>                 
+                      <!-- Modal footer -->
+
+	<form action="/mine/userdelete" method="POST">
+	<div style="margin-top: 20px">
+		<input value="${ status.email }" name="email" id="deleteemail"
+			class="form-control" placeholder="이메일" type="hidden" readonly>
+		<input type="password" id="checkpw" name="checkpw"
+			class="form-control" placeholder="탈퇴비밀번호" required autofocus>
+	<div class="check" id="checkpw1"></div>
+	</div>
+	<div style="margin-top: 20px">
+	<button type="submit" class="btn btn-danger" id="withdraw1">탈퇴하기</button>
+							</div>
+						</form>
+
+
+					</div>
+                  </div>
+                </div>
+                </div>
+   
       <div class="container">
         <div class="row">
           <div class="col-md-7 col-sm-12">
@@ -177,5 +269,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="/mine/resources/scripts/main.js"></script>
+    <script>
+    $(document).ready(function() {
+    	$('.login-info-box').fadeOut();
+    	$('.login-show').addClass('show-log-panel');
+
+    	$('#confirmpassword').blur(function() {
+    		console.log('#confirmpassword')
+    		if ($('#confirmpassword').val() != $('#password').val()) {
+    			$('#pwcheck').text("비밀번호가 다릅니다.");
+    		} else {
+    			$('#pwcheck').text("");
+    		}
+    	});
+    	function registerSuccess() {
+    		alert("수정완료")
+    	}
+    });
+    
+    $(document).ready(function(){
+		$("#checkpw").blur(function() {
+					var password = $("#checkpw").val();
+					var email = $("#deleteemail").val();
+					$.ajax({
+						url : '/mine/checkpw?password=' + password+'&email='+email,
+						type : 'get',
+						success : function(data) {
+							 console.log(data);
+							if (data == 0) {
+								$('#checkpw1').text("비밀번호가 다릅니다.").css(
+										"color", "red");
+								$("#submit").attr("disabled", true);
+							} else if(data == null) {
+								$("#submit").attr("disabled", true);								
+							} else {
+								$('#checkpw1').text("비밀번호가 일치").css(
+										"color", "blue");
+								$("#submit").attr("disabled", false);
+							}
+						},
+						error : function() {
+							console.log("실패");
+						}
+					})
+				});
+	 })
+    </script>
   </body>
 </html>

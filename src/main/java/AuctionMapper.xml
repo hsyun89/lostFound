@@ -20,6 +20,11 @@
 		INSERT INTO AUCTION(UNIQUE_ID, START_PRICE, MIN_BID, START_DATE, END_DATE)
 		VALUES(#{unique_id},#{start_price},#{min_bid}, #{start_date}, #{end_date})
 	</insert>
+	
+	<!--경매삭제-->
+	<delete id="deleteAuction"  parameterType="string"  >
+    	DELETE FROM AUCTION WHERE UNIQUE_ID = #{unique_id}
+	</delete>
 </mapper>
   
   
