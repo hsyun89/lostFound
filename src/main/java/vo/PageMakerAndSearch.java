@@ -77,8 +77,6 @@ public class PageMakerAndSearch {
         if(endPage >tempEndPage){
             endPage=tempEndPage;
         }
-        System.out.println("tmp"+tempEndPage);
-        System.out.println(endPage);
         prev = startPage ==1 ? false :true;
         next = endPage *perPageNum >=totalCount ? false :true;
 	}
@@ -116,11 +114,7 @@ public class PageMakerAndSearch {
 		return searchType;
 	}
 	public void setSearchType(String searchType) {
-		if(searchType==null) {
-			this.searchType="all";
-			return;
-		}
-		this.searchType=searchType;
+		this.searchType = searchType;
 	}
 	public String getKeyword() {
 		return keyword;
@@ -182,6 +176,7 @@ public class PageMakerAndSearch {
 		return "PageMakerAndSearch [page=" + page + ", perPageNum=" + perPageNum + ", pageStart=" + pageStart
 				+ ", totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev
 				+ ", next=" + next + ", displayPageNum=" + displayPageNum + ", searchType=" + searchType + ", keyword="
-				+ keyword + "]";
+				+ keyword + ", category=" + category + ", place=" + place + ", from=" + from + ", to=" + to + "]";
 	}
+	
 }

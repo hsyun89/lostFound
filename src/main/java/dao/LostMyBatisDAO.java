@@ -25,8 +25,9 @@ public class LostMyBatisDAO implements LostDAO{
 	public List<LostVO> listPageSearch(PageMakerAndSearch pageMaker) throws Exception{
 		SqlSession session = sqlSessionFactory.openSession();
 		String statement = "LostMapper.listPageSearch";
+		System.out.println(pageMaker.getFrom()+" 6 "+pageMaker.getTo());
 		List<LostVO> list =session.selectList(statement, pageMaker);
-		if(!list.isEmpty()) System.out.println("리스트"+list.get(0).getProduct_name());
+		//if(!list.isEmpty()) System.out.println("리스트"+list.get(0).getFind_date());
 		return list;
 	}
 	@Override
