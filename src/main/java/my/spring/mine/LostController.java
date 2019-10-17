@@ -19,9 +19,6 @@ public class LostController {
 	public String listPageSearch(@ModelAttribute("pageMaker") PageMakerAndSearch pageMaker, Model model) throws Exception{
 		pageMaker.setTotalCount(dao.listPageCount(pageMaker));
 		//model.addAttribute("listMain", dao.listMainSearch(pageMaker));
-		if(pageMaker.getPage()!=0) {
-			System.out.println(pageMaker.toString());
-		}
 		model.addAttribute("list", dao.listPageSearch(pageMaker));
 		model.addAttribute("pageMaker", pageMaker);
 		return "lost";

@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.Arrays;
+
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -20,7 +22,8 @@ public class PageMakerAndSearch {
     private String searchType;
     private String keyword;
     private String category;
-    private String place;
+    public String place;
+    private String[] placeList;
     private String from;
     private String to;
     
@@ -148,6 +151,16 @@ public class PageMakerAndSearch {
 		this.to = to;
 	}
 	
+	public String[] getPlaceList() {
+		return placeList;
+	}
+	public void setPlaceList(String[] placeList) {
+		this.placeList =placeList;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
 	//스프링 MVC 의 UriComponectsBuilder를 이용하는 방식 - ?가 자동으로 출력
 	public String makeQuery(int page){
 	    UriComponents uriComponents=
@@ -164,7 +177,7 @@ public class PageMakerAndSearch {
                 .queryParam("perPageNum", perPageNum)
                 .queryParam("searchType", searchType)
                 .queryParam("keyword", keyword)
-                .queryParam("place", place)
+                .queryParam("place",place)
                 .queryParam("from", from)
                 .queryParam("to", to)
                 .queryParam("cat", category)
@@ -176,7 +189,8 @@ public class PageMakerAndSearch {
 		return "PageMakerAndSearch [page=" + page + ", perPageNum=" + perPageNum + ", pageStart=" + pageStart
 				+ ", totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev
 				+ ", next=" + next + ", displayPageNum=" + displayPageNum + ", searchType=" + searchType + ", keyword="
-				+ keyword + ", category=" + category + ", place=" + place + ", from=" + from + ", to=" + to + "]";
+				+ keyword + ", category=" + category + ", place=" + place + ", placeList=" + Arrays.toString(placeList)
+				+ ", from=" + from + ", to=" + to + "]";
 	}
 	
 }

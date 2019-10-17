@@ -15,13 +15,13 @@
 	<!-- 장소 검색 -->
 	<sql id="placeSearch">
 		<if test="place !=null and place != ''.toString()"  >
-			<!-- <if test="place != ''.toString()" > -->
+			<if test="place != ''.toString()" >
 				and find_place IN
-				<foreach collection="place" item="item" index="index" separator="," open="(" close=")">
+				<foreach collection="placeList" item="item" index="index" separator="," open="(" close=")">
 					#{item}
 				</foreach>
 				</if>
-		<!-- </if> -->
+		</if>
 	</sql>
 	
 	<!-- 날짜 검색 -->
