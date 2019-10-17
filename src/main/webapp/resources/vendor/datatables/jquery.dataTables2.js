@@ -11707,11 +11707,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
-//=======
 			//search
 			/*"sSearch": "Search:",*/
-//>>>>>>> somiBranch
 	
 	
 			/**
@@ -11722,7 +11719,6 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "",
 			//"sSearchPlaceholder": "",
 	
 	
@@ -11748,11 +11744,7 @@
 			 *      } );
 			 *    } );
 			 */
-//<<<<<<< HEAD
-			"sUrl": "",
-//=======
 			//"sUrl": "",
-//>>>>>>> somiBranch
 	
 	
 			/**
@@ -11774,11 +11766,7 @@
 			 *      } );
 			 *    } );
 			 */
-//<<<<<<< HEAD
-			"sZeroRecords": "No matching records found"
-//=======
 			//"sZeroRecords": "No matching records found"
-//>>>>>>> somiBranch
 		},
 	
 	
@@ -11803,11 +11791,7 @@
 		 *      } );
 		 *    } )
 		 */
-//<<<<<<< HEAD
-		"oSearch": $.extend( {}, DataTable.models.oSearch ),
-//=======
 		//"oSearch": $.extend( {}, DataTable.models.oSearch ),
-//>>>>>>> somiBranch
 	
 	
 		/**
