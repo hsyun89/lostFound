@@ -21,6 +21,7 @@ public class LostController {
 		//model.addAttribute("listMain", dao.listMainSearch(pageMaker));
 		model.addAttribute("list", dao.listPageSearch(pageMaker));
 		model.addAttribute("pageMaker", pageMaker);
+		System.out.println("출력"+pageMaker);
 		return "lost";
 	}
 }

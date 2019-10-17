@@ -997,7 +997,7 @@ var mymap;
 	function myMap(addr,place) {
 		var lat;
 		var lng;
-		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key={}&address="+encodeURIComponent(addr), function(data) {
+		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCXi_CVcHEFQIyOFHd-hbIVLFh4ERxKacs&address="+encodeURIComponent(addr), function(data) {
 			 if (data.results.length > 0) {
 			lat = data.results[0].geometry.location.lat;
 			lng = data.results[0].geometry.location.lng;

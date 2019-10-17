@@ -21,6 +21,9 @@ public class LostMyBatisDAO implements LostDAO{
 			pageMaker.setPlaceList(pageMaker.place.split(","));
 		}
 		List<LostVO> list =session.selectList(statement, pageMaker);
+		for(LostVO vo : list) {
+			System.out.println(vo);
+		}
 		return list;
 	}
 	@Override

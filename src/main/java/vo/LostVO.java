@@ -60,6 +60,12 @@ public class LostVO {
 		this.category = category;
 	}
 
+	public String getFind_place() {
+		return find_place;
+	}
+	public void setFind_place(String find_place) {
+		this.find_place = find_place;
+	}
 	@Override
 	public String toString() {
 		return "LostVO [addr=" + addr + ", unique_id=" + unique_id + ", content=" + content + ", keep_place="
