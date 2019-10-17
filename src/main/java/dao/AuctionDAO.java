@@ -70,8 +70,14 @@ public class AuctionDAO {
 	//경매 입찰자, 최고입찰가 확인
 	public AuctionLogVO selectMaxPriceAndUser(String productId) {
 		AuctionLogVO result = null;
-		String statement = "resource.AuctionMapper.selectMaxPriceAndUser";
-		result = session.selectOne(statement, productId);
+		AuctionLogVO result2 = null;
+		String statement1 = "resource.AuctionMapper.selectMaxPriceAndUser";
+		result = session.selectOne(statement1, productId);
+		String user_id = result.getUser_id();
+		String statement2 = "resource.AuctionMapper.selectMaxBidderInfo";
+		result2 = session.selectOne(statement2, user_id);
+		result.setUser_name(result2.getUser_name());
+		result.setEmail(result2.getEmail());
 		//update(result);
 		return result;
 	}
@@ -86,6 +92,7 @@ public class AuctionDAO {
 //		}
 		return list;
 	}
+	//30초 증가
 	public boolean plusEndTime(AuctionVO vo) {
 		boolean result = true;
 		String statement = "resource.AuctionMapper.plusEndTime";
@@ -93,5 +100,55 @@ public class AuctionDAO {
 					result = false;
 				}
 		return result;
+	}
+	//낙찰된 리스트
+	public List<ListVO> selectBiddingComplete(String user_id){
+		List<ListVO> list = null;
+		ListVO result = null;
+		String statement = "resource.AuctionMapper.selectBiddingComplete";
+		list = session.selectList(statement,user_id);
+		//System.out.println("dao : " + key);
+		System.out.println(list);
+		for(ListVO vo : list) {
+			String productId=vo.getUnique_id();
+			statement = "resource.AuctionMapper.selectBCDetail";
+			result = session.selectOne(statement,productId);
+			vo.setImage_address(result.getImage_address());
+			vo.setProduct_name(result.getProduct_name());
+		}
+		for(ListVO vo : list) {
+		System.out.println("낙찰내역: " + vo);
+		}
+		return list;
+	}
+	//결제완료
+	public boolean completeBuy(ListVO vo) {
+		boolean result = true;
+		String statement = "resource.AuctionMapper.completeBuy";
+				if(session.update(statement,vo) != 1) {
+					result = false;
+				}
+		return result;
+	}
+	//결제왈료된 리스트
+	public List<ListVO> selectBuyComplete(String user_id){
+		List<ListVO> list = null;
+		ListVO result = null;
+		String statement = "resource.AuctionMapper.selectBuyComplete";
+		list = session.selectList(statement,user_id);
+		//System.out.println("dao : " + key);
+		System.out.println(list);
+		for(ListVO vo : list) {
+			String productId=vo.getUnique_id();
+			statement = "resource.AuctionMapper.selectBCDetail";
+			result = session.selectOne(statement,productId);
+			vo.setImage_address(result.getImage_address());
+			vo.setProduct_name(result.getProduct_name());
+			vo.setPrice(result.getPrice());
+		}
+		for(ListVO vo : list) {
+		System.out.println("낙찰내역: " + vo);
+		}
+		return list;
 	}
 }

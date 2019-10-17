@@ -3,6 +3,20 @@ package vo;
 public class ListVO {
 	
 	private String unique_id;
+	private String user_id;
+	private String price;
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	private String image_address;
 	private String product_name;
 	private String start_price;
@@ -15,9 +29,9 @@ public class ListVO {
 	}
 	@Override
 	public String toString() {
-		return "ListVO [unique_id=" + unique_id + ", image_address=" + image_address + ", product_name=" + product_name
-				+ ", start_price=" + start_price + ", min_bid=" + min_bid + ", start_date=" + start_date + ", end_date="
-				+ end_date + ", category=" + category + "]";
+		return "ListVO [unique_id=" + unique_id + ", user_id=" + user_id + ", price=" + price + ", image_address="
+				+ image_address + ", product_name=" + product_name + ", start_price=" + start_price + ", min_bid="
+				+ min_bid + ", start_date=" + start_date + ", end_date=" + end_date + ", category=" + category + "]";
 	}
 	public void setUnique_id(String unique_id) {
 		this.unique_id = unique_id;

@@ -34,6 +34,12 @@
  <script type="text/javascript"src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="http://cdn.sockjs.org/sockjs-0.3.4.js"></script>
 <script type="text/javascript">
+//낙찰자여부
+//var flag = '<c:out value="${flag}"/>'
+/* if(flag=='notBidder'){
+	alert('당신은 낙찰자가 아닙니다!!!!!');
+} */
+var end;  //마감시간 전역변수
 	$(function() {
 		var url = window.location.host;//웹브라우저의 주소창의 포트까지 가져옴
 		var pathname = window.location.pathname; /* '/'부터 오른쪽에 있는 모든 경로*/
@@ -92,8 +98,15 @@
 				alert("마감된 경매입니다!!");
 			}
 			eventDataByJson = JSON.parse(event.data); //제이슨 객체 반환
-			clearInterval(timer);
-			CountDownTimer(eventDataByJson.end_date, 'HourCountdown'); //웹소켓 메시지 도착시 타이머 갱신
+			//웹소켓 메시지 도착시 타이머 갱신
+			//clearInterval(CountDownTimer);
+			//document.getElementById('HourCountdown').innerHTML = '';
+			//$('#HourCountdown').text(' ');
+			//CountDownTimer(eventDataByJson.end_date, 'HourCountdown');
+			//alert(eventDataByJson.end_date);
+			//alert('<c:out value="${list.end_date}"/>');
+			end=new Date(eventDataByJson.end_date);
+			
 			$('#bidValue').text(eventDataByJson.price + '\n'); //최고입찰가 화면 갱신
 			$('textarea').eq(0).prepend(
 					//eventDataByJson.name + 
@@ -114,7 +127,7 @@
 	var end_date = '<c:out value="${list.end_date}"/>';
 	CountDownTimer(end_date, 'HourCountdown');
 	function CountDownTimer(dt, id) {
-		var end = new Date(dt);
+		end = new Date(dt);
 		var _second = 1000;
 		var _minute = _second * 60;
 		var _hour = _minute * 60;
@@ -127,7 +140,7 @@
 		var clientT = new Date();
 		var gap = serverT - clientT;
 		//alert(gap);
-		
+		clearInterval(timer);
 		function showRemaining() {
 			var now = new Date();
 			now + gap; //시간차 조정
@@ -153,7 +166,7 @@
 		//clearInterval(timer);
 		timer = setInterval(showRemaining, 1000);
 	}
-	
+	//서버시간 불러오기
     var xmlHttp;
     function srvTime() {
         try {
@@ -180,7 +193,19 @@
         xmlHttp.send('');
         return xmlHttp.getResponseHeader("Date");
     }
-
+	//마감시간에 따른 버튼 디스플레이
+	//마감후 결제 버튼 보이기 & 입찰 버튼 숨기기
+/* 	var now = new Date();
+	var distance = end-now;
+	alert(distance);
+	if(distance<0){
+		alert('마감');
+		document.getElementById('bidButton').style.display = 'none';
+		document.getElementById('payButton').style.display = '';
+	}else{
+		document.getElementById('bidButton').style.display = '';
+		document.getElementById('payButton').style.display = 'none';
+	} */
 </script>
   
   <body>
@@ -311,14 +336,14 @@
               <div class="input-group-append">
                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
               </div>
-            <button id="bidButton" class="buy-now btn btn-sm btn-primary"style="margin-left: 20px;">입찰하기</button>
+            <button id="bidButton" class="buy-now btn btn-sm btn-primary"style="display :; margin-left: 20px;">입찰하기</button>
             </div>
             </div>
             <!-- 입찰가 그래프 -->
             <!-- 경매내역 -->
             <textarea name="chatMsg" rows="5" cols="60"><c:if test="${!empty biddingList}"><c:forEach var="vo" items="${biddingList}"><c:out value="입찰시간 ${vo.bid_date}  입찰가 ${vo.price}원
 "/></c:forEach></c:if></textarea>
-			<p><a href="cart.html" class="buy-now btn btn-sm btn-primary">결제하기</a></p>
+			<p><a id='payButton' style="display :" href="http://70.12.113.171:8000/mine/payment?productId=${list.unique_id}" class="buy-now btn btn-sm btn-primary">결제지워</a></p>
           </div>
         </div>
       </div>

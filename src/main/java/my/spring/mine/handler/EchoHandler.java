@@ -71,29 +71,29 @@ public class EchoHandler extends TextWebSocketHandler {
 		Map<String, WebSocketSession> tmp = (Map<String, WebSocketSession>) bidRooms.get(productId);
 		System.out.println(bidRooms);
 		//날짜변환
-		String endTime = getEndDate(session);
+		String endTime = getEndDate(productId);
 //		endTimeOrigin = endTimeOrigin.replace("AM", "오전");
 //		endTimeOrigin = endTimeOrigin.replace("PM", "오후");
 		String serverTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println("endTime"+endTime);
-		System.out.println("serverTime"+serverTime);		
+//		System.out.println("endTime"+endTime);
+//		System.out.println("serverTime"+serverTime);		
 		//아직 마감 전이라면 1, 마감 후에는 -1
 		int flag = endTime.compareTo(serverTime);
 		System.out.println("flag : "+flag);
 		if(flag>0) {
 			//30초 이전 입찰 시 연장 처리
-				System.out.println(endTime);
-				System.out.println(serverTime);
-				System.out.println(format1.parse(endTime).getTime()-format1.parse(serverTime).getTime());
+				//System.out.println(endTime);
+				//System.out.println(serverTime);
+				//System.out.println(format1.parse(endTime).getTime()-format1.parse(serverTime).getTime());
 			long distance = format1.parse(endTime).getTime()-format1.parse(serverTime).getTime();
-			String endTimePlus =null;
+			//String endTime =null;
 			if(distance<30000) { //30초 전에 입찰하면 시간 추가
 				AuctionVO vo = new AuctionVO();
 				long temp = format1.parse(endTime).getTime();
 				temp= temp+30000;
-				endTimePlus = format1.format(temp);
-				vo.setEnd_date(endTimePlus);
+				endTime = format1.format(temp);
+				vo.setEnd_date(endTime);
 				vo.setUnique_id(productId);
 				dao.plusEndTime(vo);
 			}
@@ -107,7 +107,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			//System.out.println(result);
 			//브로드캐스트
 			for (WebSocketSession sess : tmp.values()) {
-				sess.sendMessage(new TextMessage("{\"name\":\"" + senderId + "\", \"date\":\"" + serverTime + "\", \"end_date\":\"" + endTimePlus +"\",\"price\":\"" + pricePlusWon + "\"}"));
+				sess.sendMessage(new TextMessage("{\"name\":\"" + senderId + "\", \"date\":\"" + serverTime + "\", \"end_date\":\"" + endTime +"\",\"price\":\"" + pricePlusWon + "\"}"));
 			}
 			//
 		}else { //아니라면 session.sendM~  입찰이 마감되었습니다!!
@@ -135,10 +135,12 @@ public class EchoHandler extends TextWebSocketHandler {
 		return list.getUnique_id();
 	}
 	//옥션컨트롤러에서 선언된 세션값(End_date)을 불러온다.
-	private String getEndDate(WebSocketSession session) {
-		Map<String, Object> httpSession = session.getAttributes();
-		ListVO list = (ListVO) httpSession.get("list");
-		return list.getEnd_date();
+	private String getEndDate(String productId) {
+		ListVO listVO =  dao.auctionOne(productId);
+//		Map<String, Object> httpSession = session.getAttributes();
+//		ListVO list = (ListVO) httpSession.get("list");
+//		return list.getEnd_date();
+		return listVO.getEnd_date();
 	}
 
 
