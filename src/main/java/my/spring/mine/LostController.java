@@ -2,36 +2,25 @@ package my.spring.mine;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import dao.LostDAO;
+import vo.LostVO;
+import vo.PageMakerAndSearch;
 
 @Controller
 public class LostController {
 	@Autowired
 	LostDAO dao;
 	@RequestMapping(value = "/lost", method = RequestMethod.GET)
-	protected ModelAndView get(String lostName) {
-		ModelAndView mav = new ModelAndView();
-		String viewName = "lostView";
-		if(lostName != null) {
-			mav.addObject(lostName);
-		}
-		mav.setViewName(viewName);
-		return mav;
-	}
-	protected ModelAndView select(String atcid, String action, String keyword) {
-		ModelAndView mav = new ModelAndView();
-		if(atcid==null && action==null) {
-			mav.addObject("list", dao.listAll());
-		}else if(action.equals("read")) {
-			mav.addObject("listOne", dao.listOne(atcid));
-		}else if(action.equals("search")) {
-			mav.addObject("list", dao.search(keyword));
-		}
-		mav.setViewName("lostView");
-		return mav;
+	public String listPageSearch(@ModelAttribute("pageMaker") PageMakerAndSearch pageMaker, Model model) throws Exception{
+		pageMaker.setTotalCount(dao.listPageCount(pageMaker));
+		//model.addAttribute("listMain", dao.listMainSearch(pageMaker));
+		model.addAttribute("list", dao.listPageSearch(pageMaker));
+		model.addAttribute("pageMaker", pageMaker);
+		return "lost";
 	}
 }

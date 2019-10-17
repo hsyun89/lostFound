@@ -5,7 +5,9 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
@@ -14,14 +16,17 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	<task:annotation-driven/>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- <resources mapping="/**" location="/resources/" /> -->
 	<resources mapping="/resources/**" location="/resources/" />
     <resources mapping="/css/**" location="resources/css/"/>
     <resources mapping="/js/**" location="resources/js/"/>
     <resources mapping="/scss/**" location="resources/scss/"/>
     <resources mapping="/img/**" location="resources/img/"/>
     <resources mapping="/vendor/**" location="resources/vendor/"/>
+	<!-- <resources mapping="/css/**" location="/resources/css" /> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -44,12 +49,8 @@
 	<context:component-scan base-package="vo" />
 
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-<!-- 	<beans:property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-	<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-	<beans:property name="username" value="jdbctest" />
-	<beans:property name="password" value="jdbctest" /> -->
-	<beans:property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
 	<beans:property name="url" value="jdbc:mariadb://70.12.113.181:3306/lostfind" />
+	<beans:property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
 	<beans:property name="username" value="root" />
 	<beans:property name="password" value="password" />	
 </beans:bean>

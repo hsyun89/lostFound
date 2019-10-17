@@ -3,15 +3,112 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LostMapper">
- 	<select id="selectLost"  resultType="vo.LostVO">
- 		select addr, atcid, fdsbjt, depplace, fdprdtnm, to_char(fdymd, 'yyyy-mm-dd') fdymd, prdtclnm, lon, lat from lost
- 	</select>
- 	
- 	<select id="selectLostOne" parameterType="string"  resultType="vo.LostVO">
- 		select addr, atcid, fdsbjt, depplace, fdprdtnm, to_char(fdymd, 'yyyy-mm-dd') fdymd, prdtclnm, lon, lat from lost where atcid = #{atcid}
- 	</select>
- 	
-	<select id="searchLost"  parameterType="string" resultType="vo.LostVO">
-		select addr, atcid, fdsbjt, depplace, fdprdtnm, to_char(fdymd, 'yyyy-mm-dd') fdymd, prdtclnm, lon, lat from lost where fdsbjt like '%'||#{key}||'%'
-    </select>
+	<!-- 카테고리 검색 -->
+	<sql id="categorySearch">
+		<if test="category !=null">
+			<if test="category != 'all'.toString()">
+				and category like CONCAT('%', #{category},'%')
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 장소 검색 -->
+	<sql id="placeSearch">
+		<if test="place !=null and place != ''.toString()"  >
+			<if test="place != ''.toString()" >
+				and find_place IN
+				<foreach collection="placeList" item="item" index="index" separator="," open="(" close=")">
+					#{item}
+				</foreach>
+				</if>
+		</if>
+	</sql>
+	
+	<!-- 날짜 검색 -->
+	<sql id="dateSearch">
+		<!-- 시작 날짜만 있을 때 -->
+		<if test="from !=null and from != ''.toString()" >
+			<if test = "to == null or to==''.toString()">
+				and str_to_date(find_date,'%Y-%m-%d') <![CDATA[>=]]> STR_TO_DATE( #{from},'%Y-%m-%d')
+			</if>
+			<!-- 시작 날짜, 마지막 날짜 모두 있을 때 -->
+			<if test="to !=null and to !=''.toString()">
+				and str_to_date(find_date,'%Y-%m-%d') BETWEEN STR_TO_DATE( #{from},'%Y-%m-%d')  AND  STR_TO_DATE(#{to}, '%Y-%m-%d') 
+			</if>
+		</if>
+		<!-- 마지막 날짜만 있을 때 -->
+		<if test="to !=null and to != ''.toString()" >
+			<if test = "from == null or from==''.toString()">
+				and str_to_date(find_date,'%Y-%m-%d') <![CDATA[<=]]> STR_TO_DATE( #{to},'%Y-%m-%d')
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 키워드 검색 -->
+	<sql id="keywordSearch">
+		<if test="searchType !=null">
+			<if test="searchType == 'all'.toString()">
+				and (
+				unique_id like CONCAT('%', #{keyword}, '%')
+				OR
+				product_name like CONCAT('%', #{keyword}, '%')
+				OR
+				keep_place like
+				CONCAT('%', #{keyword}, '%')
+				OR
+				find_date = #{keyword}
+				OR
+				find_place like CONCAT('%', #{keyword}, '%')
+				)
+			</if>
+
+			<if test="searchType == 'product_name'.toString()">
+				and product_name like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType == 'keep_place'.toString()">
+				and keep_place like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType == 'find_date'.toString()">
+				find_date like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType == 'find_place'.toString()">
+				and find_place like CONCAT('%', #{keyword}, '%')
+			</if>
+
+		</if>
+	</sql>
+	
+	<!-- 검색창 -->
+	<select id="listPageSearch" resultType="vo.LostVO">
+		select addr, unique_id, content, keep_place, image_address,
+		product_name, find_date, category, find_place
+		from lost
+		where unique_id is not null
+		<include refid="categorySearch"></include>
+		<include refid="keywordSearch"></include>
+		<include refid="placeSearch"></include>
+		<include refid="dateSearch"></include>
+		order by Find_date desc limit #{pageStart},#{perPageNum}
+	</select>
+	
+	<!-- 페이지 카운트 -->
+	<select id="listPageCount" resultType="int">
+		select count(unique_id) from lost where unique_id is not null
+		<include refid="categorySearch"></include>
+		<include refid="keywordSearch"></include>
+		<include refid="placeSearch"></include>
+		<include refid="dateSearch"></include>
+	</select>
+	
+	<!-- DB Write -->
+	<insert id="insertLost" parameterType="vo.LostVO">
+		replace into lost (addr,
+		unique_id, content, keep_place, image_address, product_name,
+		find_date, category, find_place) values (#{addr}, #{unique_id},
+		#{content}, #{keep_place}, #{image_address}, #{product_name},
+		#{find_date}, #{category}, #{find_place})
+	</insert>
 </mapper>

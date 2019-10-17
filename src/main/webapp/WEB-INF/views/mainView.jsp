@@ -147,16 +147,16 @@
             <p class="mt-5"><strong class="text-uppercase">간편한 검색</strong><span> - 찾고자 하는 물건 혹은 원하는 물건을 검색해보세요.</span></p>
           </div>
         </div>
-        <form action="lost" method="GET">
+        <!-- 분실물 검색 -->
         <div class="row no-gutters">
-          <div class="col-md-4 col-sm-12 tf-hh-col">
-            <input class="mt-1 form-control" type="text" name="lostName" placeholder="*물건명을 입력하세요">
-          </div>
-          <div class="col-md-3 col-sm-12"><!-- <a class="tf-header-heading-btn a btn btn-primary btn-block mt-1" href="/mine/lost">검색</a> -->
-                  <button class="tf-header-heading-btn a btn btn-primary btn-block mt-1" type="submit">검색</button>
-           </div>
-        </div>
-        </form>
+					<div class="col-md-4 col-sm-12 tf-hh-col">
+						<input type="text" name="keyword" id="keywordInput"
+											class="form-control" value="${pageMaker.keyword}"  placeholder="*물건명을 입력하세요">
+					</div>
+					<div class="col-md-3 col-sm-12">
+						<button class="btn btn-primary" id="searchBtn" class=>검색</button>
+					</div>
+				</div>
       </div>
     </header>
     <div class="page-content">
@@ -315,5 +315,29 @@
 				});
 	 })
     </script>
+    <!-- 검색 -->
+    <script>
+	$(document).ready(
+			function() {
+				$("#searchBtn").on(
+						"click",
+						function(event) {
+							var url = "/mine/lost?page=1&perPageNum=10";
+							url += "&searchType=" + searchType()
+									+ "&keyword=" + keywordInput()
+									+ "&place="
+							        + "&cat=";
+							self.location = url;
+						});
+			});
+		function searchType() {
+			return "all";
+		}
+		function keywordInput() {
+			return $("#keywordInput").val();
+		}
+		</script>
+    
   </body>
+
 </html>
