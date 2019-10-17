@@ -28,10 +28,6 @@ public class AuctionDAO {
 		List<ListVO> list = null;
 		String statement = "resource.AuctionMapper.category";
 		list = session.selectList(statement,key);
-		System.out.println("dao : " + key);
-		for(ListVO vo : list) {
-			System.out.println(vo.getCategory());
-		}
 		return list;
 	}
 	
@@ -41,7 +37,6 @@ public class AuctionDAO {
 		String statement = "resource.AuctionMapper.insertAuction";
 		if(session.insert(statement, vo) != 1)
 			result = false;
-		System.out.println("DAO : " + result);
 		return result;
 	}
 	

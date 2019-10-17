@@ -31,8 +31,6 @@ public class MyPageController {
 		
 		if (vo1 != null) {
 			session.setAttribute("status", vo1);	
-			//System.out.println(vo.getEmail()); // 수정하기
-			//mav.setViewName("mypage");
 		} else {
 			mav.addObject("msg", "fail.");
 			mav.setViewName("login");

@@ -31,8 +31,6 @@ public class AuctionController {
 	@RequestMapping(value = "/lostkey", method = RequestMethod.GET)
 	public ModelAndView category(ListVO vo, HttpSession session,String key) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("con : " + key);
-		//String id = (String)session.getAttribute("로그인했을경우 생성되는 세션 객체 이름 지정");
 		mav.addObject("list", dao.category(key));
 		mav.setViewName("auction");
 		return mav;	
@@ -48,7 +46,6 @@ public class AuctionController {
 	public ModelAndView auction_insert(Model model, HttpSession session, AuctionVO vo) {
 		ModelAndView mav = new ModelAndView();
 		boolean result = dao.insert(vo);
-		System.out.println("CON11 : "+ result);
 		if(result) {
 			mav.addObject("msg", "성공적으로 저장되었어요.");
 		} else {
@@ -61,14 +58,10 @@ public class AuctionController {
 	@RequestMapping(value = "/deleteAuction", method = RequestMethod.POST)
 	@ResponseBody
 	public int checkpw(String unique_id) {
-	System.out.println("체크비밀번호 들어옴");
 			if (dao.delete(unique_id)) {
 				return 1;
 			} else
 				return 0;
 		}
-	
-
-
 	
 }

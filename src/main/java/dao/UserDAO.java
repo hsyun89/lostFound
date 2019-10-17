@@ -31,7 +31,6 @@ public class UserDAO {
 	// 이메일 확인
 	public String checkEmail(String email) {
 		String statement = "resource.UserMapper.checkEmail";
-		System.out.println("dao : " + email);
 		return session.selectOne(statement, email);
 	}
 	
@@ -42,7 +41,6 @@ public class UserDAO {
 				if(session.update(statement,vo) != 1) {
 					result = false;
 				}
-				System.out.println("daots : " + result);
 		return result;
 	}
 	//회원 탈퇴
@@ -58,7 +56,6 @@ public class UserDAO {
 	//탈퇴 비밀번호 체크
 	public String checkpw(UserVO vo) {
 		String statement = "resource.UserMapper.checkpw";
-		System.out.println("dao : " + vo.getPassword()+"+"+vo.getEmail());
 		return session.selectOne(statement, vo);
 	}
 

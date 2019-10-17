@@ -30,12 +30,12 @@ public class LoginController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
 	}
+
 	// 회원가입 페이지 이동
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String get(Model model, HttpSession session, UserVO vo) {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
-		System.out.println("회원가입");
 		return "register";
 	}
 
@@ -46,13 +46,9 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
 		if (vo != null) {
-			// email, nickname 중복확인
 			boolean checkEmail = service.checkEmail(vo.getEmail());
-
 			if (checkEmail) {
-				System.out.println("이메일이 중복입니다.");
 				mav.addObject("msg", "이메일이 중복입니다");
-				// 회원가입 완료(이메일 중복 없음)
 			} else {
 				if (service.insert(vo)) {
 					mav.setViewName("login");
@@ -89,85 +85,67 @@ public class LoginController {
 
 	// (일반, 네이버)로그인 정보,확인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView logIn(@ModelAttribute UserVO vo, Model model, HttpServletResponse response,
-			HttpSession session) throws Exception {
+	public ModelAndView logIn(@ModelAttribute UserVO vo, Model model, HttpServletResponse response, HttpSession session)
+			throws Exception {
 		ModelAndView mav = new ModelAndView();
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
 		UserVO vo1 = service.login(vo);
-		//System.out.println("con : 1r  " + vo1.getAdmin());
 		if (vo1 != null) {
 			session.setAttribute("status", vo1);
 			session.setAttribute("admin", vo1.getAdmin());
-			//System.out.println(vo.getEmail()); // 수정하기
-			System.out.println("login완료");
 			mav.setViewName("mainView");
 		} else {
 			mav.addObject("msg", "로그인에 실패했습니다.");
 			mav.setViewName("login");
 		}
-		
+
 		return mav;
 	}
-	
-	
-		
-		// 회원 수정
-		@RequestMapping(value="/userupdate", method=RequestMethod.POST)
-		public ModelAndView userUpdate(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user) throws Exception {
-			ModelAndView mav = new ModelAndView();
-			String email = user.getEmail();
-			vo.setEmail(email);
-			boolean result = service.update(vo);
-			//log테이블 userName 수정
-			if(result) {
-				user = vo;
-				mav.addObject("status", user);
-			}
-			mav.setViewName("redirect:/main");
-			return mav;
-		}
-		
-		//회원탈퇴
-		@RequestMapping(value="/userdelete", method=RequestMethod.POST)
-		public ModelAndView userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status")UserVO user, SessionStatus session){
-			ModelAndView mav = new ModelAndView();
-			String email = user.getEmail();
-			boolean result = service.delete(email);
-			if(result) {
-				user = vo;
-			}
-			session.setComplete();
+
+	// 회원 수정
+	@RequestMapping(value = "/userupdate", method = RequestMethod.POST)
+	public ModelAndView userUpdate(@ModelAttribute UserVO vo, @SessionAttribute("status") UserVO user)
+			throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String email = user.getEmail();
+		vo.setEmail(email);
+		boolean result = service.update(vo);
+		if (result) {
+			user = vo;
 			mav.addObject("status", user);
-			mav.setViewName("redirect:/main");
-			return mav;
 		}
-		@RequestMapping(value = "/checkpw")
-		@ResponseBody
-		public int checkpw(String password, String email) {
-		System.out.println("체크비밀번호 들어옴");
+		mav.setViewName("redirect:/main");
+		return mav;
+	}
+
+	// 회원탈퇴
+	@RequestMapping(value = "/userdelete", method = RequestMethod.POST)
+	public ModelAndView userDelete(@ModelAttribute UserVO vo, @SessionAttribute("status") UserVO user,
+			SessionStatus session) {
+		ModelAndView mav = new ModelAndView();
+		String email = user.getEmail();
+		boolean result = service.delete(email);
+		if (result) {
+			user = vo;
+		}
+		session.setComplete();
+		mav.addObject("status", user);
+		mav.setViewName("redirect:/main");
+		return mav;
+	}
+
+	@RequestMapping(value = "/checkpw")
+	@ResponseBody
+	public int checkpw(String password, String email) {
 		UserVO vo = new UserVO();
 		vo.setPassword(password);
 		vo.setEmail(email);
-				if (service.checkpw(vo)) {
-					return 1;
-				} else
-					return 0;
-			}
-			
-/*			ModelAndView mav = new ModelAndView();
-			String email = user.getEmail();
-			vo.setEmail(email);
-			boolean result = service.delete(vo);
-			if(result) {
-				user = vo;
-			}
-			System.out.println("delete con :" + result + user.getEmail());
-			session.setComplete();
-			mav.addObject("status", user);
-			mav.setViewName("mainView");
-			return "redirect:/main";*/
-		
+		if (service.checkpw(vo)) {
+			return 1;
+		} else
+			return 0;
+	}
 
 	// 로그아웃
 	@RequestMapping(value = "/logout")
