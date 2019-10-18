@@ -71,10 +71,7 @@
 			
 			<hr class="sidebar-divider my-0">
 
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link" href="index.html">
-					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dash Board</span>
-			</a></li>
+			
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -582,9 +579,9 @@
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie
-									Luna</span> <img class="img-profile rounded-circle"
+							aria-expanded="false"> <span id="user_name"
+								class="mr-2 d-none d-lg-inline text-gray-600 small"> ${ status.user_name }
+							</span> <img class="img-profile rounded-circle"
 								src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a> <!-- Dropdown - User Information -->
 							<div
