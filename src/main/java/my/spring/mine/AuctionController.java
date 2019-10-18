@@ -36,6 +36,8 @@ public class AuctionController {
 		//System.out.println(userId);
 		mav.addObject("BiddingCompleteList", dao.selectBiddingComplete(userId));
 		mav.addObject("BuyCompleteList", dao.selectBuyComplete(userId));
+		//카트 숫자
+		mav.addObject("cartCount", dao.selectBiddingComplete(userId).size());
 		return mav;
 	}
 	//결제완료시 받기
@@ -128,6 +130,11 @@ public class AuctionController {
 		session.setAttribute("list", listVO);
 		//
 		mav.setViewName(viewName);
+		//카트 숫자
+		UserVO loginSession = (UserVO) session.getAttribute("status");
+		String userId = loginSession.getUser_id();
+		System.out.println("zzzz"+userId);
+		mav.addObject("cartCount", dao.selectBiddingComplete(userId).size());
 		return mav;
 	}
 

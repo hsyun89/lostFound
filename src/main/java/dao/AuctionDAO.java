@@ -1,5 +1,7 @@
 package dao;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -123,20 +125,25 @@ public class AuctionDAO {
 	//낙찰된 리스트
 	public List<ListVO> selectBiddingComplete(String user_id){
 		List<ListVO> list = null;
-		ListVO result = null;
+		ListVO result = new ListVO();
+		ListVO vo = new ListVO();
+		String serverTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		String statement = "resource.AuctionMapper.selectBiddingComplete";
-		list = session.selectList(statement,user_id);
+		System.out.println(user_id);
+		vo.setUser_id(user_id);
+		vo.setEnd_date(serverTime);
+		list = session.selectList(statement,vo);
 		//System.out.println("dao : " + key);
 		System.out.println(list);
-		for(ListVO vo : list) {
-			String productId=vo.getUnique_id();
+		for(ListVO vo1 : list) {
+			String productId=vo1.getUnique_id();
 			statement = "resource.AuctionMapper.selectBCDetail";
 			result = session.selectOne(statement,productId);
-			vo.setImage_address(result.getImage_address());
-			vo.setProduct_name(result.getProduct_name());
+			vo1.setImage_address(result.getImage_address());
+			vo1.setProduct_name(result.getProduct_name());
 		}
-		for(ListVO vo : list) {
-		System.out.println("낙찰내역: " + vo);
+		for(ListVO vo1 : list) {
+		System.out.println("낙찰내역: " + vo1);
 		}
 		return list;
 	}
