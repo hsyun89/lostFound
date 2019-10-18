@@ -92,7 +92,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseBag"
 				aria-expanded="true" aria-controls="collapseBag">
-				<img width="50px" src="https://2.bp.blogspot.com/--jx7n7clXQA/Xaas15tOMRI/AAAAAAAAAQI/WHaYgWKdd9AodkItsDscwufU72Ry7uoXgCK4BGAYYCw/s1600/1.png"> <span>가방</span>
+				<!-- <img width="50px" src="https://2.bp.blogspot.com/--jx7n7clXQA/Xaas15tOMRI/AAAAAAAAAQI/WHaYgWKdd9AodkItsDscwufU72Ry7uoXgCK4BGAYYCw/s1600/1.png"> --> <span>가방</span>
 			</a>
 				<div id="collapseBag" class="collapse" aria-labelledby="headingBag"
 					data-parent="#accordionSidebar">
@@ -108,7 +108,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseJewelry"
 				aria-expanded="true" aria-controls="collapseJewelry">
-				<img width="50px" src="https://1.bp.blogspot.com/-IYkGJSZt2a0/Xaa3adg71NI/AAAAAAAAASo/pOYXvidk760GFVCkKWcFruzU7Zb8Z5qcwCLcBGAsYHQ/s1600/02.png"> <span>귀금속</span>
+				<!-- <img width="50px" src="https://1.bp.blogspot.com/-IYkGJSZt2a0/Xaa3adg71NI/AAAAAAAAASo/pOYXvidk760GFVCkKWcFruzU7Zb8Z5qcwCLcBGAsYHQ/s1600/02.png"> --> <span>귀금속</span>
 			</a>
 				<div id="collapseJewelry" class="collapse"
 					aria-labelledby="headingJewelry" data-parent="#accordionSidebar">
@@ -126,7 +126,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseBook"
 				aria-expanded="true" aria-controls="collapseBook">
-				<img width=50px src="https://1.bp.blogspot.com/-3sTSyhwUg6I/Xaa3Z9QU1_I/AAAAAAAAASg/cp7Yv7R8glUz2-zBYq8jn1r4Al6Ti-BuQCLcBGAsYHQ/s1600/03.png"> <span>서적</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-3sTSyhwUg6I/Xaa3Z9QU1_I/AAAAAAAAASg/cp7Yv7R8glUz2-zBYq8jn1r4Al6Ti-BuQCLcBGAsYHQ/s1600/03.png"> --> <span>서적</span>
 			</a>
 				<div id="collapseBook" class="collapse"
 					aria-labelledby="headingBook" data-parent="#accordionSidebar">
@@ -144,7 +144,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseDocument"
 				aria-expanded="true" aria-controls="collapseDocument">
-				<img width=50px src="https://1.bp.blogspot.com/-wnQ80N2acbU/Xaa3Z6n-NbI/AAAAAAAAASk/XUh1V4n2A1UDe5bRrKbOWv7hAgRWurGpgCLcBGAsYHQ/s1600/04.png"> <span>서류</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-wnQ80N2acbU/Xaa3Z6n-NbI/AAAAAAAAASk/XUh1V4n2A1UDe5bRrKbOWv7hAgRWurGpgCLcBGAsYHQ/s1600/04.png"> --> <span>서류</span>
 			</a>
 				<div id="collapseDocument" class="collapse"
 					aria-labelledby="headingDocument" data-parent="#accordionSidebar">
@@ -159,7 +159,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTools"
 				aria-expanded="true" aria-controls="collapseTools">
-				<img width=50px src="https://1.bp.blogspot.com/-3w7pW7vozBo/Xaa3bd7gC0I/AAAAAAAAASs/GoUKxE7uLvky_XEpQbkcstkKH82yCewwACLcBGAsYHQ/s1600/05.png"> <span>산업용품</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-3w7pW7vozBo/Xaa3bd7gC0I/AAAAAAAAASs/GoUKxE7uLvky_XEpQbkcstkKH82yCewwACLcBGAsYHQ/s1600/05.png"> --> <span>산업용품</span>
 			</a>
 				<div id="collapseTools" class="collapse"
 					aria-labelledby="headingTools" data-parent="#accordionSidebar">
@@ -173,7 +173,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseShoppingbag"
 				aria-expanded="true" aria-controls="collapseShoppingbag">
-				<img width=50px src="https://1.bp.blogspot.com/-ws8-Xd6xDOA/Xaa3biZ1ZMI/AAAAAAAAASw/aUKfPeHeHREpM-UPEpY1VjgU_ktHQyw8ACLcBGAsYHQ/s1600/06.png"> <span>쇼핑백</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-ws8-Xd6xDOA/Xaa3biZ1ZMI/AAAAAAAAASw/aUKfPeHeHREpM-UPEpY1VjgU_ktHQyw8ACLcBGAsYHQ/s1600/06.png"> --> <span>쇼핑백</span>
 			</a>
 				<div id="collapseShoppingbag" class="collapse"
 					aria-labelledby="headingShoppingbag" data-parent="#accordionSidebar">
@@ -187,7 +187,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseSport"
 				aria-expanded="true" aria-controls="collapseSport">
-				<img width=50px src="https://1.bp.blogspot.com/-83nCvImqKfI/Xaa3cFEZP_I/AAAAAAAAAS0/DavojYcedpEF1D4iHhnLNR4h9zkY-h0HACLcBGAsYHQ/s1600/07.png"> <span>스포츠</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-83nCvImqKfI/Xaa3cFEZP_I/AAAAAAAAAS0/DavojYcedpEF1D4iHhnLNR4h9zkY-h0HACLcBGAsYHQ/s1600/07.png"> --> <span>스포츠</span>
 			</a>
 				<div id="collapseSport" class="collapse"
 					aria-labelledby="headingSport" data-parent="#accordionSidebar">
@@ -201,7 +201,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseInstrument"
 				aria-expanded="true" aria-controls="collapseInstrument">
-				<img width=50px src="https://1.bp.blogspot.com/-PcVMHVj97s8/Xaa3cBece1I/AAAAAAAAAS4/wtz69ElrEeAYTm14ZJtqpHcJzmndqr4JgCLcBGAsYHQ/s1600/08.png"> <span>악기</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-PcVMHVj97s8/Xaa3cBece1I/AAAAAAAAAS4/wtz69ElrEeAYTm14ZJtqpHcJzmndqr4JgCLcBGAsYHQ/s1600/08.png"> --> <span>악기</span>
 			</a>
 				<div id="collapseInstrument" class="collapse"
 					aria-labelledby="headingSport" data-parent="#accordionSidebar">
@@ -219,7 +219,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseSecurities"
 				aria-expanded="true" aria-controls="collapseSecurities">
-				<img width=50px src="https://1.bp.blogspot.com/-3xz6_ivavmM/Xaa3cXnjDBI/AAAAAAAAAS8/MrLq80BFSFwjmdWS7h_Y_ATfDqBalC9OgCLcBGAsYHQ/s1600/09.png"> <span>유가증권</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-3xz6_ivavmM/Xaa3cXnjDBI/AAAAAAAAAS8/MrLq80BFSFwjmdWS7h_Y_ATfDqBalC9OgCLcBGAsYHQ/s1600/09.png"> --> <span>유가증권</span>
 			</a>
 				<div id="collapseSecurities" class="collapse"
 					aria-labelledby="headingSecurities" data-parent="#accordionSidebar">
@@ -236,7 +236,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseClothes"
 				aria-expanded="true" aria-controls="collapseClothes">
-				<img width=50px src="https://1.bp.blogspot.com/-11yQwAAJhAA/Xaa3cgvCc1I/AAAAAAAAATA/OTCJBrLmK1AeUGyoUkRpqTXkl1bkS7YxwCLcBGAsYHQ/s1600/10.png"> <span>의류</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-11yQwAAJhAA/Xaa3cgvCc1I/AAAAAAAAATA/OTCJBrLmK1AeUGyoUkRpqTXkl1bkS7YxwCLcBGAsYHQ/s1600/10.png"> --> <span>의류</span>
 			</a>
 				<div id="collapseClothes" class="collapse"
 					aria-labelledby="headingClothes" data-parent="#accordionSidebar">
@@ -253,7 +253,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseCar"
 				aria-expanded="true" aria-controls="collapseCar">
-				<img width=50px src="https://1.bp.blogspot.com/-t1BvAN6Xn6E/Xaa3cu4Mi4I/AAAAAAAAATE/JMMgCYVe_uMQV8hgYUh_XkdLxPTHNytqgCLcBGAsYHQ/s1600/11.png"> <span>자동차</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-t1BvAN6Xn6E/Xaa3cu4Mi4I/AAAAAAAAATE/JMMgCYVe_uMQV8hgYUh_XkdLxPTHNytqgCLcBGAsYHQ/s1600/11.png"> --> <span>자동차</span>
 			</a>
 				<div id="collapseCar" class="collapse"
 					aria-labelledby="headingCar" data-parent="#accordionSidebar">
@@ -271,7 +271,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseElectronic"
 				aria-expanded="true" aria-controls="collapseElectronic">
-				<img width=50px src="https://1.bp.blogspot.com/-_M2cDe0NAFc/Xaa3dB8kWsI/AAAAAAAAATI/94aU9zRwqBABND6LwK7aXIzIQnsi22gkgCLcBGAsYHQ/s1600/12.png"> <span>전자기기</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-_M2cDe0NAFc/Xaa3dB8kWsI/AAAAAAAAATI/94aU9zRwqBABND6LwK7aXIzIQnsi22gkgCLcBGAsYHQ/s1600/12.png"> --> <span>전자기기</span>
 			</a>
 				<div id="collapseElectronic" class="collapse"
 					aria-labelledby="headingElectronic" data-parent="#accordionSidebar">
@@ -290,7 +290,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseWallet"
 				aria-expanded="true" aria-controls="collapseWallet">
-				<img width=50px src="https://1.bp.blogspot.com/-s4poQPZy778/Xaa3d921-gI/AAAAAAAAATM/p8fWDBCcfIUGVXZzwFk3M60eJp5bsD1HwCLcBGAsYHQ/s1600/13.png"> <span>지갑</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-s4poQPZy778/Xaa3d921-gI/AAAAAAAAATM/p8fWDBCcfIUGVXZzwFk3M60eJp5bsD1HwCLcBGAsYHQ/s1600/13.png"> --> <span>지갑</span>
 			</a>
 				<div id="collapseWallet" class="collapse"
 					aria-labelledby="headingWallet" data-parent="#accordionSidebar">
@@ -306,7 +306,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseCertificate"
 				aria-expanded="true" aria-controls="collapseCertificate">
-				<img width=50px src="https://1.bp.blogspot.com/-CaOfQrZyIPY/Xaa3eAASmwI/AAAAAAAAATQ/oiNMOpUkYNEDBkPST3yDT9aVO6KshN_SgCLcBGAsYHQ/s1600/14.png"> <span>증명서</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-CaOfQrZyIPY/Xaa3eAASmwI/AAAAAAAAATQ/oiNMOpUkYNEDBkPST3yDT9aVO6KshN_SgCLcBGAsYHQ/s1600/14.png"> --> <span>증명서</span>
 			</a>
 				<div id="collapseCertificate" class="collapse"
 					aria-labelledby="headingCertificate" data-parent="#accordionSidebar">
@@ -323,7 +323,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseComputer"
 				aria-expanded="true" aria-controls="collapseComputer">
-				<img width=50px src="https://1.bp.blogspot.com/-KAACUwSDxkU/Xaa3eNg3NAI/AAAAAAAAATU/1BTv97lUQ4YpNnViN3Y4QMrTiNItkO2IQCLcBGAsYHQ/s1600/15.png"> <span>컴퓨터</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-KAACUwSDxkU/Xaa3eNg3NAI/AAAAAAAAATU/1BTv97lUQ4YpNnViN3Y4QMrTiNItkO2IQCLcBGAsYHQ/s1600/15.png"> --> <span>컴퓨터</span>
 			</a>
 				<div id="collapseComputer" class="collapse"
 					aria-labelledby="headingComputer" data-parent="#accordionSidebar">
@@ -341,7 +341,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseCard"
 				aria-expanded="true" aria-controls="collapseCard">
-				<img width=50px src="https://1.bp.blogspot.com/-Z7KvszYj3GY/Xaa3eYWzuXI/AAAAAAAAATY/vI38hrzvq1okU_spsRB9FiEGDXtS5SJkQCLcBGAsYHQ/s1600/16.png"> <span>카드</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-Z7KvszYj3GY/Xaa3eYWzuXI/AAAAAAAAATY/vI38hrzvq1okU_spsRB9FiEGDXtS5SJkQCLcBGAsYHQ/s1600/16.png"> --> <span>카드</span>
 			</a>
 				<div id="collapseCard" class="collapse"
 					aria-labelledby="headingCard" data-parent="#accordionSidebar">
@@ -357,7 +357,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseCash"
 				aria-expanded="true" aria-controls="collapseCash">
-				<img width=50px src="https://1.bp.blogspot.com/-aQVwhkaPdo4/Xaa6b2Piv8I/AAAAAAAAAUU/R-ibQMrSDX0fkIgh6g9LCKutdIvOL_rEQCLcBGAsYHQ/s1600/17.png"> <span>현금</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-aQVwhkaPdo4/Xaa6b2Piv8I/AAAAAAAAAUU/R-ibQMrSDX0fkIgh6g9LCKutdIvOL_rEQCLcBGAsYHQ/s1600/17.png"> --> <span>현금</span>
 			</a>
 				<div id="collapseCash" class="collapse"
 					aria-labelledby="headingCash" data-parent="#accordionSidebar">
@@ -375,7 +375,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseCellphone"
 				aria-expanded="true" aria-controls="collapseCellphone">
-				<img width=50px src="https://1.bp.blogspot.com/-hQpKMWvd_ik/Xaa6cBXfpLI/AAAAAAAAAUY/a7Gv3TE1zM88uDdjzmETP0oqw7mKoOt7gCLcBGAsYHQ/s1600/18.png"> <span>휴대폰</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-hQpKMWvd_ik/Xaa6cBXfpLI/AAAAAAAAAUY/a7Gv3TE1zM88uDdjzmETP0oqw7mKoOt7gCLcBGAsYHQ/s1600/18.png"> --> <span>휴대폰</span>
 			</a>
 				<div id="collapseCellphone" class="collapse"
 					aria-labelledby="headingCellphone" data-parent="#accordionSidebar">
@@ -394,7 +394,7 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseEct"
 				aria-expanded="true" aria-controls="collapseEct">
-				<img width=50px src="https://1.bp.blogspot.com/-hQpKMWvd_ik/Xaa6cBXfpLI/AAAAAAAAAUY/a7Gv3TE1zM88uDdjzmETP0oqw7mKoOt7gCLcBGAsYHQ/s1600/19.png"> <span>기타</span>
+				<!-- <img width=50px src="https://1.bp.blogspot.com/-hQpKMWvd_ik/Xaa6cBXfpLI/AAAAAAAAAUY/a7Gv3TE1zM88uDdjzmETP0oqw7mKoOt7gCLcBGAsYHQ/s1600/19.png"> --> <span>기타</span>
 			</a>
 				<div id="collapseEct" class="collapse"
 					aria-labelledby="headingEct" data-parent="#accordionSidebar">
@@ -440,21 +440,6 @@
 						<i class="fa fa-bars"></i>
 					</button>
 
-					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
-
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
 
@@ -483,12 +468,12 @@
 							</div></li>
 
 						<!-- Nav Item - Alerts -->
-						<li class="nav-item dropdown no-arrow mx-1"><a
+						<!-- <li class="nav-item dropdown no-arrow mx-1"><a
 							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
+							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> Counter - Alerts
 								<span class="badge badge-danger badge-counter">3+</span>
-						</a> <!-- Dropdown - Alerts -->
+						</a> Dropdown - Alerts
 							<div
 								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="alertsDropdown">
@@ -527,16 +512,16 @@
 									</div>
 								</a> <a class="dropdown-item text-center small text-gray-500"
 									href="#">Show All Alerts</a>
-							</div></li>
+							</div></li> -->
 
 						<!-- Nav Item - Messages -->
-						<li class="nav-item dropdown no-arrow mx-1"><a
+						<!-- <li class="nav-item dropdown no-arrow mx-1"><a
 							class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i>
-								<!-- Counter - Messages --> <span
+								Counter - Messages <span
 								class="badge badge-danger badge-counter">7</span>
-						</a> <!-- Dropdown - Messages -->
+						</a> Dropdown - Messages
 							<div
 								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="messagesDropdown">
@@ -589,7 +574,7 @@
 									</div>
 								</a> <a class="dropdown-item text-center small text-gray-500"
 									href="#">Read More Messages</a>
-							</div></li>
+							</div></li> -->
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
@@ -631,8 +616,8 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">여기에서 잃어버린 물건을 찾아보세요.</h1>
 					<p class="mb-4">
-						공공 습득물은 습득일부터 9개월간 이곳에 보관됩니다. 자세한 내용은 <a class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" target="_blank"
-							href="https://www.lost112.go.kr/html.do?html=/prevent/lostProcedures&sub=F&title=%EC%9C%A0%EC%8B%A4%EB%AC%BC%EC%A2%85%ED%95%A9%EC%95%88%EB%82%B4&ptitle=%EC%9C%A0%EC%8B%A4%EB%AC%BC%EC%B2%98%EB%A6%AC%EC%A0%88%EC%B0%A8">유실물처리절차</a>를 클릭하세요.
+						혹시 찾으시는 물건이 없으신가요?. 못찾은 물건은 <a class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" target="_blank"
+							href="/mine/auction">경매</a>를 클릭하세요.
 					</p>
 					<!-- -----------------습득물 리스트 게시판----------------- -->
 					<!-- -----------------검색창----------------- -->
@@ -899,7 +884,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy; It's Mine 2019</span>
 					</div>
 				</div>
 			</footer>
@@ -947,7 +932,7 @@
 	<script src="js/sb-admin-2.min.js"></script>
 
 	<!-- Page level plugins -->
-	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/jquery.dataTables2.min.js"></script>
 	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Page level custom scripts -->
