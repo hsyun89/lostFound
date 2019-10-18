@@ -11707,10 +11707,8 @@
 			 *      } );
 			 *    } );
 			 */
-
 			//search
-			"sSearch": "Search:",
-
+			/*"sSearch": "Search:",*/
 	
 	
 			/**
@@ -11721,7 +11719,6 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "",
 			//"sSearchPlaceholder": "",
 	
 	
@@ -11747,9 +11744,7 @@
 			 *      } );
 			 *    } );
 			 */
-//=======
-			"sUrl": "",
-//>>>>>>> somiBranch
+			//"sUrl": "",
 	
 	
 			/**
@@ -11771,9 +11766,7 @@
 			 *      } );
 			 *    } );
 			 */
-
-			"sZeroRecords": "No matching records found"
-
+			//"sZeroRecords": "No matching records found"
 		},
 	
 	
@@ -11798,9 +11791,7 @@
 		 *      } );
 		 *    } )
 		 */
-//=======
-		"oSearch": $.extend( {}, DataTable.models.oSearch ),
-//>>>>>>> somiBranch
+		//"oSearch": $.extend( {}, DataTable.models.oSearch ),
 	
 	
 		/**
