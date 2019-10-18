@@ -7,7 +7,7 @@
   	<style>
 		#countdown, #HourCountdown, #countExpire {
 			display: inline;
-			color: blue;
+			color: #7971ea;
 			font-weight: bold;
 		}
 	</style>
@@ -46,7 +46,7 @@ var end;  //마감시간 전역변수
 		var appCtx = pathname.substring(0, pathname.indexOf("/", 2));
 		var root = url + appCtx;
 		//alert(root);
-		var ws = new WebSocket("ws://70.12.113.170:8000/mine/replyEcho");
+		var ws = new WebSocket("ws://70.12.113.171:8000/mine/replyEcho");
 		//var ws = new WebSocket("ws://localhost:8000/mine/replyEcho");
 		//r ws = new WebSocket("ws://"+root+"/replyEcho");
 
@@ -149,7 +149,7 @@ var end;  //마감시간 전역변수
 			// 시간 종료 시 뜨는 문구
 			if (distance < 0) {
 				clearInterval(timer);
-				document.getElementById(id).innerHTML = '입찰마감합니다!';
+				document.getElementById(id).innerHTML = '입찰 마감';
 				return;
 			}
 			var days = Math.floor(distance / _day);
@@ -216,7 +216,7 @@ var end;  //마감시간 전역변수
         <div class="container">
           <div class="row align-items-center">
 
-            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               <form action="" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
                 <input type="text" class="form-control border-0" placeholder="Search">
@@ -225,19 +225,19 @@ var end;  //마감시간 전역변수
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
+                <a href="<%=request.getContextPath()%>/main" class="js-logo-clone">내 꺼 야</a>
               </div>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+<!--                   <li><a href="#"><span class="icon icon-person"></span></a></li>
+                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li> -->
                   <li>
-                    <a href="cart.html" class="site-cart">
+                    <a href="<%=request.getContextPath()%>/combid" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
+                      <span class="count">${cartCount}</span>
                     </a>
                   </li> 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -251,9 +251,9 @@ var end;  //마감시간 전역변수
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children">
-              <a href="index.html">Home</a>
-              <ul class="dropdown">
+            <!-- <li class="has-children"> -->
+              <li><a href="<%=request.getContextPath()%>/main">Home</a></li>
+<!--               <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
                 <li><a href="#">Menu Three</a></li>
@@ -265,20 +265,20 @@ var end;  //마감시간 전역변수
                     <li><a href="#">Menu Three</a></li>
                   </ul>
                 </li>
-              </ul>
-            </li>
-            <li class="has-children">
-              <a href="about.html">About</a>
-              <ul class="dropdown">
+              </ul> -->
+            <!-- </li> -->
+            <!-- <li class="has-children"> -->
+              <li><a href="<%=request.getContextPath()%>/lost">Lost</a></li>
+              <!-- <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
                 <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li class="active"><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="contact.html">Contact</a></li>
+              </ul> -->
+           <!--  </li> -->
+            <li class="active"><a href="<%=request.getContextPath()%>/auction">Auction</a></li>
+<!--              <li><a href="#">Catalogue</a></li>
+            <li><a href="#">New Arrivals</a></li> 
+            <li><a href="contact.html">Contact</a></li> -->
           </ul>
         </div>
       </nav>
@@ -287,7 +287,7 @@ var end;  //마감시간 전역변수
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
+          <div class="col-md-12 mb-0"><a href="<%=request.getContextPath()%>/main">Home</a> <span class="mx-2 mb-0">/</span> <a href="<%=request.getContextPath()%>/auction">Auction</a> <span class="mx-2 mb-0">/</span><strong class="text-black">${list.product_name}</strong></div>
         </div>
       </div>
     </div>  
@@ -300,7 +300,7 @@ var end;  //마감시간 전역변수
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${list.product_name}</h2>
-            <p>콘텐츠</p>
+            <p>  </p>
             <p class="mb-4"><div id="HourCountdown"></div><div id='chatStatus'></div></p>
             <p><strong id='bidValue'class="text-primary h4"><!-- 최고가 -->
             	<!-- 최고입찰가 or 시작가 -->
@@ -332,7 +332,7 @@ var end;  //마감시간 전역변수
               <div class="input-group-prepend">
                 <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
               </div>
-              <input type="text" name="chatInput" class="form-control text-center" value="" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width: 80px !important;">
+              <input type="text" name="chatInput" class="form-control text-center" value="0" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width: 80px !important;">
               <div class="input-group-append">
                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
               </div>

@@ -63,12 +63,12 @@
 	</update>
 	
 	<!--낙찰된 내역 뽑기-->
-	<select id="selectBiddingComplete" resultType="vo.ListVO" parameterType="string">
+	<select id="selectBiddingComplete" resultType="vo.ListVO" parameterType="vo.ListVO">
  		SELECT auction_log.unique_id, user_id ,Max(price) price
 		FROM auction_log
 		WHERE user_id = #{user_id} 
 		and auction_log.unique_id 
-		IN (SELECT auction.unique_id FROM auction WHERE End_date <![CDATA[<]]> SYSDATE() AND user_id IS null)
+		IN (SELECT auction.unique_id FROM auction WHERE End_date <![CDATA[<]]> #{end_date} AND user_id IS null)
 		group BY auction_log.unique_id;
  	</select>
  	
