@@ -91,7 +91,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			if(distance<30000) { //30초 전에 입찰하면 시간 추가
 				AuctionVO vo = new AuctionVO();
 				long temp = format1.parse(endTime).getTime();
-				temp= temp+30000;
+				temp= temp+10000;
 				endTime = format1.format(temp);
 				vo.setEnd_date(endTime);
 				vo.setUnique_id(productId);

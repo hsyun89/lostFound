@@ -63,13 +63,30 @@
 	</update>
 	
 	<!--낙찰된 내역 뽑기-->
-	<select id="selectBiddingComplete" resultType="vo.ListVO" parameterType="vo.ListVO">
+<!-- 	<select id="selectBiddingComplete" resultType="vo.ListVO" parameterType="vo.ListVO">
  		SELECT auction_log.unique_id, user_id ,Max(price) price
 		FROM auction_log
 		WHERE user_id = #{user_id} 
 		and auction_log.unique_id 
 		IN (SELECT auction.unique_id FROM auction WHERE End_date <![CDATA[<]]> #{end_date} AND user_id IS null)
 		group BY auction_log.unique_id;
+ 	</select> -->
+	<select id="selectBiddingComplete" resultType="vo.ListVO" parameterType="vo.ListVO">
+		SELECT p.unique_id, p.price, p.User_id
+		FROM 
+			(SELECT auction.unique_id 
+			FROM auction 
+			WHERE End_date <![CDATA[<]]> #{end_date} 
+			AND user_id IS NULL) q,
+			(SELECT auction_log.Unique_id, auction_log.User_id, auction_log.Price
+			FROM(
+			SELECT unique_id, MAX(price) price 
+			FROM auction_log 
+			GROUP BY unique_id) k
+			INNER JOIN auction_log ON k.unique_id = auction_log.Unique_id
+			AND auction_log.Price = k.price) p
+		WHERE p.unique_id = q.unique_id
+		AND user_id = #{user_id};
  	</select>
  	
  	<!-- 낙찰내역 상세 뽑기 이미지주소, 상품이름 -->
@@ -89,6 +106,13 @@
 	<select id="selectBuyComplete" resultType="vo.ListVO" parameterType="string">
  		select unique_id from auction where user_id = #{user_id};
  	</select>
+ 	
+	<!--최고가 뽑기 -->
+<!-- 	<select id="selectMaxPrice" resultType="vo.ListVO" parameterType="string">
+ 		select Max(price) price from auction_log where unique_id = #{productId};
+ 	</select> -->
+ 	
+ 	
  	
 </mapper>
   

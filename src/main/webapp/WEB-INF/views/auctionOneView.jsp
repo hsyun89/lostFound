@@ -70,7 +70,7 @@ var end;  //마감시간 전역변수
 		var maxPrice = parseInt($('#bidValue').text());
 		////////////////////////////////소켓 오픈/////////////////////////////////////
 		ws.onopen = function() {
-			$('#chatStatus').text('웹소켓 연결중');
+			$('#chatStatus').text('');
 			$('input[name=chatInput]').on('keyup', function(evt) { //키다운 치는순간 키업은 떼는순간
 				if (evt.keyCode == 13) { //엔터
 					var bidPrice = $('input[name=chatInput]').val(); //입력한 입찰가
@@ -144,9 +144,8 @@ var end;  //마감시간 전역변수
 		clearInterval(timer);
 		function showRemaining() {
 			var now = new Date();
-			now + gap; //시간차 조정
 			//alert(now);
-			var distance = end - now;
+			var distance = end - now - gap; //시간차 조정
 			// 시간 종료 시 뜨는 문구
 			if (distance < 0) {
 				clearInterval(timer);

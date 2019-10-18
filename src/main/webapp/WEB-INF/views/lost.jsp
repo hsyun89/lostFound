@@ -986,7 +986,8 @@ var mymap;
 	function myMap(addr,place) {
 		var lat;
 		var lng;
-		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=&address="+encodeURIComponent(addr), function(data) {
+		var geoCode = '<c:out value="${geoCode}"/>';
+		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key="+geoCode+"&address="+encodeURIComponent(addr), function(data) {
 			 if (data.results.length > 0) {
 			lat = data.results[0].geometry.location.lat;
 			lng = data.results[0].geometry.location.lng;
