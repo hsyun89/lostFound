@@ -778,11 +778,18 @@
 								<p id="m_content"></p>
 								습득일 : <span id="m_date" style="font-size: small;"></span>
 								<hr>
+								<div name=keepplaceInfo>
 								<div id="mapid" style="width: 250px; height: 250px; float:left;" ></div>
-								<div style="margin:10px;">
+								<div style="float:right; text-align:left; width:210px; height:250px;">
 								<p id="m_place" style="font-weight:bold;"></p>
 								<p id="m_addr"></p>
+								<br>
+								</div>						
 								</div>
+								<div><span style="font-size:large; font-weight:bold; color:#4e73df;">찾으시는 물건이 맞나요?</span>
+								<a class = "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" target="_blank"
+							href="https://www.lost112.go.kr/html.do?html=/prevent/lostProcedures&sub=F&title=%EC%9C%A0%EC%8B%A4%EB%AC%BC%EC%A2%85%ED%95%A9%EC%95%88%EB%82%B4&ptitle=%EC%9C%A0%EC%8B%A4%EB%AC%BC%EC%B2%98%EB%A6%AC%EC%A0%88%EC%B0%A8">
+								유실물처리절차</a>를 통해 되찾으세요!</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" id="closeBtn"
@@ -997,7 +1004,7 @@ var mymap;
 	function myMap(addr,place) {
 		var lat;
 		var lng;
-		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCXi_CVcHEFQIyOFHd-hbIVLFh4ERxKacs&address="+encodeURIComponent(addr), function(data) {
+		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=&address="+encodeURIComponent(addr), function(data) {
 			 if (data.results.length > 0) {
 			lat = data.results[0].geometry.location.lat;
 			lng = data.results[0].geometry.location.lng;

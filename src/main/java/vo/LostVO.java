@@ -59,7 +59,6 @@ public class LostVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
 	public String getFind_place() {
 		return find_place;
 	}

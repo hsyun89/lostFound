@@ -223,10 +223,10 @@
 							<a class="dropdown-item" href="#"> 
 								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 
 									Profile
-							</a> 
-							<a class="dropdown-item" href="#">
-								 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
+							</a>  
+							<a class="dropdown-item" href="/mine/combid"> 
+								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 
+									myAuction
 							</a> 
 							<c:if test="${admin==1}">
 							<a class="dropdown-item" href="/mine/insertAuction">
@@ -276,7 +276,7 @@
 									<td><img src="${vo.image_address}"
 									width="100" height="100" style="margin-left: auto; margin-right: auto; display: block;">
 									</td>
-									<td>${vo.product_name}</td>
+									<td><a href="/mine/auctionWebsocket?productId=${vo.unique_id}">${vo.product_name}</a></td>
 									<td>${vo.start_price}</td>
 									<%-- <td>${vo.min_bid}</td> --%>
 									<td>${vo.start_date}</td>

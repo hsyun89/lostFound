@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>edu.spring</groupId>
+	<groupId>my.spring</groupId>
 	<artifactId>mine</artifactId>
 	<name>mine</name>
 	<packaging>war</packaging>
@@ -216,6 +216,20 @@
 			<artifactId>maven-resources-plugin</artifactId>
 			<version>2.4.3</version>
 		</dependency>
+		
+		<!-- 웹 소켓 -->
+		<dependency>
+		        <groupId>org.springframework</groupId>
+		        <artifactId>spring-websocket</artifactId>
+		        <version>4.2.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -253,6 +267,15 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-war-plugin</artifactId>
+	            <version>2.6</version>
+	            <configuration>
+	                <failOnMissingWebXml>false</failOnMissingWebXml>
+	            </configuration>
+	        </plugin>
+			
 		</plugins>
 	</build>
 </project>

@@ -8,12 +8,22 @@
 		SELECT LOST.UNIQUE_ID, IMAGE_ADDRESS, PRODUCT_NAME, CATEGORY, START_PRICE, MIN_BID, date_format(START_DATE, '%Y-%m-%d-%p-%h-%i') START_DATE, date_format(END_DATE, '%Y-%m-%d-%p-%h-%i')END_DATE FROM AUCTION, LOST
 		 WHERE auction.unique_id = lost.unique_id
 	</select>
+	<!--경매 상세페이지 -->
+	<select id="auctionOne" resultType="vo.ListVO" parameterType="string">
+		SELECT LOST.UNIQUE_ID, IMAGE_ADDRESS, PRODUCT_NAME, CATEGORY, START_PRICE, MIN_BID, START_DATE, END_DATE FROM AUCTION, LOST
+		 WHERE auction.unique_id = lost.unique_id AND lost.unique_id = #{productId};
+	</select>
 	
 	<!--카테고리-->
 		<select id="category" resultType="vo.ListVO" parameterType="string">
  		SELECT LOST.UNIQUE_ID, IMAGE_ADDRESS, PRODUCT_NAME, CATEGORY, START_PRICE, MIN_BID, date_format(START_DATE, '%Y-%m-%d-%p-%h-%i') START_DATE, date_format(END_DATE, '%Y-%m-%d-%p-%h-%i')END_DATE FROM AUCTION, LOST 
  		WHERE AUCTION.UNIQUE_ID = LOST.UNIQUE_ID AND LOST.CATEGORY LIKE CONCAT('%', #{KEY},'%')
- 	</select>
+	 	</select>
+<!-- =======
+	<select id="category" resultType="vo.ListVO" parameterType="string">
+ 		SELECT LOST.UNIQUE_ID, IMAGE_ADDRESS, PRODUCT_NAME, CATEGORY, START_PRICE, MIN_BID, date_format(START_DATE, '%Y-%m-%d') START_DATE, date_format(END_DATE, '%Y-%m-%d')END_DATE FROM AUCTION, LOST 
+ 		WHERE AUCTION.UNIQUE_ID = LOST.UNIQUE_ID AND LOST.CATEGORY LIKE CONCAT('%', #{KEY},'%');
+>>>>>>> a0978524603bbce22b14eeeca6eb6e76f1d74376 -->
  	
 	<!--경매 추가-->
 	<insert id="insertAuction" parameterType="vo.AuctionVO">
@@ -25,6 +35,61 @@
 	<delete id="deleteAuction"  parameterType="string"  >
     	DELETE FROM AUCTION WHERE UNIQUE_ID = #{unique_id}
 	</delete>
+	
+	<!--경매 입찰 내역 인서트-->
+	<insert id="insertAuctionLog" parameterType="vo.AuctionLogVO">
+		INSERT INTO AUCTION_LOG(UNIQUE_ID, USER_ID, PRICE, BID_DATE)
+		VALUES(#{unique_id}, #{user_id}, #{price}, #{bid_date});
+	</insert>
+	
+	<!--경매 입찰자, 최고입찰가 확인-->
+	<select id="selectMaxPriceAndUser" resultType="vo.AuctionLogVO" parameterType="string">
+ 		SELECT unique_id, user_id, price, bid_date FROM auction_log WHERE unique_id = #{unique_id} ORDER BY price desc LIMIT 1;
+ 	</select>
+ 	
+ 	<!--낙찰자 개인정보-->
+	<select id="selectMaxBidderInfo" resultType="vo.AuctionLogVO" parameterType="string">
+ 		SELECT user_name, email FROM user WHERE user_id = #{user_id};
+ 	</select>
+ 	
+ 	<!--경매 입찰 내역 다 뽑기-->
+	<select id="selectBiddingList" resultType="vo.AuctionLogVO" parameterType="string">
+ 		SELECT unique_id, user_id, price, bid_date FROM auction_log WHERE unique_id = #{productId} order by bid_date desc;
+ 	</select>
+ 	
+ 	<!--경매 낙찰 시간 연장-->
+	<update id="plusEndTime" parameterType="vo.AuctionVO">
+	UPDATE auction SET end_date = #{end_date} WHERE unique_id = #{unique_id};
+	</update>
+	
+	<!--낙찰된 내역 뽑기-->
+	<select id="selectBiddingComplete" resultType="vo.ListVO" parameterType="string">
+ 		SELECT auction_log.unique_id, user_id ,Max(price) price
+		FROM auction_log
+		WHERE user_id = #{user_id} 
+		and auction_log.unique_id 
+		IN (SELECT auction.unique_id FROM auction WHERE End_date <![CDATA[<]]> SYSDATE() AND user_id IS null)
+		group BY auction_log.unique_id;
+ 	</select>
+ 	
+ 	<!-- 낙찰내역 상세 뽑기 이미지주소, 상품이름 -->
+ 	<select id="selectBCDetail" resultType="vo.ListVO" parameterType="string">
+ 		select IMAGE_ADDRESS, PRODUCT_NAME, MAX(price) price
+ 		from lost, auction_log 
+ 		where lost.unique_id = #{productId}
+ 		and auction_log.Unique_id = #{productId};
+ 	</select>
+ 	
+ 	<!--낙찰자 구매 완료-->
+	<update id="completeBuy" parameterType="vo.ListVO">
+	UPDATE auction SET user_id = #{user_id} WHERE unique_id = #{unique_id};
+	</update>
+	
+	<!--결제 완료 내역 -->
+	<select id="selectBuyComplete" resultType="vo.ListVO" parameterType="string">
+ 		select unique_id from auction where user_id = #{user_id};
+ 	</select>
+ 	
 </mapper>
   
   
