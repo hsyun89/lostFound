@@ -80,7 +80,7 @@ public class AuctionController {
 		String userId = loginSession.getUser_id();
 		System.out.println("유저아이디"+userId);
 		//낙찰자
-		AuctionLogVO maxBidVO = dao.selectMaxPriceAndUser(productId);
+		AuctionLogVO maxBidVO = dao.selectMaxPriceAndUser2(productId);
 		String maxBidder = maxBidVO.getUser_id();
 		System.out.println("낙찰자"+maxBidder);
 		//물건이름
@@ -120,7 +120,7 @@ public class AuctionController {
 		ListVO listVO =  dao.auctionOne(productId);
 		mav.addObject("serverTime",LocalDateTime.now());
 		mav.addObject("list", listVO);
-		mav.addObject("maxPriceAndUser", dao.selectMaxPriceAndUser(productId));
+		mav.addObject("maxPriceAndUser", dao.selectMaxPriceAndUser1(productId));
 		mav.addObject("biddingList", dao.selectBiddingList(productId));
 		//System.out.println(dao.selectBiddingList(productId));
 		//멀티룸용 세션

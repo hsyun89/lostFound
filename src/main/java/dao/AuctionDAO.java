@@ -68,17 +68,34 @@ public class AuctionDAO {
 	}
 	
 	//경매 입찰자, 최고입찰가 확인
-	public AuctionLogVO selectMaxPriceAndUser(String productId) {
+	public AuctionLogVO selectMaxPriceAndUser1(String productId) {
 		AuctionLogVO result = null;
 		AuctionLogVO result2 = null;
 		String statement1 = "resource.AuctionMapper.selectMaxPriceAndUser";
 		result = session.selectOne(statement1, productId);
-		String user_id = result.getUser_id();
-		String statement2 = "resource.AuctionMapper.selectMaxBidderInfo";
-		result2 = session.selectOne(statement2, user_id);
-		result.setUser_name(result2.getUser_name());
-		result.setEmail(result2.getEmail());
+		//if(result.getUser_id()!=null) {
+			//String user_id = result.getUser_id();
+//			String statement2 = "resource.AuctionMapper.selectMaxBidderInfo";
+//			result2 = session.selectOne(statement2, user_id);
+//			result.setUser_name(result2.getUser_name());
+//			result.setEmail(result2.getEmail());
+		//}
 		//update(result);
+		return result;
+	}
+	//경매 입찰자, 최고입찰가 확인
+	public AuctionLogVO selectMaxPriceAndUser2(String productId) {
+		AuctionLogVO result = null;
+		AuctionLogVO result2 = null;
+		String statement1 = "resource.AuctionMapper.selectMaxPriceAndUser";
+		result = session.selectOne(statement1, productId);
+		if(result.getUser_id()!=null) {
+		String user_id = result.getUser_id();
+			String statement2 = "resource.AuctionMapper.selectMaxBidderInfo";
+			result2 = session.selectOne(statement2, user_id);
+			result.setUser_name(result2.getUser_name());
+			result.setEmail(result2.getEmail());
+		}
 		return result;
 	}
 	//입찰 내역 다 뽑기

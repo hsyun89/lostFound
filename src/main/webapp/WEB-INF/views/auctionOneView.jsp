@@ -343,7 +343,7 @@ var end;  //마감시간 전역변수
             <!-- 경매내역 -->
             <textarea name="chatMsg" rows="5" cols="60"><c:if test="${!empty biddingList}"><c:forEach var="vo" items="${biddingList}"><c:out value="입찰시간 ${vo.bid_date}  입찰가 ${vo.price}원
 "/></c:forEach></c:if></textarea>
-			<p><a id='payButton' style="display :" href="http://70.12.113.171:8000/mine/payment?productId=${list.unique_id}" class="buy-now btn btn-sm btn-primary">결제지워</a></p>
+			<%-- <p><a id='payButton' style="display :" href="http://70.12.113.171:8000/mine/payment?productId=${list.unique_id}" class="buy-now btn btn-sm btn-primary">결제지워</a></p> --%>
           </div>
         </div>
       </div>
