@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dao.LostDAO;
-import vo.LostVO;
 import vo.PageMakerAndSearch;
 
 @Controller
