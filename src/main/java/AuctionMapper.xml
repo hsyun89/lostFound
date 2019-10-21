@@ -90,11 +90,19 @@
  	</select>
  	
  	<!-- 낙찰내역 상세 뽑기 이미지주소, 상품이름 -->
- 	<select id="selectBCDetail" resultType="vo.ListVO" parameterType="string">
+<!--  	<select id="selectBCDetail" resultType="vo.ListVO" parameterType="string">
  		select IMAGE_ADDRESS, PRODUCT_NAME, MAX(price) price
  		from lost, auction_log 
  		where lost.unique_id = #{productId}
  		and auction_log.Unique_id = #{productId};
+ 	</select> -->
+ 	<select id="selectBCDetail" resultType="vo.ListVO" parameterType="string">
+		select IMAGE_ADDRESS, PRODUCT_NAME, 
+			(select MAX(price) 
+			from auction_log
+			where unique_id=#{productId}) price
+		from lost
+		where unique_id = #{productId};
  	</select>
  	
  	<!--낙찰자 구매 완료-->
